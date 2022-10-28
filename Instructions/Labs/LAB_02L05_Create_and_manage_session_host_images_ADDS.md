@@ -7,11 +7,11 @@ lab:
 # <a name="lab---create-and-manage-session-host-images-ad-ds"></a>Lab: Erstellen und Verwalten von Sitzungshostimages (AD DS)
 # <a name="student-lab-manual"></a>Lab-Handbuch für Kursteilnehmer
 
-## <a name="lab-dependencies"></a>Lab-Abhängigkeiten
+## <a name="lab-dependencies"></a>Lababhängigkeiten
 
 - Ein Azure-Abonnement, das Sie in diesem Lab verwenden werden.
-- Ein Microsoft-Konto oder ein Azure AD-Konto mit der Rolle „Besitzer“ oder „Mitwirkender“ im Azure-Abonnement, das Sie in diesem Lab verwenden werden, und mit der Rolle„Globaler Administrator“ im Azure AD-Mandanten, der diesem Azure-Abonnement zugeordnet ist.
-- Das abgeschlossene Lab **Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD DS)** .
+- Ein Microsoft-Konto oder Azure AD-Konto mit der Rolle „Besitzer“ oder „Mitwirkender“ im Azure-Abonnement, das Sie in diesem Lab verwenden werden, und mit der Rolle „Globaler Administrator“ im Azure AD-Mandanten, der diesem Azure-Abonnement zugeordnet ist
+- Das abgeschlossene Lab **Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD DS)**
 
 ## <a name="estimated-time"></a>Geschätzte Dauer
 
@@ -97,7 +97,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    |Einstellung|Wert|
    |---|---|
-   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
    |Resource group|**az140-25-RG**|
    |Name|**az140-25-bastion**|
    |Region|Dieselbe Azure-Region, in der Sie die Ressourcen in den vorherigen Aufgaben dieser Übung bereitgestellt haben|
@@ -220,7 +220,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Führen Sie innerhalb der Remotedesktopsitzung für **az140-25-vm0** im Fenster **Administrator: C:\windows\system32\cmd.exe** aus der Eingabeaufforderung die Systemvorbereitungsfunktion aus, um das Betriebssystem auf das Generieren eines Images vorzubereiten und es automatisch herunterzufahren:
 
    ```cmd
-   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
    ```
 
    > **Hinweis:** Warten Sie, bis der Systemvorbereitungsvorgang abgeschlossen ist. Dies kann etwa zwei Minuten dauern. Dadurch wird das Betriebssystem automatisch heruntergefahren. 
@@ -279,7 +279,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    |Einstellung|Wert|
    |---|---|
-   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
    |Resource group|**az140-25-RG**|
    |Hostpoolname|**az140-25-hp4**|
    |Standort|Der Name der Azure-Region, in der Sie in der ersten Übung dieses Labs Ressourcen bereitgestellt haben|
@@ -347,7 +347,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 #### <a name="task-1-deallocate-azure-vms-provisioned-in-the-lab"></a>Aufgabe 1: Aufheben der Zuordnung von Azure-VMs, die im Lab bereitgestellt sind
 
-1. Wechseln Sie zum Laborcomputer, und öffnen Sie im Webbrowser, in dem das Azure-Portal angezeigt wird, die **PowerShell**-Shellsitzung im Bereich **Cloud Shell**.
+1. Wechseln Sie zum Labcomputer, und öffnen Sie im Webbrowserfenster, in dem das Azure-Portal angezeigt wird, die **PowerShell**-Shellsitzung im Bereich **Cloud Shell**.
 1. Führen Sie in der PowerShell-Sitzung im Bereich „Cloud Shell“ den folgenden Befehl aus, um alle in diesem Lab erstellten Azure-VMs aufzulisten:
 
    ```powershell
@@ -360,4 +360,4 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Get-AzVM -ResourceGroup 'az140-25-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Hinweis:** Der Befehl wird, wie über Parameter „-NoWait“ festgelegt, asynchron ausgeführt. Dies bedeutet, dass Sie zwar direkt im Anschluss einen weiteren PowerShell-Befehl in derselben PowerShell-Sitzung ausführen können, es jedoch einige Minuten dauert, bis die Azure-VMs tatsächlich beendet und ihre Zuordnungen aufgehoben werden.
+   >**Hinweis:** Der Befehl wird (wie über den Parameter „-NoWait“ festgelegt) asynchron ausgeführt. Dies bedeutet, dass Sie zwar direkt im Anschluss einen weiteren PowerShell-Befehl in derselben PowerShell-Sitzung ausführen können, es jedoch einige Minuten dauert, bis die Azure-VMs tatsächlich beendet werden und ihre Zuordnung aufgehoben wird.
