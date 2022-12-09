@@ -64,7 +64,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    |Einstellung|Wert|
    |---|---|
-   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
    |Resource group|Der Name einer neuen Ressourcengruppe: **az140-22a-RG**|
    |Speicherkontoname|Global gültiger Name zwischen 3 und 15 Zeichen, der aus Kleinbuchstaben und Ziffern besteht und mit einem Buchstaben beginnt|
    |Standort|Name einer Azure-Region, in der die Azure Virtual Desktop-Labumgebung gehostet wird|
