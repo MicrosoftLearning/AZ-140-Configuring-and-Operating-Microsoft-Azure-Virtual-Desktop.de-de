@@ -1,6 +1,6 @@
-# <a name="az-140-configuring-and-operating-microsoft-azure-virtual-desktop"></a>AZ-140: Konfigurieren und Betreiben von Microsoft Azure Virtual Desktop
+# AZ-140: Konfigurieren und Betreiben von Microsoft Azure Virtual Desktop
 
-## <a name="important"></a>Wichtig
+## Wichtig
 
 **Die Labs bestehen aus zwei getrennten Titeln, entsprechend dem von Ihnen genutzten Identitätsanbieter.**
 
