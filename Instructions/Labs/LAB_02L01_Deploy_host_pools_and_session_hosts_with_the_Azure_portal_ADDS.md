@@ -264,7 +264,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Name der Anwendungsgruppe|**az140-21-hp1-Utilities-RAG**|
 
 1. Wählen Sie auf der Registerkarte **Anwendungen** des Blatts **Anwendungsgruppe erstellen** die Option **+ Anwendungen hinzufügen** aus.
-1. Geben Sie auf dem Blatt **Anwendung hinzufügen** die folgenden Einstellungen an, und wählen Sie **Speichern** aus:
+1. Verwenden Sie auf dem Blatt **Anwendung hinzufügen** die Registerkarten **Grundeinstellungen** und **Symbol**, um die folgenden Einstellungen anzugeben, und wählen Sie **Speichern** aus:
 
    |Einstellung|Wert|
    |---|---|

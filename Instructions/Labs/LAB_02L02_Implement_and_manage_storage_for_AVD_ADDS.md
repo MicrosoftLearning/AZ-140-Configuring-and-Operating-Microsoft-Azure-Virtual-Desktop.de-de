@@ -144,7 +144,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. Wechseln Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** zum Microsoft Edge-Fenster, in dem das Azure-Portal angezeigt wird. Klicken Sie auf dem Blatt mit dem Speicherkonto auf **Dateifreigaben**, und überprüfen Sie, ob die **Active Directory**-Einstellung den Status **Konfiguriert** aufweist.
+1. Wechseln Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** zum Microsoft Edge-Fenster, in dem das Azure-Portal angezeigt wird. Klicken Sie auf dem Blatt mit dem Speicherkonto auf **Dateifreigaben** und überprüfen Sie, ob die Einstellung **Identitätsbasierter Zugriff** den Status **Konfiguriert** aufweist.
 
    >**Hinweis:** Möglicherweise müssen Sie die Browserseite aktualisieren, damit die Änderungen im Azure-Portal angezeigt werden.
 
