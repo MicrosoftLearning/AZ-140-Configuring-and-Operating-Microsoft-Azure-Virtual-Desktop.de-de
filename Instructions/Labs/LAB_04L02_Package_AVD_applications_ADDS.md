@@ -38,6 +38,8 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
+>**Wichtig:** Microsoft hat **Azure Active Directory** (**Azure AD**) in **Microsoft Entra ID** umbenannt. Ausführliche Informationen zu dieser Änderung finden Sie unter [Neuer Name für Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Das ist ein laufendes Projekt, daher kann es immer noch vorkommen, dass die Labanweisungen und die Elemente auf der Benutzerfläche voneinander abweichen, während Sie einzelne Übungen absolvieren. Berücksichtigen Sie das (in diesem Lab ist **Microsoft Entra Connect** der neue Name von **Azure Active Directory Connect**).
+
 ### Übung 1: MSIX-App-Pakete vorzubereiten und zu erstellen.
 
 Die Hauptaufgaben für diese Übung sind Folgende:
@@ -464,18 +466,17 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf dem Blatt **Azure Virtual Desktop \| Anwendungsgruppen** den Anwendungsgruppeneintrag **az140-21-hp1-Utilities-RAG** aus.
 1. Klicken Sie auf dem Blatt **az140-21-hp1-Utilities-RAG** im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** auf **Anwendungen**. 
 1. Wählen Sie auf dem Blatt **az140-21-hp1-Utilities-RAG \| Anwendungen** **+ Hinzufügen** aus.
-1. Geben Sie auf dem Blatt **Anwendung hinzufügen** die folgenden Einstellungen an, und wählen Sie **Speichern** aus:
+1. Verwenden Sie auf dem Blatt **Anwendung hinzufügen** die Registerkarten **Grundeinstellungen** und **Symbol**, um die folgenden Einstellungen anzugeben, und wählen Sie **Speichern** aus:
 
    |Einstellung|Wert|
    |---|---|
-   |Anwendungsquelle|**MSIX-Paket**|
-   |MSIX-Paket|Name, der für das Paket steht, das im Image enthalten ist|
-   |MSIX-Anwendung|**XMLNOTEPAD**|
-   |Anwendungsname|**XML Notepad**|
+   |Anwendungsquelle|**App anfügen**|
+   |Paket|Name, der für das Paket steht, das im Image enthalten ist|
+   |Application|**XMLNOTEPAD**|
+   |Anwendungskennung|**XML Notepad**|
    |Anzeigename|**XML Notepad**|
    |Beschreibung|**XML Notepad**|
-   |Symbolpfad|**C:\\Programme\\WindowsApps\\XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8\\VFS\\ProgramFilesX86\\LovettSoftware\\XmlNotepad\\XmlNotepad.exe**|
-   |Symbolindex|**0**|
+   |Symbolquelle|**Standard**|
 
 1. Navigieren Sie zurück zum Blatt **Azure Virtual Desktop \| Anwendungsgruppen**, und wählen Sie den Anwendungsgruppeneintrag **az140-21-hp1-DAG** aus.
 1. Klicken Sie auf dem Blatt **az140-21-hp1-DAG** im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** auf **Anwendungen**. 

@@ -295,12 +295,14 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Virtuelle Azure-Computer hinzufügen|**Ja**|
    |Resource group|**Standardmäßig mit der Ressourcengruppe des Hostpools identisch.**|
    |Namenspräfix|**az140-25-p4**|
+   |Typ des virtuellen Computers|**Virtueller Azure-Computer**|
    |Virtueller Computer Standort|Der Name der Azure-Region, in der Sie in der ersten Übung dieses Labs Ressourcen bereitgestellt haben|
    |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
+   |Sicherheitstyp|**Standard**|
    
 1. Klicken Sie auf der Registerkarte **Virtuelle Computer** des Blatts **Hostpool erstellen** direkt unter der Dropdownliste **Image** auf den Link **Alle Images anzeigen**.
 1. Wählen Sie auf dem Blatt **Image auswählen** unter **Weitere Elemente** **Freigegebene Images** aus und wählen sie in der Liste der freigegebenen Images **az140-25-host-image** aus. 
-1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen an, und wählen Sie **Weiter: Arbeitsbereich >** aus.
+1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen an, und wählen Sie **Weiter: Arbeitsbereich>**
 
    |Einstellung|Wert|
    |---|---|

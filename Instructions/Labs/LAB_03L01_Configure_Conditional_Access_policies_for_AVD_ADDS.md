@@ -35,6 +35,10 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
+>**Wichtig:** Microsoft hat **Azure Active Directory** (**Azure AD**) in **Microsoft Entra ID** umbenannt. Ausführliche Informationen zu dieser Änderung finden Sie unter [Neuer Name für Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Das ist ein laufendes Projekt, daher kann es immer noch vorkommen, dass die Labanweisungen und die Elemente auf der Benutzerfläche voneinander abweichen, während Sie einzelne Übungen absolvieren. Berücksichtigen Sie das (in diesem Lab ist **Microsoft Entra Connect** der neue Name von **Azure Active Directory Connect**, und der Begriff **Azure Active Directory** wird bei der Konfiguration des Dienstverbindungspunkts in Aufgabe 4 von Übung 1 noch verwendet).
+
+>**Wichtig:** Für die Aktivierung einer Microsoft Entra ID P2-Testversion müssen Kreditkarteninformationen angegeben werden. Aus diesem Grund ist diese Übung optional. Stattdessen können Kursleiter diese Funktionalität für die Lernenden demonstrieren.
+
 ### Übung 1: Vorbereiten des bedingten Zugriffs von Microsoft Entra für Azure Virtual Desktop
 
 Die Hauptaufgaben für diese Übung sind Folgende:
@@ -49,7 +53,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 >**Hinweis:** Die Premium P1- oder P2-Lizenzierung von Microsoft Entra ist erforderlich, um den bedingten Zugriff von Microsoft Entra zu implementieren. Für dieses Lab verwenden Sie eine 30-Tage-Testversion.
 
-1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com) und melden Sie sich an. Verwenden Sie dabei die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer*in“ und in dem Microsoft Entra-Mandanten, der diesem Abonnement zugeordnet ist, über die Rolle „Globale*r Administrator*in“ verfügt.
+1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com) und melden Sie sich an. Verwenden Sie dabei die Microsoft Entra-Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ und in dem Microsoft Entra-Mandanten, der diesem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+
+    >**Wichtig:** Stellen Sie sicher, dass Sie ein Geschäfts‑, Schul‑ oder Unikonto und **kein** Microsoft-Konto verwenden.
+
 1. Suchen Sie im Azure-Portal nach **Azure Active Directory** und wählen Sie diese Option aus, um zu dem Microsoft Entra-Mandanten zu navigieren, der dem in diesem Lab verwendeten Azure-Abonnement zugeordnet ist.
 1. Klicken Sie auf dem Blatt „Azure Active Directory“ auf der vertikalen Menüleiste links im Abschnitt **Verwalten** auf **Benutzer**. 
 1. Wählen Sie auf dem Blatt **Benutzer | Alle Benutzer (Vorschau)** die Option **aduser5** aus.
@@ -69,8 +76,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Navigieren Sie im Azure-Portal zurück zum Blatt **Übersicht** des Microsoft Entra-Mandanten, und wählen Sie auf der vertikalen Menüleiste auf der linken Seite im Abschnitt **Verwalten** **Lizenzen** aus.
 1. Klicken Sie auf dem Blatt **Lizenzen \| Übersicht** auf der vertikalen Menüleiste links im Abschnitt **Verwalten** auf **Alle Produkte**.
 1. Klicken Sie auf dem Blatt **Lizenzen \| Alle Produkte** auf der Symbolleiste auf **+ Ausprobieren/Kaufen**.
-1. Klicken Sie auf dem Blatt **Aktivieren** im Abschnitt **ENTERPRISE MOBILITY + SECURITY E5** auf **Kostenlose Testversion** und dann auf **Aktivieren**. 
-1. Aktualisieren Sie auf dem Blatt **Lizenzen \| Übersicht** das Browserfenster, um zu überprüfen, ob die Aktivierung erfolgreich war. 
+1. Klicken Sie auf dem Blatt **Aktivieren** im Abschnitt **MICROSOFT ENTRA ID P2** auf **Kostenlose Testversion**, und klicken Sie dann auf **Aktivieren**. Befolgen Sie dann die Anweisungen, um den Aktivierungsprozess abzuschließen.
 1. Wählen Sie auf dem Blatt **Lizenzen – Alle Produkte** den Eintrag **Enterprise Mobility + Security E5** aus. 
 1. Klicken Sie auf dem Blatt **Enterprise Mobility + Security E5** auf der Symbolleiste auf **+ Zuweisen**.
 1. Klicken Sie auf dem Blatt **Lizenz zuweisen** auf **Benutzer und Gruppen hinzufügen**, wählen Sie auf dem Blatt **Benutzer und Gruppen hinzufügen** den Eintrag **aduser5** und Ihr Benutzerkonto aus, und klicken Sie auf **Auswählen**.
@@ -181,7 +187,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    - Geben Sie in das Textfeld **Name** den Namen **az140-31-wvdpolicy1** ein.
    - Wählen Sie im Abschnitt **Zuweisungen** die Option **Benutzer- oder Workloadidentitäten** aus. Vergewissern Sie sich in der Dropdownliste **Wofür gilt diese Richtlinie?**, dass **Benutzer und Gruppen** aktiviert ist. Aktivieren Sie im Abschnitt **Benutzer und Gruppen auswählen** das Kontrollkästchen **Benutzer und Gruppen**, und klicken Sie auf dem Blatt **Auswählen** auf **aduser5** und anschließend auf **Auswählen**.
-   - Wählen Sie im Abschnitt **Zuweisungen** **Cloud-Apps oder -Aktionen** aus und stellen Sie sicher, dass der Schalter **Wählen, welche Richtlinie angewendet wird** die Option **Cloud-Apps** ausgewählt ist. Wählen Sie **Apps auswählen** auf dem Blatt **Auswählen**. Geben Sie im Textfeld **Suchen** **9cdead84-a844-4324-93f2-b2e6bb768d07** ein. Aktivieren Sie in der Liste der Ergebnisse das Kontrollkästchen neben dem Eintrag **Azure Virtual Desktop**. Geben Sie im Textfeld **Suchen** **a4a365df-50f1-4397-bc59-1a1564b8bb9c** ein. Aktivieren Sie das Kontrollkästchen neben dem Eintrag **Microsoft-Remotedesktop** und wählen Sie **Auswählen** aus. 
+   - Klicken Sie im Abschnitt **Zuweisungen** auf **Cloud-Apps oder -Aktionen**, und stellen Sie sicher, dass unter **Wählen Sie aus, worauf diese Richtlinie angewendet werden soll** die Option **Cloud-Apps** ausgewählt ist. Wählen Sie **Apps auswählen** auf dem Blatt **Auswählen** aus, und geben Sie im Textfeld **Suchen** **Azure Virtual Desktop** ein. Aktivieren Sie in der Liste der Ergebnisse das Kontrollkästchen neben dem Eintrag **Azure Virtual Desktop**. Geben Sie im Textfeld **Suchen** dann **Microsoft-Remotedesktop** ein, aktivieren Sie das Kontrollkästchen neben dem Eintrag **Microsoft-Remotedesktop**, und wählen Sie **Auswählen** aus. 
 
    > **Hinweis:** Azure Virtual Desktop (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07) wird verwendet, wenn ein*e Benutzer*in einen Feed abonniert und sich während einer Verbindung beim Azure Virtual Desktop Gateway authentifiziert. Microsoft Remote Desktop (App-ID a4a365df-50f1-4397-bc59-1a1564b8bb9c) wird verwendet, wenn ein*e Benutzer*in sich beim Sitzungshost authentifiziert, wenn einmaliges Anmelden aktiviert ist.
 
