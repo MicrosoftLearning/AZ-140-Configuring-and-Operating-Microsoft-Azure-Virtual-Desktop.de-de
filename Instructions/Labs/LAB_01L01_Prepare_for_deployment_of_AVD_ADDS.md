@@ -1,7 +1,7 @@
 ---
 lab:
   title: "Lab: Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD\_DS)"
-  module: 'Module 1: Plan a AVD Architecture'
+  module: 'Module 1: Plan an AVD Architecture'
 ---
 
 # Lab: Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD DS)
