@@ -19,7 +19,7 @@ lab:
 
 ## Labszenario
 
-Sie müssen Azure Virtual Desktop-Hostimages in einer Microsoft Entra DS-Umgebung erstellen und verwalten.
+Sie müssen Azure Virtual Desktop-Hostimages in einer AD DS-Umgebung erstellen und verwalten.
 
 ## Ziele
   
@@ -34,7 +34,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 1: Erstellung und Verwaltung von Sitzungshostimages
+### Übung 1: Erstellen und Verwalten eines Sitzungshostimages
   
 Die Hauptaufgaben für diese Übung sind Folgende:
 
@@ -49,7 +49,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Verwenden Sie dabei die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
 1. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie rechts neben dem Textfeld für die Suche das Symbolleistensymbol auswählen.
 1. Wenn Sie aufgefordert werden, entweder **Bash** oder **PowerShell** auszuwählen, wählen Sie **PowerShell** aus. 
-1. Führen Sie auf dem Labcomputer im Webbrowser mit dem Azure-Portal aus der PowerShell-Sitzung im Cloud Shell-Bereich den folgenden Code aus, um eine Ressourcengruppe zu erstellen, die das Azure Virtual Desktop-Hostimage enthält:
+1. Führen Sie auf dem Labcomputer im Webbrowser mit dem Azure-Portal aus der PowerShell-Sitzung im Cloud Shell-Bereich den folgenden Code aus, um eine Ressourcengruppe zu erstellen, die das Azure Virtual Desktop-Hostimage enthalten wird:
 
    ```powershell
    $vnetResourceGroupName = 'az140-11-RG'
@@ -59,7 +59,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    ```
 
 1. Wählen Sie im Azure-Portal in der Symbolleiste des Cloud Shell-Bereichs das Symbol für **Dateien hochladen/herunterladen** aus, klicken Sie in der Dropdownliste auf **Hochladen**, und laden Sie die Dateien **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.json** und **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.parameters.json** in das Cloud Shell-Basisverzeichnis hoch.
-1. Führen Sie aus der PowerShell-Sitzung im Cloud Shell-Bereich den folgenden Code aus, um eine Azure-VM unter Windows 10 bereitzustellen, die als Azure Virtual Desktop-Client für das neu erstellte Subnetz dient:
+1. Führen Sie über die PowerShell-Sitzung im Cloud Shell-Bereich Folgendes aus, um eine Azure-VM mit Windows 11 Enterprise mit mehreren Sitzungen, die als Quellimage fungieren soll:
 
    ```powershell
    New-AzResourceGroupDeployment `
@@ -69,7 +69,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
      -TemplateParameterFile $HOME/az140-25_azuredeployvm25.parameters.json
    ```
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung dauert ungefähr 10 Minuten.
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung sollte ungefähr 5–10 Minuten dauern.
 
 #### Aufgabe 2: Bereitstellen von Azure Bastion 
 
@@ -109,20 +109,18 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** des Blatts **Bastion erstellen** die Option **Erstellen** aus:
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung kann ungefähr 5 Minuten dauern.
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung dauert ungefähr 10 Minuten.
 
 #### Aufgabe 3: Konfigurieren eines Azure Virtual Desktop-Hostimages
 
 1. Suchen Sie im Azure-Portal nach **Virtuelle Computer**, und wählen Sie diese Option aus. Klicken Sie dann auf dem Blatt **Virtuelle Computer** auf **az140-25-vm0**.
-1. Wählen Sie auf dem Blatt **az140-25-vm0** die Option **Verbinden** aus. Wählen Sie in der Dropdownliste die Option **Bastion** aus und auf der Registerkarte **Bastion** des Blatts **az140-25-vm0 \| Verbinden** die Option **Bastion verwenden**.
+1. Wählen Sie auf dem Blatt **az140-25-vm0** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und klicken Sie auf **Verbinden**:
 
    |Einstellung|Wert|
    |---|---|
    |Benutzername|**Kursteilnehmer**|
    |Kennwort|**Pa55w.rd1234**|
-
-   > **Hinweis:** Beginnen Sie mit dem Installieren von FSLogix-Binärdateien.
 
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** die **Windows PowerShell ISE** als Administrator*in.
 1. Führen Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** über die Konsole **Administrator*in: Windows PowerShell ISE** den folgenden Code aus, um einen Ordner zu erstellen, den Sie als temporären Speicherort für die Imagekonfiguration verwenden werden:
@@ -131,17 +129,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    New-Item -Type Directory -Path 'C:\Allfiles\Labs\02' -Force
    ```
 
-1. Starten Sie in der Bastion-Sitzung für **az140-25-vm0** Microsoft Edge und navigieren Sie zur [Downloadseite für FSLogix](https://aka.ms/fslogix_download). Laden Sie komprimierte FSLogix-Installationsbinärdateien in den Ordner **C:\\Allfiles\\Labs\\02** herunter, und extrahieren Sie den Unterordner **x64** im Datei-Explorer in denselben Ordner.
-1. Wechseln Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** zum Fenster **Administrator*in: Windows PowerShell ISE**, und führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Code aus, um eine Pro-Computer-Installation von OneDrive durchzuführen:
+   > **Hinweis:** Sie erfahren, wie Sie zu Lernzwecken die klassische Version von Microsoft Teams installieren und konfigurieren, da Teams in dem für dieses Lab verwendete Image bereits verfügbar ist.
 
-   ```powershell
-   Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe' -ArgumentList '/quiet' -Wait
-   ```
-
-   > **Hinweis**: Warten Sie, bis die Installation abgeschlossen ist. Dies kann etwa eine Minute dauern. Wenn die Installation einen Neustart auslöst, stellen Sie wieder eine Verbindung mit **az140-25-vm0** her.
-
-   > **Hinweis:** Als Nächstes erfahren Sie, wie Sie zu Lernzwecken Microsoft Teams installieren und konfigurieren, da Teams in dem für dieses Lab verwendete Image bereits verfügbar ist.
-
+1. Wechseln Sie in der Bastion-Sitzung für **az140-25-vm0** zu **Einstellungen > Programme > Programme und Features**. Klicken Sie mit der rechten Maustaste auf das Programm **Computerweiter Teams-Installer**, und wählen Sie **Deinstallieren** aus.
 1. Klicken Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** mit der rechten Maustaste auf **Start**. Wählen Sie in dem erscheinenden Menü **Ausführen** aus. Geben Sie im Dialogfeld **Ausführen** das Textfeld **Öffnen** **cmd** ein und drücken Sie die **EINGABETASTE**, um die **Eingabeaufforderung** zu starten.
 1. Klicken Sie im Fenster **Administrator: C:\windows\system32\cmd.exe** in der Eingabeaufforderung, und führen Sie den folgenden Code aus, um die Pro-Computer-Installation von Microsoft Teams vorzubereiten:
 
@@ -156,7 +146,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
    ```
 
-1. Navigieren Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** in Microsoft Edge zur Dokumentationsseite mit dem Titel [Bereitstellen der Teams-Desktop-App auf der VM](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), wählen Sie den Link für die **64-Bit-Version**, und speichern Sie die Datei **Teams_windows_x64.msi** in den Ordner **C:\\Allfiles\\Labs\\02**, wenn Sie dazu aufgefordert werden.
+1. Navigieren Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** in Microsoft Edge zur Dokumentationsseite mit dem Titel [Bereitstellen der Teams-Desktop-App auf der VM](https://learn.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), wählen Sie den Link für die **64-Bit-Version**, und speichern Sie die Datei **Teams_windows_x64.msi** in den Ordner **C:\\Allfiles\\Labs\\02**, wenn Sie dazu aufgefordert werden.
 1. Wechseln Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** zum Fenster **Administrator*in: C:\windows\system32\cmd.exe**, und führen Sie von der Eingabeaufforderung aus den folgenden Code aus, um eine Pro-Computer-Installation von Microsoft Teams durchzuführen:
 
    ```cmd
@@ -164,9 +154,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    ```
 
    > **Hinweis:** Das Installationsprogramm unterstützt die Parameter „ALLUSER=1“ und „ALLUSERS=1“. Der Parameter „ALLUSER=1“ ist nur für Pro-Computer-Installationen in VDI-Umgebungen gedacht. Der Parameter ALLUSERS=1 kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. 
-   > **Befolgen Sie** die folgenden Schritte, wenn die Fehlermeldung **Eine andere Version des Produkts ist bereits installiert** angezeigt wird: Wechseln Sie zu **Einstellungen > Programme > Programme und Features**. Klicken Sie mit der rechten Maustaste auf das Programm **Computerweiter Teams-Installer**, und wählen Sie **Deinstallieren** aus. Entfernen Sie das Programm, und führen Sie Schritt 13 noch einmal aus. 
 
-1. Starten Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** die **Windows PowerShell ISE** als Administrator*in, und führen Sie über die Konsole **Administrator*in: Windows PowerShell ISE** den folgenden Code aus, um zu Lernzwecken Microsoft Edge Chromium zu installieren, da Edge für das in diesem Lab verwendete Image bereits verfügbar ist:
+1. Starten Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** die **Windows PowerShell ISE** als Administrator*in, und führen Sie über die Konsole **Administrator*in: Windows PowerShell ISE** den folgenden Code aus, um zu Lernzwecken Microsoft Edge zu installieren, da Edge für das in diesem Lab verwendete Image bereits verfügbar ist:
 
    ```powershell
    Start-BitsTransfer -Source "https://aka.ms/edge-msi" -Destination 'C:\Allfiles\Labs\02\MicrosoftEdgeEnterpriseX64.msi'
@@ -177,7 +166,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis:** Wenn Sie in einer mehrsprachigen Umgebung arbeiten, sollten Sie Sprachpakete installieren. Weitere Informationen zu diesem Vorgang finden Sie im Artikel [Hinzufügen von Sprachpaketen zu einem Windows 10-Image mit mehreren Sitzungen](https://docs.microsoft.com/en-us/azure/virtual-desktop/language-packs) in der Microsoft-Dokumentation.
 
-   > **Hinweis:** Als Nächstes deaktivieren Sie automatische Windows-Updates und Speicheroptimierung und konfigurieren die Zeitzonenumleitung sowie die Telemetrieerfassung. Allgemein sollten Sie zuerst alle aktuellen Updates anwenden. In diesem Lab wird dieser Schritt übersprungen, um die Dauer zu verkürzen.
+   > **Hinweis:** Als Nächstes deaktivieren Sie automatische Windows-Updates und Speicheroptimierung und konfigurieren die Zeitzonenumleitung sowie die Telemetrieerfassung. Im Allgemeinen sollten Sie zuerst das neueste Qualitätsupdate anwenden. In diesem Lab wird dieser Schritt übersprungen, um die Dauer zu verkürzen.
 
 1. Wechseln Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** zum Fenster **Administrator*in: C:\windows\system32\cmd.exe**, und führen Sie von der Eingabeaufforderung aus den folgenden Code aus, um automatische Updates zu deaktivieren:
 
@@ -188,7 +177,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Klicken Sie im Fenster **Administrator: C:\windows\system32\cmd.exe**, und führen Sie von der Eingabeaufforderung aus den folgenden Code aus, um Speicheroptimierung zu deaktivieren:
 
    ```cmd
-   reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
+   reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
    ```
 
 1. Klicken Sie im Fenster **Administrator: C:\windows\system32\cmd.exe**, und führen Sie von der Eingabeaufforderung aus den folgenden Code aus, um die Zeitzonenumleitung zu konfigurieren:
@@ -215,6 +204,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    cleanmgr /d C: /verylowdisk
    ```
 
+   > **Hinweis:** Der Datenträgerbereinigungsprozess kann 3–5 Minuten dauern.
+
 #### Aufgabe 4: Erstellen eines Azure Virtual Desktop-Hostimages
 
 1. Führen Sie innerhalb der Bastion-Sitzung für **az140-25-vm0** über das Fenster **Administrator*in: C:\windows\system32\cmd.exe** aus der Eingabeaufforderung die Systemvorbereitungsfunktion aus, um das Betriebssystem auf das Generieren eines Images vorzubereiten und es automatisch herunterzufahren:
@@ -225,6 +216,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis:** Warten Sie, bis der Systemvorbereitungsvorgang abgeschlossen ist. Dies kann etwa zwei Minuten dauern. Dadurch wird das Betriebssystem automatisch heruntergefahren. 
 
+1. Wählen Sie auf Ihrem Labcomputer im Dialogfeld **Verbindungsfehler** **Schließen** aus.
 1. Suchen Sie auf Ihrem Labcomputer im Webbrowser mit dem Azure-Portal nach **Virtuelle Computer**, und wählen Sie diese Option aus. Wählen Sie dann auf dem Blatt **Virtuelle Computer** die Option **az140-25-vm0** aus.
 1. Klicken Sie auf dem Blatt **az140-25-vm0** in der Symbolleiste über dem Abschnitt **Essentials** auf **Aktualisieren**, überprüfen Sie, dass der **Status** der Azure-VM auf **Beendet** geändert wurde, klicken Sie auf **Beenden**, und dann auf **OK**, wenn Sie zum Bestätigen aufgefordert werden, um die Azure-VM in den Status **Beendet (Zuordnung aufgehoben)** zu wechseln.
 1. Überprüfen Sie auf dem Blatt **az140-25-vm0**, dass der **Status** der Azure-VM zum Status **Beendet (Zuordnung aufgehoben)** geändert wurde, und klicken Sie in der Symbolleiste auf **Aufzeichnen**. So wird automatisch das Blatt **Image erstellen** angezeigt.
@@ -234,7 +226,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |---|---|
    |Image in der Azure Compute Gallery freigeben|**Ja, als Imageversion für einen Katalog freigeben**|
    |Diesen virtuellen Computer nach dem Erstellen des Images automatisch löschen|Kontrollkästchen deaktiviert|
-   |Azure Compute Gallery-Ziel|Der Name des neuen Katalogs **az14025imagegallery**|
+   |Azure Compute Gallery-Ziel|erstellen Sie einen neuen Katalog mit dem Namen **az14025imagegallery**|
    |Betriebssystemstatus|**Generalisiert**|
 
 1. Klicken Sie auf der Registerkarte **Grundlagen** des Blatts **Image erstellen** unter dem Textfeld **Imagedefinition der Ziel-VM** auf **Neu erstellen**.
@@ -256,11 +248,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Datum für Ende des Lebenszyklus|Ein Jahr ab dem aktuellen Datum|
    |Anzahl von Standardreplikaten|**1**|
    |Anzahl von Replikaten für die Zielregion|**1**|
-   |Speicherkontotyp|**SSD Premium, LRS**|
+   |Standard-SKU für Speicher|**SSD Premium, LRS**|
 
 1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** des Blatts **Image erstellen** auf **Erstellen**.
 
-   > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dies kann etwa 20 Minuten dauern.
+   > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dies kann etwa 10–15 Minuten dauern.
 
 1. Suchen Sie auf Ihrem Labcomputer im Webbrowser mit dem Azure-Portal nach **Azure Compute Galleries**, und wählen Sie diese aus. Klicken Sie auf dem Blatt **Azure Compute Galleries** auf den Eintrag **az14025imagegallery**, und überprüfen Sie auf dem Blatt ****az14025imagegallery****, dass der Eintrag **az140-25-host-image** vorhanden ist, der das neu erstellte Image darstellt.
 
@@ -284,9 +276,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Hostpoolname|**az140-25-hp4**|
    |Standort|Der Name der Azure-Region, in der Sie in der ersten Übung dieses Labs Ressourcen bereitgestellt haben|
    |Überprüfungsumgebung|**Nein**|
+   |Bevorzugter App-Gruppentyp|**Desktop**|
    |Hostpooltyp|**In einem Pool zusammengefasst**|
-   |Maximale Anzahl von Sitzungen|**50**|
    |Lastenausgleichsalgorithmus|**Breitensuche**|
+   |Maximale Anzahl von Sitzungen|**12**|
 
 1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen:
 
@@ -309,19 +302,21 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Größe des virtuellen Computers|**Standard D2s v3**|
    |Number of VMs (Anzahl von VMs)|**1**|
    |Typ des Betriebssystemdatenträgers|**SSD Standard**|
+   |Startdiagnose|**Mit verwaltetem Speicherkonto aktivieren (empfohlen)**|
    |Virtuelles Netzwerk|**az140-adds-vnet11**|
    |Subnetz|**hp4-Subnet (10.0.4.0/24)**|
    |Netzwerksicherheitsgruppe|**Grundlegend**|
-   |Öffentliche Eingangsports|**Ja**|
-   |Zugelassene Eingangsports|**RDP**|
+   |Öffentliche Eingangsports|**Nein**|
+   |Wählen Sie das gewünschte Verzeichnis für die Einbindung aus.|**Active Directory**|
    |UPN für AD-Domänenbeitritt|**student@adatum.com**|
    |Kennwort|**Pa55w.rd1234**|
+   |Kennwort bestätigen|**Pa55w.rd1234**|
    |Domäne oder Einheit angeben|**Ja**|
    |Domäne für den Beitritt|**adatum.com**|
    |Pfad der Organisationseinheit|**OU=WVDInfra,DC=adatum,DC=com**|
-   |Benutzername|Kursteilnehmer|
-   |Kennwort|Pa55w.rd1234|
-   |Kennwort bestätigen|Pa55w.rd1234|
+   |Benutzername|**Kursteilnehmer**|
+   |Kennwort|**Pa55w.rd1234**|
+   |Kennwort bestätigen|**Pa55w.rd1234**|
 
 1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Arbeitsbereich** die folgenden Einstellungen an, und wählen Sie **Überprüfen + erstellen** aus:
 
@@ -332,11 +327,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** des Blatts **Hostpool erstellen** die Option **Erstellen** aus.
 
    > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dies kann etwa zehn Minuten dauern.
-   > 
-   > **Hinweis**: Wenn die Bereitstellung fehlschlägt, weil die Kontingentgrenze erreicht wurde, führen Sie die Schritte aus dem ersten Lab durch, um eine automatische Kontingenterhöhung der Standard D2sv3-Grenze auf 30 anzufordern.
+
+   > **Hinweis:** Wenn die Bereitstellung fehlschlägt, weil die Kontingentgrenze erreicht wurde, führen Sie die Schritte aus dem ersten Lab durch, um eine automatische Kontingenterhöhung der Standard D2sv3-Grenze auf 30 anzufordern.
 
    > **Hinweis:** Nach dem Bereitstellen von auf benutzerdefinierten Images basierenden Hosts sollten Sie das Optimierungstool von Virtual Desktop nutzen, das im [entsprechenden GitHub-Repository](https://github.com/The-Virtual-Desktop-Team/) verfügbar ist.
-
 
 ### Übung 2: Beenden der im Lab bereitgestellten Azure-VMs und Aufheben ihrer Zuordnung
 
