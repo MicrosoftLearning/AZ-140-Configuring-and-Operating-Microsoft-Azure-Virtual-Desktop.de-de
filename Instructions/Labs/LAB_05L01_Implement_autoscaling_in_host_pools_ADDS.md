@@ -40,7 +40,8 @@ In diesem Lab lernen Sie Folgendes:
 Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Vorbereiten der Skalierung von Azure Virtual Desktop-Sitzungshosts
-2. Erstellen eines Skalierungsplans für Azure Virtual Desktop-Sitzungshosts
+2. Einrichten der Diagnose zum Nachverfolgen der automatischen Azure Virtual Desktop-Skalierung
+3. Erstellen eines Skalierungsplans für Azure Virtual Desktop-Sitzungshosts
 
 #### Aufgabe 1: Vorbereiten der Skalierung von Azure Virtual Desktop-Sitzungshosts
 
@@ -65,22 +66,59 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Suchen Sie im Azure-Portal nach **Abonnements** und wählen Sie es aus. Wählen Sie dann aus der Liste das Abonnement aus, das die Azure Virtual Desktop-Ressourcen enthält. 
 1. Wählen Sie auf der Seite „Abonnements“ **Zugriffssteuerung (IAM)** aus.
 1. Wählen Sie auf der Seite **Zugriffssteuerung (IAM)** auf der Symbolleiste die Schaltfläche **+ Hinzufügen**aus, und wählen Sie dann **Rollenzuweisung hinzufügen** aus dem Dropdownmenü aus.
-1. Wählen Sie auf der Registerkarte **Rolle** des Assistenten zum **Hinzufügen von Rollenzuweisungen** die Rolle **Desktop Virtualization Power On Off-Mitwirkende*r** und dann **Weiter** aus.
-1. Wählen Sie auf der Registerkarte **Mitglieder** des Assistenten zum **Hinzufügen von Rollenzuweisungen** **+Mitglieder auswählen** aus. Suchen und wählen Sie entweder **Azure Virtual Desktop** oder **Windows Virtual Desktop**, wählen Sie **Auswählen** und dann **Weiter** aus.
+1. Geben Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Registerkarte **Rolle** die folgenden Einstellungen an, und wählen Sie **Weiter** aus:
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auftragsfunktionsrolle|**Power On/Off-Mitwirkende für Desktopvirtualisierung**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** auf der Registerkarte **Mitglieder** **+ Mitglieder auswählen** aus, geben Sie die folgenden Einstellungen an, und wählen Sie **Auswählen** aus. 
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auswählen|**Azure Virtual Desktop** oder **Windows Virtual Desktop**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** **Überprüfen + Zuweisen** aus.
 
    >**Hinweis:** Der Wert hängt davon ab, wann der **Microsoft.DesktopVirtualization**-Ressourcenanbieter das erste Mal in Ihrem Azure-Mandanten registriert wurde.
 
 1. Wählen Sie auf der Registerkarte **Überprüfen + Zuweisen** **Überprüfen + Zuweisen** aus.
 
-#### Aufgabe 2: Erstellen eines Skalierungsplans für Azure Virtual Desktop-Sitzungshosts
+#### Aufgabe 2: Einrichten der Diagnose zum Nachverfolgen der automatischen Azure Virtual Desktop-Skalierung
+
+1. Öffnen Sie auf dem Labcomputer in dem Webbrowserfenster, in dem das Azure-Portal geöffnet ist, die **PowerShell**-Sitzung im Bereich **Cloud Shell**.
+
+   >**Hinweis:** Sie werden ein Azure Storage-Konto zum Speichern von automatischen Skalierungsereignissen verwenden. Sie können sie direkt aus dem Azure-Portal erstellen oder Azure PowerShell verwenden, wie in dieser Aufgabe dargestellt.
+
+1. Führen Sie in der PowerShell-Sitzung im Bereich „Cloud Shell“ die folgenden Befehle aus, um ein Azure Storage-Konto zu erstellen:
+
+   ```powershell
+   $resourceGroupName = 'az140-51-RG'
+   $location = (Get-AzResourceGroup -ResourceGroupName 'az140-11-RG').Location
+   New-AzResourceGroup -Location $location -Name $resourceGroupName
+   $suffix = Get-Random
+   $storageAccountName = "az140st51$suffix"
+   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
+   ```
+
+   >**Hinweis:** Warten Sie, bis das Speicherkonto bereitgestellt wurde.
+
+1. Schließen Sie in dem Browserfenster, in dem das Azure-Portal geöffnet ist, den Cloud Shell-Bereich.
+1. Navigieren Sie auf Ihrem Labcomputer im Browser, in dem das Azure-Portal geöffnet ist, zur Seite des Hostpools **az140-21-hp1**.
+1. Wählen Sie auf der Seite **az140-21-hp1** **Diagnoseeinstellungen** und dann **+ Diagnoseeinstellung hinzufügen** aus.
+1. Geben Sie auf der Seite **Diagnoseeinstellung** im Textfeld **Name der Diagnoseeinstellung** **az140-51-scaling-plan-diagnostics** ein, und wählen Sie im Abschnitt **Kategoriegruppen** **Autoskalierung für Protokolle von gepoolten Hostpools** aus. 
+1. Wählen Sie auf derselben Seite im Abschnitt **Zieldetails** die Option **In einem Speicherkonto archivieren** aus, und wählen Sie in der Dropdownliste **Speicherkonto** den Namen des Speicherkontos mit dem Präfix **az140st51** aus.
+1. Wählen Sie **Speichern**.
+
+#### Aufgabe 3: Erstellen eines Skalierungsplans für Azure Virtual Desktop-Sitzungshosts
 
 1. Suchen Sie auf Ihrem Laborcomputer im Browser, in dem das Azure-Portal geöffnet ist, nach **Azure Virtual Desktop**, und wählen Sie es aus. 
 1. Wählen Sie auf der Seite **Azure Virtual Desktop** die Option **Skalierungspläne** und dann **+ Erstellen** aus.
-1. Geben Sie auf der Registerkarte **Basics** des Assistenten zum **Erstellen eines Skalierungsplans** die folgenden Informationen an, und wählen Sie **Nächste Zeitpläne >** aus (für die anderen Werte behalten Sie die Standardwerte):
+1. Geben Sie auf der Registerkarte **Basics** des Assistenten zum **Erstellen eines Skalierungsplans** die folgenden Informationen an, und wählen Sie **Nächste  Zeitpläne >** aus (für die anderen Werte behalten Sie die Standardwerte):
 
    |Einstellung|Wert|
    |---|---|
-   |Resource group|der Name **az140-51-RG** einer neuen Ressourcengruppe|
+   |Resource group|**az140-51-RG**|
    |Name|**az140-51-scaling-plan**|
    |Standort|die gleiche Azure-Region, in der Sie die Sitzungshosts in der vorherigen Aufgabe dieses Labs bereitgestellt haben|
    |Anzeigename|**az140-51 Skalierungsplan**|
@@ -154,35 +192,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 Die Hauptaufgaben für diese Übung sind Folgende:
 
-1. Einrichten der Diagnose zum Nachverfolgen der automatischen Azure Virtual Desktop-Skalierung
 1. Die Überprüfung der automatischen Skalierung von Azure Virtual Desktop-Sitzungshosts
 
-#### Aufgabe 1: Einrichten der Diagnose zum Nachverfolgen der automatischen Azure Virtual Desktop-Skalierung
 
-1. Öffnen Sie auf dem Labcomputer in dem Webbrowserfenster, in dem das Azure-Portal geöffnet ist, die **PowerShell**-Sitzung im Bereich **Cloud Shell**.
-
-   >**Hinweis:** Sie werden ein Azure Storage-Konto zum Speichern von automatischen Skalierungsereignissen verwenden. Sie können sie direkt aus dem Azure-Portal erstellen oder Azure PowerShell verwenden, wie in dieser Aufgabe dargestellt.
-
-1. Führen Sie in der PowerShell-Sitzung im Bereich „Cloud Shell“ die folgenden Befehle aus, um ein Azure Storage-Konto zu erstellen:
-
-   ```powershell
-   $resourceGroupName = 'az140-51-RG'
-   $location = (Get-AzResourceGroup -ResourceGroupName $resourceGroupName).Location
-   $suffix = Get-Random
-   $storageAccountName = "az140st51$suffix"
-   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
-   ```
-
-   >**Hinweis:** Warten Sie, bis das Speicherkonto bereitgestellt wurde.
-
-1. Schließen Sie in dem Browserfenster, in dem das Azure-Portal geöffnet ist, den Cloud Shell-Bereich.
-1. Navigieren Sie auf Ihrem Laborcomputer im Browser, in dem das Azure-Portal geöffnet ist, zur Seite des Skalierungsplans, den Sie in der vorherigen Übung erstellt haben.
-1. Wählen Sie auf der Seite **az140-51-scaling-plan** **Diagnoseeinstellungen** und dann **+ Diagnoseeinstellung hinzufügen** aus.
-1. Geben Sie auf der Seite **Diagnoseeinstellung** im Textfeld **Name der Diagnoseeinstellung** **az140-51-scaling-plan-diagnostics** ein, und wählen Sie im Abschnitt **Kategoriegruppen** **allLogs** aus. 
-1. Wählen Sie auf derselben Seite im Abschnitt **Zieldetails** die Option **In einem Speicherkonto archivieren** aus, und wählen Sie in der Dropdownliste **Speicherkonto** den Namen des Speicherkontos mit dem Präfix **az140st51** aus.
-1. Wählen Sie **Speichern**.
-
-#### Aufgabe 2: Die Überprüfung der automatischen Skalierung von Azure Virtual Desktop-Sitzungshosts
+#### Aufgabe 1: Die Überprüfung der automatischen Skalierung von Azure Virtual Desktop-Sitzungshosts
 
 1. Öffnen Sie auf dem Labcomputer in dem Webbrowserfenster, in dem das Azure-Portal geöffnet ist, die **PowerShell**-Sitzung im Bereich **Cloud Shell**.
 1. Führen Sie in der PowerShell-Sitzung im Bereich „Cloud Shell“ den folgenden Befehl aus, um die Azure-VMs mit den Azure Virtual Desktop-Sitzungshosts zu starten, die Sie in diesem Lab verwenden:
@@ -197,18 +210,18 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf der Seite **az140-21-hp1** **Sitzungshosts** aus.
 1. Warten Sie, bis mindestens ein Sitzungshost mit dem Status **Herunterfahren** aufgeführt ist.
 
-   >**Hinweis:** Möglicherweise müssen Sie die Seite aktualisieren, um den Status der Sitzungshosts zu aktualisieren.
+   > **Hinweis:** Möglicherweise müssen Sie die Seite aktualisieren, um den Status der Sitzungshosts zu aktualisieren.
 
-   >**Hinweis:** Wenn alle Sitzungshosts verfügbar bleiben, navigieren Sie zurück zur Seite **az140-51-scaling-plan** und verringern Sie den Wert der Einstellung **Minimalprozentsatzes von Hosts (%)** **Auslaufzeiten**.
+   > **Hinweis:** Wenn alle Sitzungshosts nach 15 Minuten verfügbar bleiben, navigieren Sie zurück zur Seite **az140-51-scaling-plan** und verringern Sie den Wert der Einstellung **Minimalprozentsatzes von Hosts (%)** **Auslaufzeiten**.
 
-   >**Hinweis:** Sobald sich der Status eines oder mehrerer Sitzungshosts ändert, sollten die Protokolle der automatischen Skalierung im Azure Storage-Konto verfügbar sein. 
+   > **Hinweis:** Sobald sich der Status eines oder mehrerer Sitzungshosts ändert, sollten die Protokolle der automatischen Skalierung im Azure Storage-Konto verfügbar sein. 
 
 1. Suchen Sie im Azure-Portal nach **Speicherkonten** und wählen Sie diese Option aus. Wählen Sie auf der Seite **Speicherkonten** den Eintrag aus, der das zuvor in dieser Übung erstellte Speicherkonto darstellt (der Name beginnt mit dem Präfix **az140st51**).
 1. Klicken Sie auf der Seite „Speicherkonto“ auf **Container**.
-1. Wählen Sie in der Liste der Container **insights-logs-autoscale** aus.
-1. Navigieren Sie auf der Seite **insights-logs-autoscale** durch die Ordnerhierarchie, bis Sie den Eintrag erreicht haben, der ein im Container gespeichertes JSON-formatiertes Blob darstellt.
+1. Wählen Sie in der Liste der Container **insights-logs-autoscaleevaluationpooled** aus.
+1. Navigieren Sie auf der Seite **insights-logs-autoscaleevaluationpooled** durch die Ordnerhierarchie, bis Sie den Eintrag erreicht haben, der ein im Container gespeichertes JSON-formatiertes Blob darstellt.
 1. Wählen Sie den Blob-Eintrag aus, wählen Sie das Auslassungszeichen rechts auf der Seite aus, und wählen Sie dann im Dropdownmenü **Herunterladen** aus.
-1. Öffnen Sie auf Ihrem Laborcomputer das heruntergeladene Blob in einem Text-Editor Ihrer Wahl, und sehen Sie sich dessen Inhalt an. Sie sollten dort Verweise auf Ereignisse der automatischen Skalierung finden können. 
+1. Öffnen Sie auf Ihrem Laborcomputer das heruntergeladene Blob in einem Text-Editor Ihrer Wahl, und sehen Sie sich dessen Inhalt an. Sie sollten in der Lage sein, Verweise auf Ereignisse der Automatischen Skalierung zu finden, und in diesem Fall können wir nach „deallocated“ suchen, um dies leichter zu identifizieren.
 
    >**Hinweis:** Hier ist ein Beispielinhalt eines Blob, der Verweise auf Ereignisse der automatischen Skalierung enthält:
 
@@ -219,7 +232,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    time "2023-03-26T19:35:46.0074598Z"
    resourceId   "/SUBSCRIPTIONS/AAAAAAAE-0000-1111-2222-333333333333/RESOURCEGROUPS/AZ140-51-RG/PROVIDERS/MICROSOFT.DESKTOPVIRTUALIZATION/SCALINGPLANS/AZ140-51-SCALING-PLAN"
    operationName    "ScalingEvaluationSummary"
-   category "Autoscale"
+   category "AutoscaleEvaluationPooled"
    resultType   "Succeeded"
    level    "Informational"
    correlationId    "ddd3333d-90c2-478c-ac98-b026d29e24d5"

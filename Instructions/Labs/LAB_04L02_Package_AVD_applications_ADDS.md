@@ -12,8 +12,8 @@ lab:
 - Ein Azure-Abonnement
 - Ein Microsoft-Konto oder ein Microsoft Entra-Konto mit der Rolle „Globaler Administrator“ im Microsoft Entra-Mandanten, der dem Azure-Abonnement zugeordnet ist, und mit der Rolle „Besitzer“ oder „Mitwirkender“ im Azure-Abonnement
 - Das abgeschlossene Lab **Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD DS)**
-- Das abgeschlossene Lab **Azure Virtual Desktop-Profilverwaltung (AD DS)**
-- Das abgeschlossene Lab **Konfigurieren von Richtlinien für bedingten Zugriff für WVD (AD DS)**
+- Das abgeschlossene Lab **Konfigurieren von Richtlinien für bedingten Zugriff für AVD (AD DS)**
+- Das abgeschlossene Lab **Implementieren und Verwalten von AVD-Profilen (AD DS)**
 
 ## Geschätzte Dauer
 
@@ -28,8 +28,8 @@ Sie müssen Azure Virtual Desktop-Anwendungen in einer Active Directory Domain S
 In diesem Lab lernen Sie Folgendes:
 
 - MSIX-App-Pakete vorzubereiten und zu erstellen.
-- Implementieren eines MSIX App Attach-Images für Azure Virtual Desktop in eine Microsoft Entra DS-Umgebung
-- Implementieren der MSIX App Attach-Funktion in Azure Virtual Desktop in der AD DS-Umgebung
+- Implementieren eines MSIX App Attach-Images für Azure Virtual Desktop in eine AD DS-Umgebung
+- Implementieren der MSIX App Attach-Funktion in Azure Virtual Desktop in eine AD DS-Umgebung
 
 ## Labdateien
 
@@ -62,9 +62,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM -NoWait
    ```
 
-   >**Hinweis:** Der Befehl wird (wie über den Parameter „-NoWait“ festgelegt) asynchron ausgeführt. Dies bedeutet, dass Sie zwar direkt im Anschluss einen weiteren PowerShell-Befehl in derselben PowerShell-Sitzung ausführen können, es jedoch einige Minuten dauert, bis die Azure-VMs tatsächlich gestartet werden. 
+   > **Hinweis:** Der Befehl wird (wie über den Parameter „-NoWait“ festgelegt) asynchron ausgeführt. Dies bedeutet, dass Sie zwar direkt im Anschluss einen weiteren PowerShell-Befehl in derselben PowerShell-Sitzung ausführen können, es jedoch einige Minuten dauert, bis die Azure-VMs tatsächlich gestartet werden. 
 
-   >**Hinweis:** Wenn Sie PSRemoting auf den Sitzungshosts in der az140-21-RG-Ressourcengruppe im ersten Vorgang des vorherigen Labs aktiviert haben (Implementieren und Verwalten von AVD-Profilen), können Sie direkt mit der nächsten Aufgabe fortfahren, ohne auf den Start der Azure-VMs zu warten. Wenn Sie PSRemoting auf den Sitzungshosts in der Ressourcengruppe az140-21-RG noch nicht aktiviert haben, warten Sie, bis die VMs gestartet werden, und führen Sie dann den folgenden Befehl aus.
+   > **Hinweis:** Wenn Sie PSRemoting auf den Sitzungshosts in der az140-21-RG-Ressourcengruppe im ersten Vorgang des vorherigen Labs aktiviert haben (Implementieren und Verwalten von AVD-Profilen), können Sie direkt mit der nächsten Aufgabe fortfahren, ohne auf den Start der Azure-VMs zu warten. Wenn Sie PSRemoting auf den Sitzungshosts in der Ressourcengruppe az140-21-RG noch nicht aktiviert haben, warten Sie, bis die VMs gestartet werden, und führen Sie dann den folgenden Befehl aus.
 
 1. Führen Sie in der PowerShell-Sitzung der **Cloud Shell** Folgendes aus, um PowerShell-Remoting auf den Sitzungshosts zu aktivieren.
 
@@ -95,7 +95,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 #### Aufgabe 3: Vorbereiten der Azure-VM, auf der Windows 10 ausgeführt wird, für das MSIX Packaging Tool
 
 1. Suchen Sie auf Ihrem Labcomputer im Azure-Portal nach **Virtuelle Computer**, und wählen Sie diese Option aus. Wählen Sie auf dem Blatt **Virtuelle Computer** in der Liste der virtuellen Computer den Eintrag **az140-cl-vm42** aus. Daraufhin wird das Blatt **az140-cl-vm42** geöffnet.
-1. Klicken Sie auf dem Blatt **az140-cl-vm42** auf **Verbinden**, und wählen Sie im Dropdownmenü die Option **Bastion** aus. Klicken Sie dann auf der Registerkarte **Bastion** des Blatts **az140-cl-vm42 \| Verbinden** auf **Bastion verwenden**.
+1. Wählen Sie auf dem Blatt **az140-cl-vm42** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, melden Sie sich mit dem Benutzernamen **wvdadmin1@adatum.com** und dem Kennwort an, das Sie beim Erstellen dieses Benutzerkontos festgelegt haben. 
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** **Windows PowerShell ISE** als Administrator*in, und führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um das Betriebssystem für MSIX-Pakete vorzubereiten:
 
@@ -164,7 +164,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** die **Microsoft Store**-App.
 1. Suchen Sie in der **Microsoft Store**-App nach dem **MSIX Packaging Tool**, und wählen Sie es aus. Klicken Sie auf der Seite **MSIX Packaging Tool** auf **Herunterladen**.
-1. Wenn Sie dazu aufgefordert werden, überspringen Sie den Anmeldeschritt. Warten Sie bis die Installation abgeschlossen ist, klicken Sie auf **Öffnen**, und wählen Sie im Dialogfeld **Diagnosedaten senden** die Option **Ablehnen** aus. 
+1. Wenn Sie dazu aufgefordert werden, überspringen Sie den Anmeldeschritt. Warten Sie bis die Installation abgeschlossen ist, klicken Sie auf **Starten**, und wählen Sie im Dialogfeld **Diagnosedaten senden** die Option **Ablehnen** aus. 
 
 #### Aufgabe 7: Erstellen eines MSIX-Pakets
 
@@ -190,6 +190,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Wechseln Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** zur Benutzeroberfläche des **MSIX Packaging Tools** und wählen Sie auf der Seite **Aufgabe auswählen** den Eintrag **Anwendungspaket – Erstellen Ihres App-Pakets** aus. Daraufhin wird der Assistent **Neues Paket erstellen** gestartet.
 1. Stellen Sie sicher, dass auf der Seite **Umgebung auswählen** des Assistenten **Neues Paket erstellen** die Option **Create package on this computer** (Paket auf diesem Computer erstellen) aktiviert ist. Klicken Sie auf **Weiter**, und warten Sie auf den Abschluss der Installation des **MSIX Packaging Tool-Treibers**.
+
+   > **Hinweis:** Die Installation des MSIX Packaging Tool Driver dauert 5–10 Minuten. In der Statusspalte wird zunächst **Überprüfung** und nach der Installation **Installiert** angezeigt.
+
 1. Sehen Sie sich die Empfehlungen auf der Seite **Computer vorbereiten** des Assistenten **Neues Paket erstellen** an. Wenn ein Neustart aussteht, starten Sie das Betriebssystem neu, melden Sie sich wieder mit dem Konto **wvdadmin1@adatum.com** an, und starten Sie das **MSIX Packaging Tool**, bevor Sie fortfahren. 
 
    >**Hinweis:** Das MSIX Packaging Tool deaktiviert vorübergehend Windows Update und Windows Search. In diesem Fall ist der Windows-Suchdienst bereits deaktiviert. 
@@ -197,13 +200,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Klicken Sie auf der Seite **Computer vorbereiten** des Assistenten **Neues Paket erstellen** auf **Weiter**.
 1. Klicken Sie auf der Seite **Installer auswählen** des Assistenten **Neues Paket erstellen** neben dem Textfeld **Choose the installer you want to package** (Zu packenden Installer auswählen) auf **Durchsuchen**. Navigieren Sie im Dialogfeld **Öffnen** zum Ordner **C:\\AllFiles\\Labs\\04**, wählen Sie **XmlNotepadSetup.msi** aus, und klicken Sie auf **Öffnen**. 
 1. Wählen Sie auf der Seite **Installer auswählen** des Assistenten **Neues Paket erstellen** in der Dropdownliste **Signing preference** (Signierungseinstellung) den Eintrag **Sign with a certificate (.pfx)** (Mit Zertifikat signieren (PFX)) aus. Klicken Sie neben dem Textfeld **Browse for certificate** (Nach Zertifikat durchsuchen) auf **Durchsuchen**, und navigieren Sie im Dialogfeld **Öffnen** zum Ordner **C:\\AllFiles\\Labs\\04**. Wählen Sie die Datei **adatum.pfx** aus, klicken Sie auf **Öffnen**, geben Sie im Textfeld **Kennwort** **Pa55w.rd1234** ein, und klicken Sie auf **Weiter**.
-1. Überprüfen Sie auf der Seite **Paketinformationen** des Assistenten **Neues Paket erstellen** die Paketinformationen. Stellen Sie anschließend sicher, dass der Name des Herausgebers auf **CN=Adatum** festgelegt ist, und klicken Sie auf **Weiter**. Dadurch wird die Installation der heruntergeladenen Software initiiert.
-1. Akzeptieren Sie im Fenster **XML Notepad Setup** die Bedingungen im Lizenzvertrag, und klicken Sie auf **Installieren**. Aktivieren Sie nach Abschluss der Installation das Kontrollkästchen **Launch XML Notepad** (XML Notepad starten), und klicken Sie auf **Fertig stellen**.
-1. Wenn Sie dazu aufgefordert werden, wählen Sie im Fenster **XML Notepad Analytics** (XML Notepad-Analyse) **Nein** aus. Stellen Sie sicher, dass XML Notepad ausgeführt wird, schließen Sie den Editor, wechseln Sie zurück zum Assistenten **Neues Paket erstellen** im Fenster **MSIX Packaging Tool**, und klicken Sie auf **Weiter**.
-
-   > **Hinweis:** In diesem Fall ist zum Abschließen der Installation kein Neustart erforderlich.
-
-1. Überprüfen Sie auf der Seite **First launch tasks** (Erste Startaufgaben) des Assistenten **Neues Paket erstellen** die bereitgestellten Informationen, und klicken Sie auf **Weiter**.
+1. Überprüfen Sie auf der Seite **Paketinformationen** des Assistenten **Neues Paket erstellen** die Paketinformationen. Stellen Sie anschließend sicher, dass der Name des Herausgebers auf **CN=Adatum** festgelegt ist, und klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Beschleuniger für das Anwenden auf das Paket auswählen** **Weiter** aus. Dadurch wird die Installation der heruntergeladenen Software initiiert.
+1. Akzeptieren Sie im Fenster **XML Notepad Setup** die Bedingungen im Lizenzvertrag, und wählen Sie **Installieren** und nach Abschluss der Installation **Fertig stellen** aus.
+1. Wählen Sie auf der Seite **Installation** des Assistenten zum **Erstellen eines neuen Pakets** **Weiter** aus.
+1. Überprüfen Sie auf der Seite **Verwalten der ersten Startaufgaben** des Assistenten **Neues Paket erstellen** die bereitgestellten Informationen, und wählen Sie **Weiter** aus.
 1. Wenn das Dialogfeld **Are you done?** (Sind Sie fertig?) angezeigt wird, klicken Sie auf **Yes, move on** (Ja, fortfahren).
 1. Stellen Sie auf der Seite **Services report** (Dienstbericht) des Assistenten **Neues Paket erstellen** sicher, dass keine Dienste aufgeführt sind, und klicken Sie auf **Weiter**.
 1. Geben Sie auf der Seite **Paket erstellen** des Assistenten **Neues Paket erstellen** im Textfeld **Speicherort** **C:\\Allfiles\\Labs\\04\\XmlNotepad\XmlNotepad.msix** ein, und klicken Sie auf **Erstellen**.
@@ -212,14 +213,14 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Kopieren Sie die Datei **XmlNotepad.msix** in den Ordner **C:\\Allfiles\\Labs\\04**.
 
 
-### Übung 2: Implementieren eines MSIX App Attach-Images für Azure Virtual Desktop in eine Microsoft Entra DS-Umgebung
+### Übung 2: Implementieren eines MSIX App Attach-Images für Azure Virtual Desktop in eine AD DS-Umgebung
 
 Die Hauptaufgaben für diese Übung sind Folgende:
 
-1. Aktivieren von Hyper-V auf den Azure-VMs, auf denen Windows 10 Enterprise Edition ausgeführt wird
+1. Aktivieren von Hyper-V auf den Azure-VMs, auf denen Windows 11 Enterprise Multi-Session ausgeführt wird
 1. Erstellen eines MSIX App Attach-Images
 
-#### Aufgabe 1: Aktivieren von Hyper-V auf den Azure-VMs, auf denen Windows 10 Enterprise Edition ausgeführt wird
+#### Aufgabe 1: Aktivieren von Hyper-V auf den Azure-VMs, auf denen Windows 11 Enterprise Multi-Session ausgeführt wird
 
 1. Führen Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Azure Virtual Desktop-Zielhosts für MSIX App Attach vorzubereiten: 
 
@@ -262,44 +263,21 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** **Microsoft Edge**, und navigieren Sie zu **https://aka.ms/msixmgr**. Dadurch wird die Datei **msixmgr.zip** (MSIX Mgr-Toolarchiv) automatisch in den Ordner **Downloads** heruntergeladen.
 1. Navigieren Sie im Datei-Explorer zum Ordner **Downloads**, öffnen Sie die komprimierte Datei, und kopieren Sie den Inhalt des Ordners **x64** (einschließlich des Ordners) in den Ordner **C:\\AllFiles\\Labs\\04**. 
-1. Starten Sie in der Bastion-Sitzung für **az140-21-vm42-0** die **Windows PowerShell ISE** als Administrator*in, und führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die VHD-Datei zu erstellen, die als MSIX App Attach-Image dient:
+1. Starten Sie in der Bastion-Sitzung für **az140-21-vm42-0** die **Windows PowerShell ISE** als Administrator*in, und führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um den Ordner zu erstellen, in dem das MSIX App Attach-Image gespeichert wird:
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\Allfiles\Labs\04\MSIXVhds' -Force
-   New-VHD -SizeBytes 128MB -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Dynamic -Confirm:$false
    ```
 
-1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die neu erstellte VHD-Datei bereitzustellen:
-
-   ```powershell
-   $vhdObject = Mount-VHD -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Passthru
-   ```
-
-1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um den Datenträger zu initialisieren. Erstellen Sie eine neue Partition, formatieren Sie sie, und weisen Sie sie dem ersten verfügbaren Laufwerkbuchstaben zu:
-
-   ```powershell
-   $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-   $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-   Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-   ```
-
-   > **Hinweis:** Wenn ein Popupfenster angezeigt wird, in dem Sie aufgefordert werden, das Laufwerk „F:“ zu formatieren, klicken Sie auf **Abbrechen**.
-
-1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um eine Ordnerstruktur zu erstellen, die die MSIX-Dateien hostet. Entpacken Sie sie in das MSIX-Paket, das Sie in der vorherigen Aufgabe erstellt haben:
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um den VHD zu erstellen, der die MSIX-Dateien hostet. Entpacken Sie sie in das MSIX-Paket, das Sie in der vorherigen Aufgabe erstellt haben:
 
    ```powershell
    $appName = 'XmlNotepad'
-   New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
    Set-Location -Path 'C:\AllFiles\Labs\04\x64'
-   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
+   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination ..\MSIXVhds\$appName.vhd -applyacls -create -filetype vhd -vhdSize 128 -rootDirectory Apps
    ```
 
-1. Navigieren Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** im Datei-Explorer zum Ordner **F:\\Apps**, und überprüfen Sie den Inhalt. Wenn Sie aufgefordert werden, auf den Ordner zuzugreifen, klicken Sie auf **Weiter**.
-1. Führen Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Bereitstellung der VHD-Datei aufzuheben, die als MSIX-Image fungiert:
-
-   ```powershell
-   Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
-   ```
+1. Navigieren Sie in der Bastion-Sitzung für **az140-cl-vm42** im Datei-Explorer zum Ordner **C:\AllFiles\Labs\04\MSIXVhds** und stellen Sie sicher, dass Sie über einen virtuellen Datenträger mit dem Namen „XmlNotepad.vhd“ verfügen.
 
 ### Übung 3: Implementieren von MSIX App Attach auf Azure Virtual Desktop-Sitzungshosts
 
@@ -314,7 +292,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 #### Aufgabe 1: Konfigurieren von Active Directory-Gruppen mit Azure Virtual Desktop-Hosts
 
 1. Wechseln Sie zum Labcomputer, auf dem im Webbrowser das Azure-Portal angezeigt wird, suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus. Wählen Sie anschließend auf dem Blatt **Virtuelle Computer** den Eintrag **az140-dc-vm11** aus.
-1. Klicken Sie auf dem Blatt **az140-dc-vm11** auf **Verbinden**. Wählen Sie im Dropdownmenü die Option **Bastion** und auf der Registerkarte **Bastion** des Blatts **az140-dc-vm11 \| Verbinden** die Option **Bastion verwenden** aus.
+1. Wählen Sie auf dem Blatt **az140-dc-vm11** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und klicken Sie auf **Verbinden**:
 
    |Einstellung|Wert|
@@ -347,18 +325,18 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis:** Mit diesem Schritt wird sichergestellt, dass die Änderung der Gruppenmitgliedschaft wirksam wird. 
 
-1. Erweitern Sie in der Bastion-Sitzung auf **az140-dc-vm11** im **Startmenü** den Ordner **Microsoft Entra Connect**, und wählen Sie **Microsoft Entra Connect** aus.
-1. Wählen Sie auf der Seite **Willkommen bei Microsoft Entra Connect** im **Microsoft Entra Connect**-Fenster **Konfigurieren** aus.
+1. Erweitern Sie in der Bastion-Sitzung für **az140-dc-vm11** im **Startmenü** den Ordner **Microsoft Azure AD Connect**, und wählen Sie **Microsoft Azure AD Connect** aus.
+1. Klicken Sie auf der Seite **Willkommen bei Azure AD Connect** des Fensters **Microsoft Azure Active Directory Connect** auf **Konfigurieren**.
 1. Klicken Sie auf der Seite **Weitere Aufgaben** im Fenster **Microsoft Entra Connect** zunächst auf **Synchronisierungsoptionen anpassen** und dann auf **Weiter**.
-1. Authentifizieren Sie sich auf der Seite **Mit Microsoft Entra verbinden** im Fenster **Microsoft Entra Connect** mit dem Benutzerprinzipalnamen des zuvor in dieser Aufgabe identifizierten Benutzerkontos **aadsyncuser** und dem Kennwort, das Sie beim Erstellen dieses Benutzerkontos festgelegt haben.
-1. Wählen Sie auf der Seite **Verzeichnisse verbinden** im Fenster **Microsoft Entra Connect** **Weiter** aus.
-1. Vergewissern Sie sich auf der Seite **Filtern von Domänen und Organisationseinheiten** im Fenster **Microsoft Entra Connect**, dass die Option **Ausgewählte Domänen und Organisationseinheiten synchronisieren** aktiviert ist. Erweitern Sie den Knoten **adatum.com**, aktivieren Sie das Kontrollkästchen neben der Organisationseinheit **WVDInfra** (alle anderen ausgewählten Kontrollkästchen bleiben unverändert), und wählen Sie **Weiter** aus.
-1. Übernehmen Sie auf der Seite **Optionale Features** im Fenster **Microsoft Entra Connect** die Standardeinstellungen, und wählen Sie **Weiter** aus.
-1. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** im Fenster **Microsoft Entra Connect**, dass das Kontrollkästchen **Synchronisierungsvorgang starten, nachdem die Konfiguration abgeschlossen wurde.** aktiviert ist, und wählen Sie **Konfigurieren** aus.
-1. Überprüfen Sie die Informationen auf der Seite **Konfiguration abgeschlossen** und wählen Sie **Beenden** aus, um das Fenster **Microsoft Entra Connect** zu schließen.
+1. Authentifizieren Sie sich auf der Seite **Mit Microsoft Entra verbinden** im Fenster **Microsoft Azure Active Directory Connect** mit dem Benutzerprinzipalnamen des zuvor in dieser Aufgabe identifizierten Benutzerkontos **aadsyncuser** und dem Kennwort, das Sie beim Erstellen dieses Benutzerkontos festgelegt haben.
+1. Wählen Sie auf der Seite **Verzeichnisse verbinden** im Fenster **Microsoft Azure Active Directory Connect** die Option **Weiter** aus.
+1. Vergewissern Sie sich auf der Seite **Filtern von Domänen und Organisationseinheiten** im Fenster **Microsoft Azure Active Directory Connect**, dass die Option **Ausgewählte Domänen und Organisationseinheiten synchronisieren** aktiviert ist. Erweitern Sie den Knoten **adatum.com**, aktivieren Sie das Kontrollkästchen neben der Organisationseinheit **WVDInfra** (alle anderen ausgewählten Kontrollkästchen unverändert lassen), und klicken Sie auf **Weiter**.
+1. Übernehmen Sie auf der Seite **Optionale Features** im Fenster **Microsoft Azure Active Directory Connect** die Standardeinstellungen, und wählen Sie **Weiter** aus.
+1. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** im Fenster **Microsoft Azure Active Directory Connect**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde.** aktiviert ist, und klicken Sie auf **Konfigurieren**.
+1. Überprüfen Sie die Informationen auf der Seite **Konfiguration abgeschlossen**, und wählen Sie **Beenden** aus, um das Fenster **Microsoft Azure Active Directory Connect** zu schließen.
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** Microsoft Edge, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wenn Sie dazu aufgefordert werden, melden Sie sich mithilfe der Microsoft Entra-Anmeldeinformationen des Benutzerkontos an, das im Microsoft Entra-Mandanten, der dem in diesem Lab verwendeten Azure-Abonnement zugeordnet ist, über die Rolle „Globale*r Administrator*in“ verfügt.
-1. Suchen Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** im Microsoft Edge-Fenster, in dem das Azure-Portal geöffnet ist, nach **Azure Active Directory**, und wählen Sie diese Option aus, um zu dem Microsoft Edge-Mandanten zu navigieren, der dem in diesem Lab verwendeten Azure-Abonnement zugeordnet ist.
-1. Klicken Sie auf dem Blatt „Azure Active Directory“ auf der vertikalen Menüleiste links im Abschnitt **Verwalten** auf **Gruppen**. 
+1. Suchen Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** im Microsoft Edge-Fenster, in dem das Azure-Portal geöffnet ist, nach **Microsoft Entra ID**, und wählen Sie diese Option aus, um zu dem Microsoft Edge-Mandanten zu navigieren, der dem in diesem Lab verwendeten Azure-Abonnement zugeordnet ist.
+1. Wählen Sie auf dem Blatt „Microsoft Entra ID“ auf der vertikalen Menüleiste links im Abschnitt **Verwalten** **Gruppen** aus. 
 1. Wählen Sie auf dem Blatt **Gruppen | Alle Gruppen** in der Liste der Gruppen den Eintrag **az140-hosts-42-p1** aus.
 
    > **Hinweis:** Möglicherweise müssen Sie die Seite aktualisieren, damit die Gruppe angezeigt wird.
@@ -375,47 +353,64 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Suchen Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** im Microsoft Edge-Fenster, in dem das Azure-Portal geöffnet ist, nach **Speicherkonten**, und wählen Sie die Option aus. Wählen Sie anschließend auf dem Blatt **Speicherkonten** das Speicherkonto aus, das Sie zum Hosten von Benutzerprofilen konfiguriert haben.
 
-   > **Hinweis:** Dieser Teil des Labs ist abhängig vom Abschließen der Labs **Azure Virtual Desktop-Profilverwaltung (AD DS)** bzw. **Azure Virtual Desktop-Profilverwaltung (Microsoft Entra DS)**.
+   > **Hinweis:** Dieser Teil des Labs setzt den Abschluss des Lab **Implementieren und Verwalten von Speicher für AVD (AD DS)** oder **Implementieren und Verwalten von Speicher für AVD (Microsoft Entra DS)** voraus.
 
    > **Hinweis:** In Produktionsszenarios sollten Sie die Verwendung eines separaten Speicherkontos in Betracht ziehen. Dies erfordert die Konfiguration dieses Speicherkontos für die Microsoft Entra DS-Authentifizierung, die Sie bereits für das Speicherkonto implementiert haben, das Benutzerprofile hosten soll. Sie verwenden dasselbe Speicherkonto, um doppelte Schritte in einzelnen Labs zu minimieren.
 
 1. Klicken Sie auf dem Blatt für das Speicherkonto im vertikalen Menü links auf **Zugriffssteuerung (IAM)**.
 1. Klicken Sie auf dem Blatt **Zugriffssteuerung (IAM)** für das Speicherkonto auf **+ Hinzufügen**, und wählen Sie im Dropdownmenü die Option **Rollenzuweisung hinzufügen** aus. 
-1. Geben Sie auf dem Blatt **Rollenzuweisung hinzufügen** die folgenden Einstellungen an, und klicken Sie auf **Speichern**:
+1. Geben Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Registerkarte **Rolle** die folgenden Einstellungen an, und wählen Sie **Weiter** aus:
 
    |Einstellung|Wert|
    |---|---|
-   |Rolle|**Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten**|
-   |Zugriff zuweisen zu|**Benutzer, Gruppe oder Dienstprinzipal**|
-   |Auswählen|**az140-wvd-admins**|
+   |Auftragsfunktionsrolle|**Speicherdateidaten-SMB-Freigabemitwirkender**|
 
-   > **Hinweis:** Die Gruppe **az140-wvd-admins** enthält das Benutzerkonto **wvdadmin1**, das Sie zum Konfigurieren von Freigabeberechtigungen verwenden. 
-
-1. Wiederholen Sie die vorherigen beiden Schritte, um die folgenden Rollenzuweisungen zu konfigurieren:
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** auf der Registerkarte **Mitglieder** **+ Mitglieder auswählen** aus, geben Sie die folgenden Einstellungen an, und wählen Sie **Auswählen** aus. 
 
    |Einstellung|Wert|
    |---|---|
-   |Rolle|**Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten**|
-   |Zugriff zuweisen zu|**Benutzer, Gruppe oder Dienstprinzipal**|
-   |Auswählen|**az140-hosts-42-p1**|
-
-   |Einstellung|Wert|
-   |---|---|
-   |Rolle|**Speicherdateidaten-SMB-Freigabeleser**|
-   |Zugriff zuweisen zu|**Benutzer, Gruppe oder Dienstprinzipal**|
    |Auswählen|**az140-wvd-users**|
 
-   > **Hinweis:** Azure Virtual Desktop-Benutzer*innen und Hosts benötigen mindestens Lesezugriff auf die Dateifreigabe.
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** die Option **Überprüfen + Zuweisen** und anschließend erneut die Option **Überprüfen + Zuweisen** aus.
+1. Klicken Sie auf dem Blatt **Zugriffssteuerung (IAM)** für das Speicherkonto auf **+ Hinzufügen**, und wählen Sie im Dropdownmenü die Option **Rollenzuweisung hinzufügen** aus. 
+1. Geben Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Registerkarte **Rolle** die folgenden Einstellungen an, und wählen Sie **Weiter** aus:
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auftragsfunktionsrolle|**Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** auf der Registerkarte **Mitglieder** **+ Mitglieder auswählen** aus, geben Sie die folgenden Einstellungen an, und wählen Sie **Auswählen** aus. 
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auswählen|**az140-wvd-admins**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** die Option **Überprüfen + Zuweisen** und anschließend erneut die Option **Überprüfen + Zuweisen** aus.
+1. Klicken Sie auf dem Blatt **Zugriffssteuerung (IAM)** für das Speicherkonto auf **+ Hinzufügen**, und wählen Sie im Dropdownmenü die Option **Rollenzuweisung hinzufügen** aus. 
+1. Geben Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Registerkarte **Rolle** die folgenden Einstellungen an, und wählen Sie **Weiter** aus:
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auftragsfunktionsrolle|**Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** auf der Registerkarte **Mitglieder** **+ Mitglieder auswählen** aus, geben Sie die folgenden Einstellungen an, und wählen Sie **Auswählen** aus. 
+
+   |Einstellung|Wert|
+   |---|---|
+   |Auswählen|**az140-hosts-42-p1**|
+
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** die Option **Überprüfen + Zuweisen** und anschließend erneut die Option **Überprüfen + Zuweisen** aus.
 
 1. Klicken Sie auf dem Blatt für das Speicherkonto im vertikalen Menü auf der linken Seite im Abschnitt **Datenspeicher** auf **Dateifreigaben** und anschließend auf **+ Dateifreigabe**.
-1. Legen Sie auf dem Blatt **Neue Dateifreigabe** die folgenden Einstellungen fest, und klicken Sie auf **Erstellen** (Standardwerte für die anderen Einstellungen übernehmen):
+1. Geben Sie auf dem Blatt **Neue Dateifreigabe** die folgenden Einstellungen an und wählen Sie **Weiter: Sicherung >** aus (behalten Sie für die anderen Einstellungen die Standardwerte bei):
 
    |Einstellung|Wert|
    |---|---|
    |Name|**az140-42-msixvhds**|
+   |Zugriffsebene|**Transaktion optimiert**|
 
+1. Wählen Sie auf dem Blatt **Sicherung** das Kontrollkästchen **Sicherung aktivieren** ab, wählen Sie **Überprüfen + Erstellen** aus, warten Sie, bis der Überprüfungsprozess abgeschlossen ist, und wählen Sie dann **Erstellen** aus.
 1. Wählen Sie im Microsoft Edge-Fenster, in dem das Azure-Portal angezeigt wird, in der Liste der Dateifreigaben die neu erstellte Dateifreigabe aus. 
-
 1. Starten Sie innerhalb der Bastion-Sitzung für **az140-cl-vm42** die **Eingabeaufforderung**, und führen Sie über das **Eingabeaufforderungsfenster** Folgendes aus, um der Freigabe **az140-42-msixvhds** ein Laufwerk zuzuordnen (Platzhalter `<storage-account-name>` durch den Namen des Speicherkontos ersetzen). Überprüfen Sie anschließend, ob der Befehl erfolgreich abgeschlossen wurde:
 
    ```cmd
@@ -438,7 +433,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    ```powershell
    New-Item -ItemType Directory -Path 'Z:\packages' 
-   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
+   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages\' -Force
    ```
 
 #### Aufgabe 3: Bereitstellen und Registrieren des MSIX App Attach-Images auf Azure Virtual Desktop-Sitzungshosts
@@ -466,7 +461,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf dem Blatt **Azure Virtual Desktop \| Anwendungsgruppen** den Anwendungsgruppeneintrag **az140-21-hp1-Utilities-RAG** aus.
 1. Klicken Sie auf dem Blatt **az140-21-hp1-Utilities-RAG** im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** auf **Anwendungen**. 
 1. Wählen Sie auf dem Blatt **az140-21-hp1-Utilities-RAG \| Anwendungen** **+ Hinzufügen** aus.
-1. Verwenden Sie auf dem Blatt **Anwendung hinzufügen** die Registerkarten **Grundeinstellungen** und **Symbol**, um die folgenden Einstellungen anzugeben, und wählen Sie **Speichern** aus:
+1. Verwenden Sie auf dem Blatt **Anwendung hinzufügen** die Registerkarten **Basics** und **Symbol**, um die folgenden Einstellungen anzugeben, und wählen Sie **Überprüfen + Hinzufügen** aus:
 
    |Einstellung|Wert|
    |---|---|
@@ -476,29 +471,31 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Anwendungskennung|**XML Notepad**|
    |Anzeigename|**XML Notepad**|
    |Beschreibung|**XML Notepad**|
-   |Symbolquelle|**Standard**|
 
+1. Überprüfen Sie die konfigurierten Einstellungen, und wählen Sie dann **Hinzufügen** aus.
 1. Navigieren Sie zurück zum Blatt **Azure Virtual Desktop \| Anwendungsgruppen**, und wählen Sie den Anwendungsgruppeneintrag **az140-21-hp1-DAG** aus.
 1. Klicken Sie auf dem Blatt **az140-21-hp1-DAG** im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** auf **Anwendungen**. 
 1. Wählen Sie auf dem Blatt **az140-21-hp1-DAG \| Anwendungen** **+ Hinzufügen** aus.
-1. Geben Sie auf dem Blatt **Anwendung hinzufügen** die folgenden Einstellungen an, und wählen Sie **Speichern** aus:
+1. Geben Sie auf dem Blatt **Anwendung hinzufügen** die folgenden Einstellungen an, und wählen Sie **Überprüfen + Hinzufügen** aus:
 
    |Einstellung|Wert|
    |---|---|
    |Anwendungsquelle|**MSIX-Paket**|
    |MSIX-Paket|Name, der für das Paket steht, das im Image enthalten ist|
-   |Anwendungsname|**XML Notepad**|
+   |Anwendungskennung|**XML Notepad**|
    |Anzeigename|**XML Notepad**|
    |Beschreibung|**XML Notepad**|
+
+1. Überprüfen Sie die konfigurierten Einstellungen, und wählen Sie dann **Hinzufügen** aus.
 
 #### Aufgabe 5: Überprüfen der Funktionalität von MSIX App Attach
 
 1. Starten Sie innerhalb der Bastion.Sitzung für **az140-cl-vm42** Microsoft Edge, navigieren Sie zur [Downloadseite für den Windows-Desktopclient](https://go.microsoft.com/fwlink/?linkid=2068602) und wählen Sie nach Abschluss des Downloads **Datei öffnen** aus, um die Installation zu starten. Wählen Sie auf der Seite **Installationsbereich** des Assistenten **Remotedesktopsetup** die Option **Für alle Benutzer auf diesem Computer installieren** aus, und klicken Sie auf **Installieren**. 
 1. Vergewissern Sie sich nach Abschluss der Installation, dass das Kontrollkästchen **Launch Remote Desktop when setup exits** (Remotedesktop starten, wenn das Setup abgeschlossen ist) aktiviert ist, und klicken Sie auf **Fertig stellen**, um den Remotedesktopclient zu starten.
 1. Klicken Sie im Fenster für den **Remotedesktopclient** auf **Abonnieren**, und melden Sie sich bei Aufforderung mit dem Benutzerprinzipalnamen **aduser1** und dem Kennwort an, das Sie beim Erstellen dieses Benutzerkontos festgelegt haben. 
-1. Deaktivieren Sie bei Aufforderung im Fenster **Bei all Ihren Apps angemeldet bleiben** das Kontrollkästchen **Verwaltung meines Geräts durch meine Organisation zulassen**, und klicken Sie auf **Nein, nur bei dieser App anmelden**.
 1. Doppelklicken Sie im Fenster des **Remotedesktopclients** innerhalb des Abschnitts **az140-21-ws1** auf das **XML Notepad**-Symbol. Geben Sie bei Aufforderung das Kennwort ein, und überprüfen Sie, ob XML Notepad erfolgreich gestartet wurde.
-
+1. Klicken Sie in der Bastion-Sitzung für **az140-cl-vm42** mit der rechten Maustaste auf **Start**. Wählen Sie im Kontextmenü die Option **Herunterfahren oder abmelden** aus, und wählen Sie im Untermenü **Abmelden** aus.
+1. Wählen Sie im Dialogfeld **Getrennt** **Schließen** aus.
 
 ### Übung 4: Beenden der im Lab bereitgestellten und verwendeten Azure-VMs und Aufheben ihrer Zuordnung
 

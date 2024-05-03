@@ -41,15 +41,15 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Vorbereiten der Bereitstellung von Azure Virtual Desktop-Hostpools mithilfe von PowerShell
 1. Erstellen eines Azure Virtual Desktop-Hostpools mit PowerShell
-1. Ausführen einer vorlagenbasierten Bereitstellung einer Azure-VM mit Windows 10 Enterprise mithilfe von PowerShell
-1. Hinzufügen einer Azure-VM mit Windows 10 Enterprise als Sitzungshost zum Azure Virtual Desktop-Hostpool mithilfe von PowerShell
+1. Ausführen einer vorlagenbasierten Bereitstellung einer Azure-VM mit Windows 11 Enterprise mithilfe von PowerShell
+1. Hinzufügen einer Azure-VM mit Windows 11 Enterprise als Sitzungshost zum Azure Virtual Desktop-Hostpool mithilfe von PowerShell
 1. Überprüfen der Bereitstellung des Azure Virtual Desktop-Sitzungshosts
 
 #### Aufgabe 1: Vorbereiten der Bereitstellung von Azure Virtual Desktop-Hostpools mithilfe von PowerShell
 
 1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Verwenden Sie dabei die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
 1. Suchen Sie im Azure-Portal nach **Virtuelle Computer**, und wählen Sie diese Option aus. Klicken Sie auf dem Blatt **Virtuelle Computer** auf **az140-dc-vm11**.
-1. Klicken Sie auf dem Blatt **az140-dc-vm11** auf **Verbinden**. Wählen Sie im Dropdownmenü die Option **Bastion** und auf der Registerkarte **Bastion** des Blatts **az140-dc-vm11 \| Verbinden** die Option **Bastion verwenden** aus.
+1. Wählen Sie auf dem Blatt **az140-dc-vm11** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und wählen Sie **Verbinden** aus:
 
    |Einstellung|Wert|
@@ -58,18 +58,6 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Kennwort|**Pa55w.rd1234**|
 
 1. Starten Sie innerhalb der Bastion-Sitzung auf **az140-dc-vm11** die **Windows PowerShell ISE** als Administrator*in.
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um den Distinguished Name der Organisationseinheit mit dem Namen **WVDInfra** zu identifizieren, in der die Computerobjekte der Azure Virtual Desktop-Sitzungshostpools gehostet werden:
-
-   ```powershell
-   (Get-ADOrganizationalUnit -Filter "Name -eq 'WVDInfra'").distinguishedName
-   ```
-
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um das UPN-Suffix des Kontos **ADATUM\\Student** zu identifizieren, über das die Azure Virtual Desktop-Hosts der AD DS-Domäne (**student@adatum.com**) beitreten:
-
-   ```powershell
-   (Get-ADUser -Filter {sAMAccountName -eq 'student'} -Properties userPrincipalName).userPrincipalName
-   ```
-
 1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um das PowerShell-Modul „DesktopVirtualization“ zu installieren (wenn Sie dazu aufgefordert werden, klicken Sie auf **Ja, alle**):
 
    ```powershell
@@ -87,21 +75,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Name|**hp3-Subnet**|
    |Subnetzadressbereich|**10.0.3.0/24**|
 
-1. Verwenden Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** im Azure-Portal oben auf der Seite das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen**, um nach **Netzwerksicherheitsgruppen** zu suchen und dorthin zu navigieren. Wählen Sie auf dem Blatt **Netzwerksicherheitsgruppen** die Sicherheitsgruppe in der Ressourcengruppe **az140-11-RG** aus.
-1. Klicken Sie auf dem Blatt „Netzwerksicherheitsgruppe“ im vertikalen Menü auf der linken Seite im Abschnitt **Einstellungen** auf **Eigenschaften**.
-1. Klicken Sie auf dem Blatt **Eigenschaften** rechts neben dem Textfeld **Ressourcen-ID** auf das Symbol **In Zwischenablage kopieren**. 
-
-   > **Hinweis:** Der Wert muss das folgende Format aufweisen: `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`. Die Abonnement-ID kann jedoch anders aussehen. Notieren Sie den Wert, da Sie ihn in der nächsten Aufgabe benötigen werden.
-
 #### Aufgabe 2: Erstellen eines Azure Virtual Desktop-Hostpools mit PowerShell
 
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
 1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Azure-Region zu identifizieren, in der das virtuelle Azure-Netzwerk **az140-adds-vnet11** gehostet wird:
 
    ```powershell
@@ -139,7 +114,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    New-AzRoleAssignment -ObjectId $aadGroupObjectId -RoleDefinitionName $roleDefinitionName -ResourceName $dagAppGroupName -ResourceGroupName $resourceGroupName -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
    ```
 
-#### Aufgabe 3: Ausführen einer vorlagenbasierten Bereitstellung einer Azure-VM mit Windows 10 Enterprise mithilfe von PowerShell
+#### Aufgabe 3: Ausführen einer vorlagenbasierten Bereitstellung einer Azure-VM mit Windows 11 Enterprise mithilfe von PowerShell
 
 1. Navigieren Sie auf Ihrem Lab-Computer zu dem bereitgestellten Speicherkonto. Wählen Sie auf dem Blatt „Dateifreigabe“ die Dateifreigabe **az140-22-profiles** aus.
 
@@ -147,7 +122,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Öffnen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** den Datei-Explorer, und navigieren Sie zum zuvor konfigurierten Laufwerk Z oder zu dem Laufwerkbuchstaben, der der Verbindung mit der Dateifreigabe zugewiesen ist. Kopieren Sie die hochgeladenen Bereitstellungsdateien in **C:\AllFiles\Labs\02**.
 
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um eine Azure-VM mit Windows 10 Enterprise (mit mehreren Sitzungen) bereitzustellen, die als Azure Virtual Desktop-Sitzungshost im Hostpool fungiert, den Sie in der vorherigen Aufgabe erstellt haben:
+1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um eine Azure-VM mit Windows 11 Enterprise (mit mehreren Sitzungen) bereitzustellen, die als Azure Virtual Desktop-Sitzungshost im Hostpool fungiert, den Sie in der vorherigen Aufgabe erstellt haben:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -160,7 +135,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
      -TemplateParameterFile C:\AllFiles\Labs\02\az140-24_azuredeployhp3.parameters.json
    ```
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Aufgabe fortfahren. Dies kann etwa fünf Minuten dauern. 
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Aufgabe fortfahren. Dies kann etwa 5–10 Minuten dauern. 
 
    > **Hinweis:** Die Bereitstellung stellt die Azure-VM mithilfe einer Azure Resource Manager-Vorlage bereit und wendet eine VM-Erweiterung an, durch die das Betriebssystem automatisch der AD DS-Domäne **adatum.com** beitritt.
 
@@ -170,10 +145,13 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Get-ADComputer -Filter "sAMAccountName -eq 'az140-24-p3-0$'"
    ```
 
-#### Aufgabe 4: Hinzufügen einer Azure-VM mit Windows 10 Enterprise als Host zum Azure Virtual Desktop-Hostpool mithilfe von PowerShell
+#### Aufgabe 4: Hinzufügen einer Azure-VM mit Windows 11 Enterprise als Host zum Azure Virtual Desktop-Hostpool mithilfe von PowerShell
 
 1. Suchen Sie in der Bastion-Sitzung für **az140-dc-vm11** im Browserfenster, in dem das Azure-Portal geöffnet ist, nach **VMs** und wählen Sie diese Option aus. Wählen Sie auf dem Blatt **VMs** in der Liste der VMs den Eintrag **az140-24-p3-0** aus.
-1. Wählen Sie auf dem Blatt **az140-24-p3-0** die Option **Verbinden** aus. Wählen Sie im Dropdownmenü die Option **RDP** aus und auf der Registerkarte **RDP** des Blatts **az140-24-p3-0 \| Verbinden** in der Dropdownliste **IP-Adresse** den Eintrag **Private IP-Adresse (10.0.3.4)**. Klicken Sie anschließend auf **RDP-Datei herunterladen**.
+1. Wählen Sie auf dem Blatt **az140-24-p3-0** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung herstellen** aus.
+1. Stellen Sie sicher, dass unter **Verbindung mit** steht: **Private IP-Adresse | 10.0.3.4**
+1. Wählen Sie im Bereich **Native RDP** **RDP-Datei herunterladen** aus.
+1. Wenn Sie dazu aufgefordert werden, wählen Sie **Behalten** aus, und wählen Sie die heruntergeladene **az140-24-p3-0.rdp**-Datei aus.
 1. Wenn Sie dazu aufgefordert werden, melden Sie sich mit den folgenden Anmeldeinformationen an:
 
    |Einstellung|Wert|
@@ -203,29 +181,22 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    $webClient.DownloadFile($wvdBootLoaderInstallerURL,"$labFilesFolder/$wvdBootLoaderInstallerName")
    ```
 
-1. Führen Sie innerhalb der Remotedesktopsitzung für **az140-24-p3-0** über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die neueste Version des PowerShellGet-Moduls zu installieren (wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**):
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um die neueste Version des Az PowerShell-Moduls zu installieren. Wenn Sie aufgefordert werden, den NuGet-Anbieter zu installieren, drücken Sie **Y**:
 
    ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
+   Install-Module -Name Az -Force
    ```
 
-1. Führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die neueste Version des PowerShell-Moduls „Az.DesktopVirtualization“ zu installieren:
+   > **Hinweis:** Es kann sein, dass Sie 3–5 Minuten warten müssen, bevor eine Ausgabe der Installation des Az-Moduls erscheint. Möglicherweise müssen Sie auch weitere 5 Minuten warten, **nachdem** die Ausgabe beendet wurde. Dieses Verhalten wird erwartet.
+
+1. Führen Sie in der Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
    ```powershell
-   Install-Module -Name Az.DesktopVirtualization -AllowClobber -Force
-   Install-Module -Name Az -AllowClobber -Force
-   ```
-
-1. Führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die PowerShell-Ausführungsrichtlinie zu ändern und sich bei Ihrem Azure-Abonnement anzumelden:
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force
    Connect-AzAccount
    ```
 
 1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
-1. Führen Sie innerhalb der Remotedesktopliveid-Sitzung für **az140-24-p3-0** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um das Token zu generieren, das für den Beitritt neuer Sitzungshosts zum Pool benötigt wird, den Sie weiter oben in dieser Übung bereitgestellt haben:
+1. Führen Sie innerhalb der Remotedesktopsitzung für **az140-24-p3-0** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um das Token zu generieren, das für den Beitritt dieses Sitzungshosts zum Pool benötigt wird, den Sie weiter oben in dieser Übung bereitgestellt haben:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -246,6 +217,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    ```powershell
    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $wvdBootLoaderInstallerName", "/quiet", "/qn", "/norestart", "/passive", "/l* $labFilesFolder\BootLoaderInstall.log" | Wait-process
    ```
+
+1. Klicken Sie innerhalb der Remotedesktopsitzung für **az140-24-p3-0** mit der rechten Maustaste auf **Start**. Wählen Sie im Kontextmenü die Option **Herunterfahren oder abmelden** aus, und klicken Sie im Untermenü auf **Abmelden**.
 
 #### Aufgabe 5: Überprüfen der Bereitstellung des Azure Virtual Desktop-Hosts
 
