@@ -110,9 +110,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 #### Aufgabe 1: Vorbereiten der Bereitstellung eines virtuellen Azure-Computers
 
 1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Verwenden Sie dabei die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
-1. Navigieren Sie im Webbrowser zu dem Fenster, in dem das Azure-Portal geöffnet ist. Wählen Sie auf dem Blatt **Übersicht** des Microsoft Entra-Mandanten im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** **Eigenschaften** aus.
+1. Verwenden Sie im Azure-Portal oben auf der Azure-Portalseite das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen** und navigieren zum Blatt **Microsoft Entra ID**.
+1. Wählen Sie auf dem Blatt **Übersicht** des Microsoft Entra-Mandanten im vertikalen Menü auf der linken Seite im Abschnitt **Verwalten** **Eigenschaften** aus.
 1. Wählen Sie auf dem Blatt **Eigenschaften** Ihres Microsoft Entra-Mandanten am unteren Rand des Blatts den Link **Sicherheitsstandards verwalten** aus.
-1. Wählen Sie auf dem Blatt **Sicherheitsstandards aktivieren** bei Bedarf **Nein** aus, aktivieren Sie das Kontrollkästchen **Meine Organisation verwendet den bedingten Zugriff.**, und wählen Sie anschließend **Speichern** aus.
+1. Wählen Sie auf dem Blatt **Sicherheitsstandards aktivieren** bei Bedarf **Deaktiviert (nicht empfohlen)** aus, wählen Sie die Optionsschaltfläche **Meine Organisation plant die Verwendung von bedingtem Zugriff** aus, und wählen Sie **Speichern** und dann **Deaktivieren** aus.
 1. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie rechts neben dem Textfeld für die Suche das Symbolleistensymbol auswählen.
 1. Wenn Sie aufgefordert werden, entweder **Bash** oder **PowerShell** auszuwählen, wählen Sie **PowerShell** aus. 
 
@@ -131,7 +132,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Schließen Sie im Azure-Portal den Bereich **Cloud Shell**.
 1. Öffnen Sie auf Ihrem Labcomputer im gleichen Webbrowserfenster einen weiteren Webbrowser-Tab, und navigieren Sie zu einer angepassten Version der Schnellstartvorlage [Erstellen einer neuen Windows-VM und Erstellen einer neuen AD-Gesamtstruktur, einer Domäne und eines Domänencontrollers](https://github.com/az140mp/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
-1. Wählen Sie auf der Seite **Erstellen einer neuen Windows-VM und Erstellen einer neuen AD-Gesamtstruktur, einer Domäne und eines Domänencontrollers** die Option **In Azure bereitstellen** aus. Dadurch wird der Browser automatisch zum Blatt **Azure-VM mit einer neuen AD-Gesamtstruktur erstellen** im Azure-Portal umgeleitet.
+1. Scrollen Sie auf der Seite **Erstellen einer neuen Windows-VM und Erstellen einer neuen AD-Gesamtstruktur, einer Domäne und eines Domänencontrollers** bis zur Option **In Azure bereitstellen** und wählen Sie sie aus. Dadurch wird der Browser automatisch zum Blatt **Azure-VM mit einer neuen AD-Gesamtstruktur erstellen** im Azure-Portal umgeleitet.
 1. Wählen Sie auf dem Blatt **Azure-VM mit einer neuen AD-Gesamtstruktur erstellen** die Option **Parameter bearbeiten** aus.
 1. Wählen Sie auf dem Blatt **Parameter bearbeiten** die Option **Datei laden**, im Dialogfeld **Öffnen** die Datei **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, dann **Öffnen** und schließlich **Speichern** aus. 
 1. Geben Sie auf dem Blatt **Azure-VM mit einer neuen AD-Gesamtstruktur erstellen** die folgenden Einstellungen an (übernehmen Sie für andere Einstellungen die vorhandenen Werte):
@@ -144,7 +145,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Wählen Sie auf dem Blatt **Azure-VM mit einer neuen AD-Gesamtstruktur erstellen** die Option **Überprüfen + erstellen** und anschließend **Erstellen** aus.
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Dies kann etwa 15 Minuten dauern. 
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung dauert etwa 20–25 Minuten. 
 
 #### Aufgabe 3: Bereitstellen eines virtuellen Azure-Computers mit Windows 10 mithilfe einer Azure Resource Manager-Schnellstartvorlage
 
@@ -213,7 +214,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** des Blatts **Bastion erstellen** die Option **Erstellen** aus:
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung kann ungefähr 5 Minuten dauern.
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Übung fortfahren. Die Bereitstellung dauert ungefähr 10 Minuten.
 
 ### Übung 2: Integrieren einer AD DS-Gesamtstruktur in einen Microsoft Entra-Mandanten
   
@@ -223,12 +224,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Konfigurieren des AD DS-UPN-Suffix
 1. Erstellen von Microsoft Entra-Benutzer*innen, die zum Konfigurieren der Synchronisierung mit Microsoft Entra verwendet werden
 1. Installieren von Microsoft Entra Connect
-1. Konfigurieren der hybriden Microsoft Entra-Einbindung
 
 #### Aufgabe 1: Erstellen von AD DS-Benutzer*innen und -Gruppen, die mit Microsoft Entra synchronisiert werden
 
 1. Suchen Sie auf Ihrem Labcomputer in dem Webbrowser, in dem das Azure-Portal angezeigt wird, nach **Virtuelle Computer**, und wählen Sie diese Option aus. Wählen Sie anschließend auf dem Blatt **Virtuelle Computer** den Eintrag **az140-dc-vm11** aus.
-1. Klicken Sie auf dem Blatt **az140-dc-vm11** auf **Verbinden**. Wählen Sie im Dropdownmenü die Option **Bastion** und auf der Registerkarte **Bastion** des Blatts **az140-dc-vm11 \| Verbinden** die Option **Bastion verwenden** aus.
+1. Wählen Sie auf dem Blatt **az140-dc-vm11** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und wählen Sie **Verbinden** aus:
 
    |Einstellung|Wert|
@@ -236,7 +236,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Benutzername|**Kursteilnehmer**|
    |Kennwort|**Pa55w.rd1234**|
 
-1. Starten Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** die **Windows PowerShell ISE** als Administrator.
+1. Starten Sie innerhalb der Bastion-Sitzung auf **az140-dc-vm11** die **Windows PowerShell ISE** als Administrator*in.
 1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um die erweiterte Sicherheit von Internet Explorer für Administratoren zu deaktivieren:
 
    ```powershell
@@ -306,7 +306,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 #### Aufgabe 2: Konfigurieren des AD DS-UPN-Suffix
 
-1. Führen Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** im Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um die neueste Version des PowerShellGet-Moduls zu installieren, und wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden:
+1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** Folgendes aus, um die neueste Version des PowerShellGet-Moduls zu installieren, und wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden:
 
    ```powershell
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -318,6 +318,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    ```powershell
    Install-Module -Name Az -AllowClobber -SkipPublisherCheck
    ```
+
+   > **Hinweis:** Es kann sein, dass Sie 3–5 Minuten warten müssen, bevor eine Ausgabe der Installation des Az-Moduls erscheint. Möglicherweise müssen Sie auch weitere 5 Minuten warten, **nachdem** die Ausgabe beendet wurde. Dieses Verhalten wird erwartet.
 
 1. Führen Sie in der Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
@@ -365,7 +367,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    $domainUsers | foreach {$newUpn = $_.UserPrincipalName.Replace('adatum.com',$aadDomainName); $_ | Set-ADUser -UserPrincipalName $newUpn}
    ```
 
-1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um das UPN-Suffix **adatum.com** dem Domänenbenutzer **Student** zuzuweisen:
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um das UPN-Suffix **adatum.com** wieder dem Domänenbenutzer **Studierende** zuzuweisen:
 
    ```powershell
    $domainAdminUser = Get-ADUser -Filter {sAMAccountName -eq 'Student'} -Properties userPrincipalName
@@ -374,9 +376,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 #### Aufgabe 3: Erstellen von Microsoft Entra-Benutzer*innen zum Konfigurieren der Verzeichnissynchronisierung
 
-1. Führen Sie in der Remotedesktopsitzung auf **az140-dc-vm11** aus dem **Administrator: Windows PowerShell ISE** Folgendes aus, um eine*n neue*n Microsoft Entra-Benutzer*in zu erstellen, und ersetzen Sie dabei den Platzhalter `<password>` durch ein beliebiges komplexes Kennwort:
+1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** Folgendes aus, um eine*n neue*n Microsoft Entra-Benutzer*in zu erstellen, und ersetzen Sie dabei den Platzhalter `<password>` durch ein beliebiges komplexes Kennwort:
 
-   > **Hinweis:** Stellen Sie sicher, dass Sie sich das verwendete Kennwort notieren. Es wird später in diesem Lab sowie in nachfolgenden Labs benötigt.
+   > **Hinweis:** Stellen Sie sicher, dass Sie sich das verwendete Kennwort notieren. **Es wird später in diesem Lab sowie in nachfolgenden Labs benötigt**.
 
    ```powershell
    $userName = 'aadsyncuser'
@@ -400,12 +402,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    (Get-AzureADUser -Filter "MailNickName eq '$userName'").UserPrincipalName
    ```
 
-   > **Hinweis:** Erfassen Sie den Benutzerprinzipalnamen. Er wird später in dieser Übung benötigt. 
+   > **Hinweis:** Notieren Sie den Benutzerprinzipalnamen **und** das Kennwort. Er wird später in dieser Übung benötigt. 
 
 
 #### Aufgabe 4: Installieren von Microsoft Entra Connect
 
-1. Führen Sie in der Remotedesktopsitzung auf **az140-dc-vm11** aus dem **Administrator: Windows PowerShell ISE** Folgendes aus, um TLS 1.2 zu aktivieren:
+1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** Folgendes aus, um TLS 1.2 zu aktivieren:
 
    ```powershell
    New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -423,18 +425,18 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Write-Host 'TLS 1.2 has been enabled.'
    ```
    
-1. Starten Sie in der Remotedesktopsitzung für **az140-dc-vm11** Internet Explorer, und navigieren Sie zur [Downloadseite für Microsoft Edge for Business](https://www.microsoft.com/en-us/edge/business/download).
+1. Starten Sie in der Bastion-Sitzung für **az140-dc-vm11** den Internet Explorer, und navigieren Sie zur [Downloadseite für Microsoft Edge for Business](https://www.microsoft.com/en-us/edge/business/download).
 1. Laden Sie auf der [Downloadseite für Microsoft Edge for Business](https://www.microsoft.com/en-us/edge/business/download) die neueste stabile Version von Microsoft Edge herunter, installieren Sie sie, starten Sie sie, und konfigurieren Sie sie mit den Standardeinstellungen.
 1. Navigieren Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** in Microsoft Edge zum [Azure-Portal](https://portal.azure.com). Wenn Sie dazu aufgefordert werden, melden Sie sich mit den Microsoft Entra-Anmeldeinformationen des Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer*in“ verfügt.
-1. Verwenden Sie im Azure-Portal das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen** (im oberen Bereich der Azure-Portalseite), um nach dem Blatt **Azure Active Directory** zu suchen und dorthin zu navigieren. Wählen Sie dann auf dem Blatt Ihres Microsoft Entra-Mandanten im Abschnitt **Verwalten** des Hubmenüs die Option **Microsoft Entra Connect** aus.
-1. Wählen Sie auf dem Blatt **Microsoft Entra Connect** zuerst links den Link **Connect Sync** aus, und wählen Sie dann den Link **Microsoft Entra Connect herunterladen** aus. Daraufhin wird automatisch ein neuer Browser-Tab mit der Downloadseite **Microsoft Azure Active Directory Connect** geöffnet.
-1. Wählen Sie auf der Downloadseite **Microsoft Azure Active Directory Connect** die Option **Herunterladen** aus.
+1. Verwenden Sie im Azure-Portal das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen** (im oberen Bereich der Azure-Portalseite), um nach dem Blatt **Microsoft Entra ID** zu suchen und dorthin zu navigieren. Wählen Sie dann auf dem Blatt Ihres Microsoft Entra-Mandanten im Abschnitt **Verwalten** des Hubmenüs die Option **Microsoft Entra Connect** aus.
+1. Wählen Sie auf dem Blatt **Microsoft Entra Connect** im Dienstmenü den Link **Synchronisierung verbinden** aus, und wählen Sie dann den Link **Microsoft Entra Connect herunterladen** aus. Daraufhin wird automatisch ein neuer Browser-Tab mit der Downloadseite **Microsoft Entra Connect** geöffnet.
+1. Wählen Sie auf der Downloadseite **Microsoft Entra Connect** die Option **Herunterladen** aus.
 1. Wenn Sie gefragt werden, ob das Installationsprogramm **AzureADConnect.msi** ausgeführt oder gespeichert werden soll, wählen Sie **Ausführen** aus. Öffnen Sie andernfalls die Datei, nachdem sie heruntergeladen wurde, um den Assistenten für **Microsoft Azure Active Directory Connect** zu starten.
-1. Aktivieren Sie auf der Seite **Willkommen bei Microsoft Entra Connect** des Assistenten für **Microsoft Azure Active Directory Connect** das Kontrollkästchen **Ich akzeptiere die Lizenzbedingungen und den Datenschutzhinweis**, und wählen Sie anschließend **Weiter** aus.
+1. Aktivieren Sie auf der Seite **Willkommen bei Azure AD Connect** des Assistenten für **Microsoft Azure Active Directory Connect** das Kontrollkästchen **Ich akzeptiere die Lizenzbedingungen und den Datenschutzhinweis.**, und wählen Sie anschließend **Weiter** aus.
 1. Wählen Sie auf der Seite **Expresseinstellungen** des Assistenten für **Microsoft Azure Active Directory Connect** die Option **Anpassen** aus.
 1. Belassen Sie auf der Seite **Erforderliche Komponenten installieren** alle optionalen Konfigurationsoptionen deaktiviert, und wählen Sie **Installieren** aus.
 1. Stellen Sie auf der Seite **Benutzeranmeldung** sicher, dass nur die **Kennwort-Hashsynchronisierung** aktiviert ist, und wählen Sie **Weiter** aus.
-1. Authentifizieren Sie sich auf der Seite **Mit Microsoft Entra verbinden** mit den Anmeldeinformationen des Benutzerkontos **aadsyncuser**, das Sie in der vorherigen Übung erstellt haben, und wählen Sie anschließend **Weiter** aus. 
+1. Authentifizieren Sie sich auf der Seite **Mit Azure AD verbinden** mit den Anmeldeinformationen des Benutzerkontos **aadsyncuser**, das Sie in der vorherigen Übung erstellt haben, und wählen Sie anschließend **Weiter** aus. 
 
    > **Hinweis:** Geben Sie das weiter oben in dieser Übung erfasste Attribut „userPrincipalName“ des Kontos **aadsyncuser** sowie das zugehörige Kennwort an, das Sie zuvor in dieser Übung als Kennwort festgelegt haben.
 
@@ -447,7 +449,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Kennwort|**Pa55w.rd1234**|
 
 1. Stellen Sie auf der Seite **Verzeichnisse verbinden** sicher, dass der Eintrag **adatum.com** als konfiguriertes Verzeichnis angezeigt wird, und wählen Sie anschließend **Weiter** aus.
-1. Beachten Sie auf der Seite **Microsoft Entra-Anmeldungskonfiguration** die Warnung **Benutzer*innen können sich nicht mit lokalen Anmeldeinformationen bei Microsoft Entra anmelden, wenn das UPN-Suffix nicht mit einem überprüften Domänennamen übereinstimmt.**, aktivieren Sie das Kontrollkästchen **Ohne Abgleich aller UPN-Suffixe mit überprüften Domänen fortfahren**, und wählen Sie anschließend **Weiter** aus.
+1. Beachten Sie auf der Seite **Azure AD-Anmeldungskonfiguration** die Warnung **Die Benutzer können sich nicht mit lokalen Anmeldeinformationen bei Azure AD anmelden, wenn das UPN-Suffix keiner überprüften Domäne zugeordnet werden kann.**, aktivieren Sie das Kontrollkästchen **Ohne Abgleich aller UPN-Suffixe mit überprüften Domänen fortfahren**, und wählen Sie anschließend **Weiter** aus.
 
    > **Hinweis:** Dieses Verhalten war zu erwarten, da der Microsoft Entra-Mandant über keine überprüfte benutzerdefinierte DNS-Domäne verfügt, die einem der UPN-Suffixe der AD DS-Instanz von **adatum.com** entspricht.
 
@@ -457,7 +459,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Übernehmen Sie auf der Seite **Optionale Features** die Standardeinstellungen, und wählen Sie **Weiter** aus.
 1. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde.** aktiviert ist, und wählen Sie anschließend **Installieren** aus.
 
-   > **Hinweis**: Die Installation sollte ungefähr 2 Minuten dauern.
+   > **Hinweis:** Die Installation sollte ungefähr 5 Minuten dauern.
 
 1. Überprüfen Sie die Informationen auf der Seite **Konfiguration abgeschlossen**, und wählen Sie **Beenden** aus, um das Fenster **Microsoft Azure Active Directory Connect** zu schließen.
 1. Navigieren Sie innerhalb der Remotedesktopsitzung für **az140-dc-vm11** in dem Microsoft Edge-Fenster, in dem das Azure-Portal geöffnet ist, zum Blatt **Benutzer*innen – Alle Benutzer*innen** des Microsoft Entra-Mandanten „Adatum Lab“.

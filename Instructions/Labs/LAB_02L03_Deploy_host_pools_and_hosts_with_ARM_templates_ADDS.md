@@ -51,7 +51,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Verwenden Sie dabei die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
 1. Suchen Sie im Azure-Portal nach **Virtuelle Computer**, und wählen Sie diese Option aus. Klicken Sie auf dem Blatt **Virtuelle Computer** auf **az140-dc-vm11**.
-1. Klicken Sie auf dem Blatt **az140-dc-vm11** auf **Verbinden**. Wählen Sie im Dropdownmenü die Option **Bastion** und auf der Registerkarte **Bastion** des Blatts **az140-dc-vm11 \| Verbinden** die Option **Bastion verwenden** aus.
+1. Wählen Sie auf dem Blatt **az140-dc-vm11** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und klicken Sie auf **Verbinden**:
 
    |Einstellung|Wert|
@@ -79,7 +79,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    (Get-ADUser -Filter "sAMAccountName -eq 'aduser8'").userPrincipalName
    ```
 
-   > **Hinweis:** Notieren Sie alle ermittelten Werte für die Benutzerprinzipalnamen. Sie werden sie später in diesem Lab benötigen.
+   > **Hinweis:** Notieren Sie alle Werte des Benutzerprinzipalnamens, die Sie identifiziert haben, **und** sie den Datensatz für die WVDInfra OE. Sie werden sie später in diesem Lab benötigen.
 
 1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Tokenablaufzeit zu berechnen, die zum Durchführen einer vorlagenbasierten Bereitstellung erforderlich ist.
 
@@ -100,11 +100,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Name|**hp2-Subnet**|
    |Subnetzadressbereich|**10.0.2.0/24**|
 
-1. Verwenden Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** im Azure-Portal oben auf der Seite das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen**, um nach **Netzwerksicherheitsgruppen** zu suchen und dorthin zu navigieren. Wählen Sie auf dem Blatt **Netzwerksicherheitsgruppen** die Netzwerksicherheitsgruppe in der Ressourcengruppe **az140-11-RG** aus.
+1. Verwenden Sie innerhalb der Bastion-Sitzung für **az140-dc-vm11** im Azure-Portal oben auf der Seite das Textfeld **Ressourcen, Dienste und Dokumente durchsuchen**, um nach **Netzwerksicherheitsgruppen** zu suchen und dorthin zu navigieren. Wählen Sie auf dem Blatt **Netzwerksicherheitsgruppen** die einzige Sicherheitsgruppe aus.
 1. Klicken Sie auf dem Blatt „Netzwerksicherheitsgruppe“ im vertikalen Menü auf der linken Seite im Abschnitt **Einstellungen** auf **Eigenschaften**.
 1. Klicken Sie auf dem Blatt **Eigenschaften** rechts neben dem Textfeld **Ressourcen-ID** auf das Symbol **In Zwischenablage kopieren**. 
 
    > **Hinweis:** Der Wert muss das folgende Format aufweisen: `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`. Die Abonnement-ID kann jedoch anders aussehen. Notieren Sie den Wert, da Sie ihn in der nächsten Aufgabe benötigen werden.
+1. Sie sollten jetzt **sechs** Werte aufgezeichnet haben. Einen Distinguished Name, 3 Benutzerprinzipalnamen, ein DateTime-Wert und die Ressourcen-ID. Wenn sie keine 6 Werte aufgezeichnet haben, gehen Sie diese Aufgabe erneut durch, **bevor** Sie fortfahren. 
 
 #### Aufgabe 2: Bereitstellen von Azure Virtual Desktop-Hostpools und -Hosts mithilfe von Azure Resource Manager-Vorlagen
 
@@ -118,7 +119,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Einstellung|Wert|
    |---|---|
    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-   |Ressourcengruppe|Der Name einer neuen Ressourcengruppe: **az140-23-RG**|
+   |Ressourcengruppe|erstellen Sie eine **neue** Ressourcengruppe mit dem Namen **az140-23-RG**|
    |Region|Der Name der Azure-Region, in der Sie im Lab **Vorbereiten der Bereitstellung von Azure Virtual Desktop (AD DS)** Azure-VMs bereitgestellt haben, auf denen AD DS-Domänencontroller gehostet werden|
    |Standort|Der Name der Azure-Region, die als Wert für die **Region**-Parameter festgelegt wurde|
    |Standort des Arbeitsbereichs|Der Name der Azure-Region, die als Wert für die **Region**-Parameter festgelegt wurde|
@@ -176,15 +177,13 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Ressourcengruppe|**az140-23-RG**|
    |Hostpooltoken|Der Wert des Tokens, das Sie in der vorherigen Aufgabe generiert haben|
    |Standort des Hostpools|Der Name der Azure-Region, in der Sie weiter oben in diesem Lab den Hostpool bereitgestellt haben|
-   |Benutzername des VM-Administratorkontos|**student**, @adatum.com darf nicht verwendet werden|
-   |Kennwort für das VM-Administratorkonto|**Pa55w.rd1234**|
    |VM-Standort|Der Name der Azure-Region, die als Wert für die **Hostpoolstandort**-Parameter festgelegt wurde|
    |Erstellen einer Netzwerksicherheitsgruppe|**false**|
    |ID der Netzwerksicherheitsgruppe|Der Wert des „resourceID“-Parameters der vorhandenen Netzwerksicherheitsgruppe, die Sie in der vorherigen Aufgabe ermittelt haben|
 
 1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die Option **Überprüfen + erstellen** und dann **Erstellen** aus.
 
-   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Aufgabe fortfahren. Dies kann etwa fünf Minuten dauern.
+   > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Aufgabe fortfahren. Dies kann etwa zehn Minuten dauern.
 
 #### Aufgabe 6: Überprüfen von Änderungen am Azure Virtual Desktop-Hostpool
 
@@ -206,12 +205,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf dem Blatt **az140-23-hp2 \| Anwendungsgruppen** in der Liste der Anwendungsgruppen den Eintrag **az140-23-hp2-DAG** aus.
 1. Wählen Sie auf dem Blatt **az140-23-hp2-DAG** im vertikalen Menü auf der linken Seite die Option **Zuweisungen** aus. 
 1. Wählen Sie auf dem Blatt **az140-23-hp2-DAG \| Zuweisungen** die Option **+ Hinzufügen** aus.
-1. Wählen Sie auf dem Blatt **Microsoft Entra-Benutzer*innen oder -Benutzergruppen auswählen** die Option **az140-wvd-personal** und dann **Auswählen** aus.
+1. Wählen Sie auf dem Blatt **Microsoft Entra-Benutzerinnen und Benutzer oder -Benutzergruppen auswählen** die Option **Gruppen** und dann **az140-wvd-personal** aus und wählen Sie dann **Auswählen** aus.
 
    > **Hinweis:** Sehen wir uns nun die Erfahrung eines Benutzers an, der eine Verbindung mit dem Azure Virtual Desktop-Hostpool herstellt.
 
 1. Suchen Sie auf Ihrem Labcomputer in dem Browserfenster, in dem das Azure-Portal angezeigt wird, nach **Virtuelle Computer**, und wählen Sie diese Option aus. Wählen Sie auf dem Blatt **Virtuelle Computer** den Eintrag **az140-cl-vm11** aus.
-1. Wählen Sie auf dem Blatt **az140-cl-vm11** die Option **Verbinden** aus. Wählen Sie im Dropdownmenü die Option **Bastion** und auf der Registerkarte **Bastion** des Blatts **az140-cl-vm11 \| Verbinden** die Option **Bastion verwenden** aus.
+1. Wählen Sie auf dem Blatt **az140-cl-vm11** **Verbindung herstellen** aus und wählen Sie im Dropdownmenü **Verbindung über Bastion herstellen** aus.
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Anmeldeinformationen ein, und klicken Sie auf **Verbinden**:
 
    |Einstellung|Wert|
@@ -224,10 +223,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 3. Wählen Sie innerhalb der Bastion-Sitzung für **az140-cl-vm11** im Fenster „Remotedesktop“ auf der Seite **Los geht's!** **Abonnieren** aus.
 4. Wählen Sie im Fenster des **Remotedesktopclients** die Option **Abonnieren** aus, und melden Sie sich bei entsprechender Aufforderung mit den Anmeldeinformationen für **aduser7** an. Geben Sie dabei den Benutzerprinzipalnamen (userPrincipalName) und das beim Erstellen dieses Benutzerkontos festgelegte Kennwort an.
 
-   > **Hinweis:** Wählen Sie alternativ im Fenster des **Remotedesktopclients** die Option **Mit URL abonnieren** aus. Geben Sie im Bereich **Arbeitsbereich abonnieren** unter **E-Mail oder Arbeitsbereichs-URL** die URL **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery** ein, wählen Sie **Weiter** aus, und melden Sie sich bei entsprechender Aufforderung mit den Anmeldeinformationen für **aduser7** an. (Verwenden Sie das userPrincipalName-Attribut als Benutzername und das beim Erstellen dieses Kontos festgelegte Kennwort.) 
+   > **Hinweis:** Wählen Sie alternativ im Fenster des **Remotedesktopclients** die Option **Mit URL abonnieren** aus. Geben Sie im Bereich **Arbeitsbereich abonnieren** unter **E-Mail oder Arbeitsbereichs-URL** die URL **https://client.wvd.microsoft.com/api/arm/feeddiscovery** ein, wählen Sie **Weiter** aus, und melden Sie sich bei entsprechender Aufforderung mit den Anmeldeinformationen für **aduser7** an. (Verwenden Sie das userPrincipalName-Attribut als Benutzername und das beim Erstellen dieses Kontos festgelegte Kennwort.) 
 
 1. Doppelklicken Sie auf der Seite **Remote Desktop** auf das Symbol **SessionDesktop**. Wenn Sie aufgefordert werden, Anmeldeinformationen einzugeben, geben Sie dasselbe Kennwort noch einmal ein. Aktivieren Sie das Kontrollkästchen **Speichern**, und klicken Sie auf **OK**.
-1. Deaktivieren Sie im Fenster **Bei all Ihren Apps angemeldet bleiben** das Kontrollkästchen für **Verwaltung meines Geräts durch meine Organisation zulassen**, und aktivieren Sie **Nein, nur bei dieser App anmelden**. 
 1. Vergewissern Sie sich, dass **aduser7** über Remotedesktop erfolgreich bei einem Host angemeldet wurde.
 1. Klicken Sie innerhalb der Remotedesktopsitzung für einen der Hosts als **aduser7** mit der rechten Maustaste auf **Starten**. Wählen Sie im Kontextmenü die Option **Herunterfahren oder abmelden** aus, und klicken Sie im Untermenü auf **Abmelden**.
 
@@ -249,7 +247,6 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Kehren Sie zur Bastion-Sitzung für **az140-cl-vm11** zurück. Wählen Sie im Fenster **Remotedesktop** das Symbol mit den Auslassungspunkten in der oberen rechten Ecke aus. Wählen Sie im Dropdownmenü**Abbestellen** und dann **Weiter** aus, wenn Sie zur Bestätigung aufgefordert werden.
 1. Wählen Sie innerhalb der Bastion-Sitzung für **az140-cl-vm11** im Fenster **Remotedesktop** auf der Seite **Los geht's!** **Abonnieren** aus.
 1. Wenn Sie aufgefordert werden, sich anzumelden, klicken Sie im Bereich **Konto auswählen** auf **Anderes Konto verwenden**, und melden Sie sich bei entsprechender Aufforderung mit dem Benutzerprinzipalnamen des Benutzerkontos **aduser8** mit dem Kennwort an, das Sie beim Erstellen dieses Kontos festgelegt haben.
-1. Deaktivieren Sie im Fenster **Bei all Ihren Apps angemeldet bleiben** das Kontrollkästchen für **Verwaltung meines Geräts durch meine Organisation zulassen**, und aktivieren Sie **Nein, nur bei dieser App anmelden**. 
 1. Doppelklicken Sie auf der Seite **Remotedesktop** auf das Symbol **SessionDesktop**. Vergewissern Sie sich, dass eine Fehlermeldung mit folgendem Inhalt angezeigt wird: **We couldn't connect because there are currently no available resources. Try again later or contact tech support for help if this keeps happening** (Es konnte keine Verbindung hergestellt werden, da derzeit keine Ressourcen verfügbar sind. Versuchen Sie es später noch einmal, oder wenden Sie sich an den technischen Support, wenn dieses Problem weiterhin auftritt). Klicken Sie auf **OK**.
 
    > **Hinweis:** Dies ist zu erwarten, da der Hostpool für die direkte Zuweisung konfiguriert und **aduser8** kein Host zugewiesen wurde.
@@ -257,6 +254,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wechseln Sie auf Ihrem Labcomputer zu dem Webbrowser, in dem das Azure-Portal angezeigt wird. Wählen Sie auf dem Blatt **az140-23-hp2 \| Sitzungshosts** in der Spalte **Zugewiesener Benutzer** neben einem der beiden restlichen nicht zugewiesenen Hosts den Link **(Zuweisen)** aus.
 1. Wählen Sie unter **Benutzer zuweisen** den Benutzer **aduser8** aus, klicken Sie auf **Auswählen**, und wenn Sie zur Bestätigung aufgefordert werden, auf **OK**.
 1. Kehren Sie zur Bastion-Sitzung für **az140-cl-vm11** zurück. Doppelklicken Sie im Fenster **Remotedesktop** auf das Symbol **SessionDesktop**. Wenn Sie aufgefordert werden, das Kennwort einzugeben, geben Sie das Kennwort ein, das Sie beim Erstellen dieses Benutzerkontos festgelegt haben. Wählen Sie **OK** aus, und vergewissern Sie sich, dass Sie sich beim zugewiesenen Host anmelden können.
+1. Klicken Sie im Sitzungsdesktop für den zugewiesenen Hosts für **aduser8** mit der rechten Maustaste auf **Start**. Wählen Sie im Kontextmenü die Option **Herunterfahren oder abmelden** aus, und wählen Sie dann im Untermenü **Abmelden** aus.
+1. Klicken Sie innerhalb der Bastion-Sitzung für **az140-cl-vm11** mit der rechten Maustaste auf **Start**. Wählen Sie im Kontextmenü die Option **Herunterfahren oder abmelden** aus, und wählen Sie im Untermenü **Abmelden** und dann **Schließen** aus.
 
 ### Übung 2: Beenden der im Lab bereitgestellten Azure-VMs und Aufheben ihrer Zuordnung
 
