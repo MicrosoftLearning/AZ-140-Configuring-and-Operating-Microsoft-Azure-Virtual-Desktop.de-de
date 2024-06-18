@@ -97,7 +97,20 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Variablen festzulegen, die zum Ausführen des nachfolgenden Skripts erforderlich sind:
+1. Führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Entra ID-Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um Windows Account Manager zu deaktivieren:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+   
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Variablen festzulegen, die zum Ausführen des nachfolgenden Skripts erforderlich sind:
 
    ```powershell
    $subscriptionId = (Get-AzContext).Subscription.Id
@@ -105,7 +118,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um ein AD DS-Computerobjekt zu erstellen, das das Azure Storage-Konto darstellt, das Sie zuvor in dieser Aufgabe erstellt haben und das zum Implementieren der AD DS-Authentifizierung verwendet wird:
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um ein AD DS-Computerobjekt zu erstellen, das das Azure Storage-Konto darstellt, das Sie zuvor in dieser Aufgabe erstellt haben und das zum Implementieren der AD DS-Authentifizierung verwendet wird:
 
    >**Hinweis:** Wenn bei der Ausführung dieses Skriptblocks eine Fehlermeldung angezeigt wird, stellen Sie sicher, dass Sie sich in dem Verzeichnis befinden, in dem auch „CopyToPSPath.ps1“ enthalten ist. Je nachdem, wie die Dateien zuvor in diesem Lab extrahiert wurden, befinden sie sich möglicherweise in einem Unterordner namens „AzFilesHybrid“. Im PowerShell-Kontext können Sie mithilfe von **cd AzFilesHybrid** Verzeichnisse in den Ordner ändern.
 
@@ -120,7 +133,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
       -OrganizationalUnitDistinguishedName 'OU=WVDInfra,DC=adatum,DC=com'
    ```
 
-1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um zu überprüfen, ob die AD DS-Authentifizierung für das Azure Storage-Konto aktiviert ist:
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um zu überprüfen, ob die AD DS-Authentifizierung für das Azure Storage-Konto aktiviert ist:
 
    ```powershell
    $storageaccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
