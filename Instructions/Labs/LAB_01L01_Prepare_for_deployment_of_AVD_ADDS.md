@@ -321,13 +321,19 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis:** Es kann sein, dass Sie 3–5 Minuten warten müssen, bevor eine Ausgabe der Installation des Az-Moduls erscheint. Möglicherweise müssen Sie auch weitere 5 Minuten warten, **nachdem** die Ausgabe beendet wurde. Dieses Verhalten wird erwartet.
 
-1. Führen Sie in der Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um Windows Account Manager zu deaktivieren:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
+1. Führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
+1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Entra ID-Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
 1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** Folgendes aus, um die ID-Eigenschaft des Microsoft Entra-Mandanten abzurufen, der Ihrem Azure-Abonnement zugeordnet ist:
 
    ```powershell

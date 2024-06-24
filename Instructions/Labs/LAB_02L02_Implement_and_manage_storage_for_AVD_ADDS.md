@@ -97,19 +97,19 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
+1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um Windows Account Manager zu deaktivieren:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. Führen Sie über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Entra ID-Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt.
-1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um Windows Account Manager zu deaktivieren:
-
-   ```powershell
-   Update-AzConfig -EnableLoginByWam $false
-   ```
-   
+1. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Entra ID-Benutzerkontos an, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ verfügt. 
 1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um die Variablen festzulegen, die zum Ausführen des nachfolgenden Skripts erforderlich sind:
 
    ```powershell
