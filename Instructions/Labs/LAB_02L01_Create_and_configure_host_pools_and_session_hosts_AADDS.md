@@ -95,9 +95,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Namenspräfix|**az140-21-p1**|
    |Virtueller Computer Standort|Der Name der Azure-Region, in der Sie in der ersten Übung dieses Labs Ressourcen bereitgestellt haben|
    |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
-   |Sicherheitstyp|**Standard**|
+   |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
    |Abbildung|**Windows 11 Enterprise (mehrere Sitzungen) + Microsoft 365-Apps, Version 22H2**|
-   |Größe des virtuellen Computers|**Standard D2s v3**|
+   |Größe des virtuellen Computers|**Standard DC2s_v3**|
    |Number of VMs (Anzahl von VMs)|**2**|
    |Typ des Betriebssystemdatenträgers|**SSD Standard**|
    |Virtuelles Netzwerk|**az140-aadds-vnet11a**|

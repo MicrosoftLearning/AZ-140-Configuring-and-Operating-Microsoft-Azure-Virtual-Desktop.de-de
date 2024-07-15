@@ -113,12 +113,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Typ des virtuellen Computers|Virtueller Azure-Computer|
    |Virtueller Computer Standort|Der Name der Azure-Region, in der Sie Ressourcen im letzten Lab bereitgestellt haben.|
    |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
-   |Sicherheitstyp|**Standard**|
+   |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
    |Abbildung|**Windows 11 Enterprise (mehrere Sitzungen) + Microsoft 365-Apps, Version 22H2**|
-   |Größe des virtuellen Computers|**Standard D2s v3**|
+   |Größe des virtuellen Computers|**Standard DC2s_v3**|
    |Number of VMs (Anzahl von VMs)|**2**|
    |Typ des Betriebssystemdatenträgers|**SSD Standard**|
-   |Größe des Betriebssystemdatenträgers|**Größe auf 128 GB (P10) ändern**|
+   |Größe des Betriebssystemdatenträgers|**Standardgröße (128 GiB)**|
    |Startdiagnose|**Mit verwaltetem Speicherkonto aktivieren (empfohlen)**|
    |Virtuelles Netzwerk|**az140-adds-vnet11**|
    |Subnetz|**hp1-Subnet (10.0.1.0/24)**|
@@ -160,11 +160,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Namenspräfix|**az140-21-p1**|
    |Virtueller Computer Standort|Der Name der Azure-Region, in der Sie die ersten zwei Sitzungshost-VMs bereitgestellt haben|
    |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
-   |Sicherheitstyp|**Standard**|
+   |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
    |Abbildung|**Windows 11 Enterprise (mehrere Sitzungen) + Microsoft 365-Apps, Version 22H2**|
    |Number of VMs (Anzahl von VMs)|**1**|
    |Typ des Betriebssystemdatenträgers|**SSD Standard**|
-   |Größe des Betriebssystemdatenträgers|**Standardgröße (128 GB)**|
+   |Größe des Betriebssystemdatenträgers|**Standardgröße (128 GiB)**|
    |Startdiagnose|**Mit verwaltetem Speicherkonto aktivieren (empfohlen)**|
    |Virtuelles Netzwerk|**az140-adds-vnet11**|
    |Subnetz|**hp1-Subnet (10.0.1.0/24)**|
