@@ -80,9 +80,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Hostpoolname|**az140-21a-hp1**|
    |Standort|der Name der Azure-Region, in der Sie weiter oben in diesem Lab die Microsoft Entra DS-Instanz bereitgestellt haben|
    |Überprüfungsumgebung|**Nein**|
+   |Bevorzugter App-Gruppentyp|**Desktop**|
    |Hostpooltyp|**In einem Pool zusammengefasst**|
    |Maximale Anzahl von Sitzungen|**12**|
    |Lastenausgleichsalgorithmus|**Breitensuche**|
+
+   > **Hinweis**: Wenn ein Benutzer oder eine Benutzerin sowohl RemoteApp- als auch Desktop-Apps veröffentlicht hat, bestimmt der bevorzugte App-Gruppentyp, welcher dieser Apps in ihrem Feed angezeigt wird.
 
 1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen an, übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie anschließend **Weiter: Arbeitsbereich >** aus. Ersetzen Sie den Platzhalter *<Azure_AD_domain_name>* durch den Namen des Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, in dem Sie die Microsoft Entra DS-Instanz bereitgestellt haben, und ersetzen Sie den Platzhalter `<password>` durch das Kennwort, das Sie bei der Erstellung des Kontos „aadadmin1“ festgelegt haben:
 
@@ -270,23 +273,35 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    > **Hinweis:** Der Benutzerprinzipalname von **aaduser1** muss folgendes Format aufweisen: **aaduser1@***<Azure_AD_domain_name>*. Der Platzhalter *<Azure_AD_domain_name>* entspricht dem Namen des Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, in dem Sie die Microsoft Entra DS-Instanz bereitgestellt haben.
 
 1. Deaktivieren Sie im Fenster **Bei all Ihren Apps angemeldet bleiben** das Kontrollkästchen für **Verwaltung meines Geräts durch meine Organisation zulassen**, und aktivieren Sie **Nein, nur bei dieser App anmelden**. 
-1. Vergewissern Sie sich, dass auf der Seite **Remotedesktop** die Liste der Anwendungen angezeigt wird, die in den Anwendungsgruppen enthalten sind, die dem Benutzerkonto **aaduser1** über ihre Gruppenmitgliedschaft zugeordnet sind. 
+1. Überprüfen Sie, ob auf der Seite **Remotedesktop** der SessionDesktop angezeigt wird, der in der automatisch generierten az140-21-hp1-DAG-Desktop-Anwendungsgruppe enthalten ist, die im Arbeitsbereich veröffentlicht und über die Gruppenmitgliedschaft mit dem Benutzerkonto **aduser1** verbunden ist. 
+
+   > **Hinweis**: Dies wird erwartet, da der **Bevorzugte App-Gruppentyp** des Hostpools derzeit auf **Desktop** festgelegt ist.
 
 #### Aufgabe 3: Testen von Azure Virtual Desktop-Apps
 
-1. Doppelklicken Sie in der Bastion-Sitzung für **az140-cl-vm11a** im Clientfenster **Remotedesktop** in der Liste der Anwendungen auf **Eingabeaufforderung**, und vergewissern Sie sich, dass ein Fenster vom Typ **Eingabeaufforderung** geöffnet wird. Geben Sei bei der Aufforderung zur Authentifizierung das Kennwort ein, das Sie für das Benutzerkonto **aaduser1** festgelegt haben, aktivieren Sie das Kontrollkästchen **Anmeldedaten speichern**, und wählen Sie anschließend **OK** aus.
+1. Doppelklicken Sie in der Bastion-Sitzung für **az140-cl-vm11a** im Clientfenster des **Remotedesktop** in der Liste der Anwendungen auf **SessionDesktop**, und vergewissern Sie sich, dass eine Remotedesktopsitzung gestartet wird. 
 
    > **Hinweis:** Es kann anfangs einige Minuten dauern, bis die Anwendung gestartet wird. Danach sollte der Anwendungsstart aber viel schneller erfolgen.
 
-1. Geben Sie an der Eingabeaufforderung **hostname** ein, und drücken Sie die **EINGABETASTE**, um den Namen des Computers anzuzeigen, auf dem die Eingabeaufforderung ausgeführt wird.
+   > **Hinweis:** Wenn Ihnen die Anmeldeaufforderung **Willkommen bei Microsoft Teams** angezeigt wird, schließen Sie sie. 
 
-   > **Hinweis:** Vergewissern Sie sich, dass der angezeigte Name nicht **az140-cl-vm11a**, sondern **az140-21-p1-0** oder **az140-21-p1-1** lautet.
+1. Klicken Sie in der Sitzung **SessionDesktop** mit der rechten Maustaste auf **Start**, und wählen Sie **Ausführen** aus. Geben Sie in das Textfeld **Öffnen** des Dialogfelds **Ausführen** **cmd** ein, und wählen Sie **OK** aus. 
+1. Geben Sie in der Sitzung **SessionDesktop** in der Eingabeaufforderung **hostname** ein, und drücken Sie die **Eingabetaste**, um den Namen des Computers anzuzeigen, auf dem die Remotedesktopsitzung ausgeführt wird.
+1. Vergewissern Sie sich, dass der angezeigte Name **az140-21-p1-0**, **az140-21-p1-1** oder **az140-21-p1-2** lautet.
+1. Geben Sie in der Eingabeaufforderung **logoff** ein, und drücken Sie die **Eingabetaste**, um sich bei der aktuellen Remote-App-Sitzung abzumelden.
 
+   > **Hinweis**: Als nächstes ändern Sie den **Bevorzugten App-Gruppentyp**, indem Sie ihn auf **RemoteApp** festlegen.
+
+1. Suchen Sie in der Bastion-Sitzung zu **az140-cl-vm11a** in dem Webbrowser-Fenster, das das Azure-Portal anzeigt, nach **Azure Virtual Desktop** und wählen Sie auf dem Blatt **Azure Virtual Desktop** in der vertikalen Menüleiste im Abschnitt **Verwalten** die Option **Hostpools** aus.
+1. Wählen Sie auf dem Blatt **Azure Virtual Desktop \| Hostpools** in der Liste der Hostpools den Eintrag **az140-21-hp1** aus.
+1. Wählen Sie auf dem Blatt **az140-21-hp1** in der vertikalen Menüleiste im Abschnitt **Einstellungen** die Option **Eigenschaften**, im Feld **Bevorzugter App-Gruppentyp** die Option **Remote-App** und anschließend die Option **Speichern**. 
+1. Wählen Sie innerhalb der Bastion-Sitzung zu **az140-cl-vm11** im Client-Fenster **Remotedesktop** das Auslassungszeichen in der oberen rechten Ecke und wählen Sie im Dropdown-Menü **Aktualisieren**.
+1. Überprüfen Sie, ob auf der Seite **Remotedesktop** einzelne Anwendungen angezeigt werden, die zu den beiden Anwendungsgruppen gehören, die Sie erstellt und im Arbeitsbereich veröffentlicht haben und die über die Gruppenmitgliedschaft auch mit dem Benutzerkonto **aduser1** verbunden sind. 
+
+   > **Hinweis**: Dies wird erwartet, da der **Bevorzugte App-Gruppentyp** des Hostpools jetzt auf **RemoteApp** festgelegt ist.
+
+1. Doppelklicken Sie in der Bastion-Sitzung für **az140-cl-vm11a** im Clientfenster **Remotedesktop** in der Liste der Anwendungen auf **Eingabeaufforderung**, und vergewissern Sie sich, dass ein Fenster vom Typ **Eingabeaufforderung** geöffnet wird. Geben Sei bei der Aufforderung zur Authentifizierung das Kennwort ein, das Sie beim Erstellen des Benutzerkontos **aduser1** festgelegt haben, aktivieren Sie das Kontrollkästchen **Anmeldedaten speichern**, und wählen Sie **OK** aus.
 1. Geben Sie an der Eingabeaufforderung **logoff** ein, und drücken Sie die **EINGABETASTE**, um sich bei der aktuellen Remote-App-Sitzung abzumelden.
-1. Doppelklicken Sie in der Bastion-Sitzung für **az140-cl-vm11a** im Clientfenster des **Remotedesktop** in der Liste der Anwendungen auf **SessionDesktop**, und vergewissern Sie sich, dass eine Remotedesktopsitzung gestartet wird. 
-1. Klicken Sie in der Sitzung **Standarddesktop** mit der rechten Maustaste auf **Start**, und wählen Sie **Ausführen** aus. Geben Sie **cmd** in das Textfeld **Öffnen** des Dialogfelds **Ausführen** ein, und wählen Sie **OK** aus. 
-1. Geben Sie in der Sitzung **Standarddesktop** an der Eingabeaufforderung **hostname** ein, und drücken Sie die **EINGABETASTE**, um den Namen des Computers anzuzeigen, auf dem die Remotedesktopsitzung ausgeführt wird.
-1. Vergewissern Sie sich, dass der angezeigte Name entweder **az140-21-p1-0** oder **az140-21-p1-1** lautet.
 
 ### Übung 3: Beenden der im Lab bereitgestellten und verwendeten Azure-VMs und Aufheben ihrer Zuordnung
 
