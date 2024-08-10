@@ -195,7 +195,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
    |Name|**az140-aadds-vnet11a**|
    |Adressbereich|**10.10.0.0/16**|
    |Subnetzname|**aadds-Subnet**|
-   |Subnetzname|**10.10.0.0/24**|
+   |Adressbereich|**10.10.0.0/24**|
 
 1. Wählen Sie **Weiter** aus, wenn Sie sich wieder auf der Registerkarte **Netzwerk erstellen** des Blatts **Virtuelles Netzwerk erstellen** befinden. (Behalten Sie für alle anderen Einstellungen die bereits vorhandenen Werte bei.)
 1. Akzeptieren Sie auf der Registerkarte **Verwaltung** des Blatts **Microsoft Entra Domain Services-Instanz erstellen** die Standardeinstellungen und wählen Sie **Weiter** aus.
