@@ -1,3 +1,5 @@
+**Dieser Kurs wird am **30.09.2024** eingestellt. Nachdem der Kurs eingestellt wurde, werden alle GitHub-Repositorys entfernt. Vielen Dank!**
+
 # AZ-140: Konfigurieren und Betreiben von Microsoft Azure Virtual Desktop
 
 - **[Link zu Labs (HTML-Format)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**
