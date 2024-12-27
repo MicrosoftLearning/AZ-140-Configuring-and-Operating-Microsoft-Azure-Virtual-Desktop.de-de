@@ -24,7 +24,7 @@ Sie haben ein Microsoft Azure-Abonnement. Sie müssen eine Azure Virtual Desktop
   
 In diesem Lab lernen Sie Folgendes:
 
-- Bereitstellen von Microsoft Entra für Azure Virtual Desktop Sitzungshosts
+- Bereitstellen von Microsoft Entra für Azure Virtual Desktop-Sitzungshosts
 
 ## Labdateien
 
@@ -66,10 +66,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-11e-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-11e-RG**|
     |Name des virtuellen Netzwerks|**az140-vnet11e**|
-    |Region|den Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Region|Den Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitstellen möchten|
 
 1. Übernehmen Sie auf der Registerkarte **Sicherheit** die Standardeinstellungen, und wählen Sie **Weiter** aus.
 1. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Einstellungen an:
@@ -84,7 +84,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |---|---|
     |Name|**hp1-Subnet**|
     |Startadresse|**10.20.1.0**|
-    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|deaktiviert|
+    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|Disabled|
 
 1. Zurück auf der Registerkarte **IP-Adressen** **Überprüfen + erstellen** auswählen und dann auf der Registerkarte **Überprüfen + erstellen** **Erstellen** auswählen.
 
@@ -104,22 +104,23 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 #### Aufgabe 2: Bereitstellen eines Azure Virtual Desktop-Hostpools
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **Azure Virtual Desktop**, wählen Sie es aus, wählen Sie auf der Seite **Azure Virtual Desktop** im Abschnitt **Verwalten** des vertikalen Navigationsmenüs **Hostpools** auswählen und auf der Seite **Azure Virtual Desktop \| Hostpools** **+ Erstellen** auswählen. 
-1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite „**Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Virtuelle Maschinen >**‘ aus (belassen Sie die anderen Einstellungen auf ihren Standardwerten):
+1. Geben Sie auf der Registerkarte **Allgemeine Informationen** der Seite **Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Sitzungshosts >** (belassen Sie die anderen Einstellungen auf ihren Standardwerten):
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-21e-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-21e-RG**|
     |Hostpoolname|**az140-21-hp1**|
-    |Location|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Location|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Überprüfungsumgebung|**Nein**|
     |Bevorzugter App-Gruppentyp|**Desktop**|
     |Hostpooltyp|**In einem Pool zusammengefasst**|
+    |Sitzungshostkonfiguration erstellen|**Nein**|
     |Lastenausgleichsalgorithmus|**Breitensuche**|
 
     > **Hinweis**: Bei Verwendung des breitenorientierten Algorithmus für den Lastenausgleich ist der Parameter für die maximale Anzahl von Sitzungen optional.
 
-1. Geben Sie auf der Registerkarte **Virtuelle Maschinen** auf der Seite **Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Arbeitsbereich >** aus (lassen Sie die anderen Einstellungen auf ihren Standardwerten):
+1. Geben Sie auf der Registerkarte **Sitzungshosts** auf der Seite **Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Arbeitsbereich >** aus (lassen Sie die anderen Einstellungen auf ihren Standardwerten):
 
     > **Hinweis**: Wenn Sie den Wert für **Präfixname** einstellen, wechseln Sie zur Registerkarte Ressourcen auf der rechten Seite des Lab-Sitzungsfensters. Suchen Sie dort die Zeichenfolge zwischen *User1-* und dem Zeichen *@*. Verwenden Sie diese Zeichenfolge, um den *zufälligen* Platzhalter zu ersetzen.
 
@@ -129,10 +130,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Resource group|**Standardmäßig mit der Ressourcengruppe des Hostpools identisch.**|
     |Namenspräfix|**sh**-*random*|
     |Typ des virtuellen Computers|**Virtueller Azure-Computer**|
-    |Virtueller Computer Standort|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Virtueller Computer Standort|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
     |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
-    |Abbildung|**Windows 11 Enterprise für mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps - Gen2**|
+    |Abbildung|**Windows 11 Enterprise für mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps**|
     |Größe des virtuellen Computers|**Standard DC2s_v3**|
     |Number of VMs (Anzahl von VMs)|**2**|
     |Typ des Betriebssystemdatenträgers|**SSD Standard**|
@@ -145,8 +146,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Wählen Sie das gewünschte Verzeichnis für die Einbindung aus.|**Microsoft Entra ID**|
     |VM bei Intune registrieren|**Nein**|
     |Benutzername|**Kursteilnehmer**|
-    |Kennwort|eine hinreichend komplexe Zeichenfolge, die als Kennwort für das integrierte Administratorkonto verwendet werden soll|
-    |Kennwort bestätigen|die gleiche Zeichenfolge von Zeichen, die Sie zuvor angegeben haben|
+    |Kennwort|Eine hinreichend komplexe Zeichenfolge, die als Kennwort für das integrierte Administratorkonto verwendet werden soll|
+    |Kennwort bestätigen|Die gleiche Zeichenfolge, die Sie zuvor eingegeben haben|
 
     > **Hinweis**: Das Kennwort sollte mindestens 12 Zeichen lang sein und aus einer Kombination von Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen bestehen. Ausführliche Informationen finden Sie unter den Informationen zu [den Kennwortanforderungen beim Erstellen einer Azure-VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 
@@ -172,7 +173,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-21a-RG**|
     |Hostpool|**az140-21-hp1**|
     |Anwendungsgruppentyp|**Remote-App**|
@@ -211,10 +212,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Beschreibung|**Microsoft PowerPoint**|
     |Befehlszeile erforderlich|**Nein**|
 
-1. Zurück auf der Registerkarte **Anwendungen** auf der Seite **Anwendungsgruppe erstellen** **Weiter: Zuweisungen >** auswählen.
+1. Zurück auf der Registerkarte **Anwendungen** auf der Seite **Anwendungsgruppe erstellen****Weiter: Zuweisungen >** auswählen.
 1. Auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen** **+ Microsoft Entra-Benutzende oder -Benutzendengruppen** hinzufügen auswählen.
 1. Wählen Sie auf der Seite **Microsoft Entra-Benutzende oder -Benutzendengruppen** auswählen die Option **Gruppen** aus, geben Sie den vollständigen Namen der Gruppe **AVD-RemoteApp** ein, die Sie in der ersten Aufgabe dieser Übung identifiziert haben, aktivieren Sie das Kontrollkästchen neben dem Gruppennamen und klicken Sie auf **Auswählen**.
-1. Zurück auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen** **Weiter: Arbeitsbereich >** auswählen.
+1. Zurück auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen****Weiter: Arbeitsbereich >** auswählen.
 1. Geben Sie auf der Registerkarte **Arbeitsbereich** auf der Seite **Arbeitsbereich erstellen** die folgende Einstellung an und wählen Sie **Überprüfen + erstellen** aus:
 
     |Einstellung|Wert|
@@ -233,7 +234,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-21a-RG**|
     |Hostpool|**az140-21-hp1**|
     |Anwendungsgruppentyp|**RemoteApp**|
@@ -258,10 +259,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Symbolpfad|**C:\Windows\system32\cmd.exe**|
     |Symbolindex|0|
 
-1. Zurück auf der Registerkarte **Anwendungen** auf der Seite **Anwendungsgruppe erstellen** **Weiter: Zuweisungen >** auswählen.
+1. Zurück auf der Registerkarte **Anwendungen** auf der Seite **Anwendungsgruppe erstellen****Weiter: Zuweisungen >** auswählen.
 1. Auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen** **+ Microsoft Entra-Benutzende oder -Benutzendengruppen** hinzufügen auswählen.
 1. Wählen Sie auf der Seite **Microsoft Entra-Benutzende oder -Benutzendengruppen** auswählen die Option **Gruppen** aus, geben Sie den vollständigen Namen der Gruppe **AVD-RemoteApp** ein, die Sie in der ersten Aufgabe dieser Übung identifiziert haben, aktivieren Sie das Kontrollkästchen neben dem Gruppennamen und klicken Sie auf **Auswählen**.
-1. Zurück auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen** **Weiter: Arbeitsbereich >** auswählen.
+1. Zurück auf der Registerkarte **Aufgaben** auf der Seite **Anwendungsgruppe erstellen****Weiter: Arbeitsbereich >** auswählen.
 1. Geben Sie auf der Registerkarte **Arbeitsbereich** auf der Seite **Arbeitsbereich erstellen** die folgende Einstellung an und wählen Sie **Überprüfen + erstellen** aus:
 
     |Einstellung|Wert|
@@ -280,7 +281,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-21a-RG**|
     |Arbeitsbereichsname|**az140-21-ws1**|
     |Anzeigename|**az140-21-ws1**|
@@ -307,7 +308,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Stellen Sie sicher, dass auf der Registerkarte **Rolle** auf der Seite **Rollenzuweisung hinzufügen** die Registerkarte **Stellenfunktionsrollen** ausgewählt ist. Geben Sie im Textfeld Suchen die Zeichenfolge **Virtual Machine User Login** ein, wählen Sie in der Ergebnisliste **Virtual Machine User Login** aus und wählen Sie dann **Weiter**.
 1. Stellen Sie sicher, dass auf der Registerkarte **Mitglieder** auf der Seite **Rollenzuweisung hinzufügen** die Option **Benutzende, Gruppe oder Dienstprinzipal** ausgewählt ist. Klicken Sie auf **+ Mitglieder auswählen**, suchen Sie im Bereich **Mitglieder auswählen** die Gruppe **AVD-RemoteApp**, die Sie in der ersten Aufgabe dieser Übung identifiziert haben, und klicken Sie auf **Auswählen**.
 1. Zurück auf der Registerkarte **Mitglieder** der Seite **Rollenzuweisung hinzufügen** **Weiter** auswählen.
-1. Auf der Registerkarte **Auftragstyp (Vorschau)** der Seite **Rollenzuweisung hinzufügen** den **Auftragstyp (Vorschau)** auf **Aktiv** setzen und dann **Überprüfen + zuweisen** auswählen.
+1. Auf der Registerkarte **Auftragstyp** der Seite **Rollenzuweisung hinzufügen** den **Auftragstyp** auf **Aktiv** setzen und dann **Überprüfen + zuweisen** auswählen.
 1. Auf der Registerkarte **Überprüfen + zuweisen** der Seite **Rollenzuweisung hinzufügen** **Überprüfen + zuweisen** auswählen. 
 1. Zurück auf der Seite **az140-21e-RG\|Zugriffssteuerung (IAM)** wählen Sie **+ Hinzufügen** und im Dropdownmenü **Rollenzuweisung hinzufügen**.
 1. Stellen Sie sicher, dass auf der Registerkarte **Rolle** der Seite **Rollenzuweisung hinzufügen** die Registerkarte **Stellenfunktionen** ausgewählt ist. Geben Sie im Textfeld Suchen Folgendes ein: **Virtual Machine Administrator Login** ein, wählen Sie in der Ergebnisliste **Virtual Machine Administrator Login** aus und klicken Sie dann auf **Weiter**.

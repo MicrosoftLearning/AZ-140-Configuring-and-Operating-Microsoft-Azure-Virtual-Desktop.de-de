@@ -114,7 +114,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Suchen Sie auf Ihrem Laborcomputer im Browser, in dem das Azure-Portal geöffnet ist, nach **Azure Virtual Desktop**, und wählen Sie es aus. 
 1. Wählen Sie auf der Seite **Azure Virtual Desktop** die Option **Skalierungspläne** und dann **+ Erstellen** aus.
-1. Geben Sie auf der Registerkarte **Basics** des Assistenten zum **Erstellen eines Skalierungsplans** die folgenden Informationen an, und wählen Sie **Nächste  Zeitpläne >** aus (für die anderen Werte behalten Sie die Standardwerte):
+1. Geben Sie auf der Registerkarte **Allgemeine Informationen** des Assistenten zum **Erstellen eines Skalierungsplans** die folgenden Informationen an, und wählen Sie **Weiter: Zeitpläne >** aus (für die anderen Werte behalten Sie die Standardwerte bei):
 
    |Einstellung|Wert|
    |---|---|
@@ -184,7 +184,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    >**Hinweis:** Der Kapazitätsschwellenwert in dieser Phase wird durch den Schwellenwert für den Kapazitätsabbau bestimmt.
 
-1. Wählen Sie auf der Registerkarte **Zeitpläne** des Assistenten zum **Erstellen eines Skalierungsplans** **Weiter: Hostpoolzuweisungen >** aus:
+1. Wählen Sie auf der Registerkarte **Zeitpläne** des Assistenten zum **Erstellen eines Skalierungsplans****Weiter: Hostpoolzuweisungen >** aus:
 1. Wählen Sie auf der Seite **Hostpoolzuweisungen** in der Dropdownliste **Hostpool auswählen** **az140-21-hp1** aus, stellen Sie sicher, dass das Kontrollkästchen **Automatische Skalierung aktivieren** aktiviert ist, wählen Sie **Überprüfen + Erstellen** und dann **Erstellen** aus.
 
 

@@ -86,7 +86,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |---|---|
     |Name|**pe-Subnet**|
     |Startadresse|**10.20.255.0**|
-    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|deaktiviert|
+    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|Disabled|
 
 #### Aufgabe 3: Implementieren eines privaten Endpunkts für Verbindungen mit einem Hostpool
 
@@ -97,7 +97,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pehp1**|
     |Name der Netzwerkschnittstelle|**az140-11-pehp1-nic**|
@@ -123,12 +123,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Einstellung|Wert|
     |---|---|
     |Integration in eine private DNS-Zone|**Ja**|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
 
     > **Hinweis**: Dieser Schritt führt zur Erstellung einer privaten DNS-Zone mit dem Namen **privatelink.wvd.microsoft.com**.
 
-1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts** **Überprüfen + erstellen** aus.
+1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts****Weiter: Überprüfen + erstellen** aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** der Seite **Erstellen eines privaten Endpunkts** **Erstellen** aus.
 
     > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Die Bereitstellung dauert ungefähr drei Minuten.
@@ -145,7 +145,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pefeeddwnld**|
     |Name der Netzwerkschnittstelle|**az140-11-pefeeddwnld-nic**|
@@ -171,12 +171,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Einstellung|Wert|
     |---|---|
     |Integration in eine private DNS-Zone|**Ja**|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
 
     > **Hinweis**: In diesem Schritt wird die private DNS-Zone mit dem Namen **privatelink.wvd.microsoft.com** genutzt, die Sie in der vorherigen Aufgabe erstellt haben.
 
-1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts** **Überprüfen + erstellen** aus.
+1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts****Weiter: Überprüfen + erstellen** aus.
 1. Wälen Sie auf der Registerkarte **Überprüfen + erstellen** auf der Seite **Erstellen eines privaten Endpunkts ** **Erstellen** aus.
 
     > **Hinweis**: Warten Sie nicht, bis die Bereitstellung abgeschlossen ist, sondern fahren Sie stattdessen mit der nächsten Aufgabe fort. Die Bereitstellung kann ungefährt eine Minute dauern.
@@ -193,7 +193,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pefeeddisc**|
     |Name der Netzwerkschnittstelle|**az140-11-pefeeddisc-nic**|
@@ -219,12 +219,12 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Einstellung|Wert|
     |---|---|
     |Integration in eine private DNS-Zone|**Ja**|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
 
     > **Hinweis**: In diesem Schritt wird die private DNS-Zone mit dem Namen **privatelink.wvd.microsoft.com** genutzt, die Sie in einer der vorherigen Aufgaben erstellt haben.
 
-1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts** **Überprüfen + erstellen** aus.
+1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts****Weiter: Überprüfen + erstellen** aus.
 1. Wälen Sie auf der Registerkarte **Überprüfen + erstellen** auf der Seite **Erstellen eines privaten Endpunkts ** **Erstellen** aus.
 
     > **Hinweis**: Warten Sie nicht, bis die Bereitstellung abgeschlossen ist, sondern fahren Sie stattdessen mit der nächsten Aufgabe fort. Die Bereitstellung kann ungefährt eine Minute dauern.
@@ -262,35 +262,35 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |---|---|
     |Name|**Clientsubnetz**|
     |Startadresse|**10.20.2.0**|
-    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|deaktiviert|
+    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|Disabled|
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **virtuellen Maschinen**, wählen Sie diese aus, wählen Sie auf der Seite **Virtuelle Maschinen** die Option **+ Erstellen** aus und wählen Sie in der Dropdownliste die Option **Azure Virtual Machine** aus.
-1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite **Erstellen einer virtuellen Maschine** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten) und wählen Sie **Weiter: Datenträger >** aus:
+1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite **Erstellen eines virtuellen Computers** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten) und wählen Sie **Weiter: Datenträger >** aus:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-111e-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-111e-RG**|
     |Name des virtuellen Computers|**az140-111e-vm0**|
     |Region|Name der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitgestellt haben|
     |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
     |Sicherheitstyp|**Standard**|
-    |Abbildung|**Windows 11 Pro, Version 22H2 - x64 Gen2**|
+    |Abbildung|**Windows 11 Pro, Version 23H2 – x64 Gen2**|
     |Größe|**Standard DC2s_v3**|
-    |Benutzername|beliebiger gültiger Benutzername Ihrer Wahl|
-    |Kennwort|ein beliebiges gültiges Kennwort Ihrer Wahl|
+    |Benutzername|Beliebiger gültiger Benutzername Ihrer Wahl|
+    |Kennwort|Ein beliebiges gültiges Kennwort Ihrer Wahl|
     |Öffentliche Eingangsports|**Keine**|
     |Lizenzierung|Aktivieren Sie das Kontrollkästchen|
 
     > **Hinweis**: Das Kennwort sollte mindestens 12 Zeichen lang sein und aus einer Kombination von Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen bestehen. Ausführliche Informationen finden Sie unter den Informationen zu [den Kennwortanforderungen beim Erstellen einer Azure-VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 
-1. Stellen Sie auf der Registerkarte **Datenträger** auf der Seite **Erstellen einer virtuellen Maschine** den **Betriebssystem-Datenträgertyp** auf **HDD Standard (lokal redundanter Speicher)** ein und wählen Sie **Weiter: Networking >** aus.
+1. Stellen Sie auf der Registerkarte **Datenträger** auf der Seite **Erstellen eines virtuellen Computers** den **Betriebssystem-Datenträgertyp** auf **HDD Standard (lokal redundanter Speicher)** ein und wählen Sie **Weiter: Networking >** aus.
 1. Geben Sie auf der Registerkarte **Networking** der Seite **Erstellen einer virtuellen Maschine** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten):
 
     |Einstellung|Wert|
     |---|---|
     |Virtuelles Netzwerk|**az140-vnet11e**|
-    |Subnet|*ein neues Subnetz mit dem Namen***client-Subnet**|
+    |Subnet|**Clientsubnetz**|
     |Öffentliche IP-Adresse|**(new) az140-111e-vm0-ip**|
     |NIC-Netzwerksicherheitsgruppe|**Advanced**|
 
@@ -302,7 +302,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Einstellung|Wert|
     |---|---|
     |`Source`|**IP-Adressen**|
-    |IP-Quelladressen/CIDR-Bereiche|unverändert lassen (dies sollte weiterhin Ihre öffentliche IP-Adresse enthalten)|
+    |IP-Quelladressen/CIDR-Bereiche|Unverändert lassen (dies sollte weiterhin Ihre öffentliche IP-Adresse enthalten)|
     |Quellportbereiche|*|
     |Destination|**Alle**|
     |Dienst|**RDP**|
@@ -311,8 +311,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Name|**AllowCidrBlockRDPInbound**|
 
 1. Zurück auf der Seite **Erstellen einer Netzwerk-Sicherheitsgruppe ** wählen Sie **OK** aus.
-1. Zurück auf der Registerkarte **Networking** auf der Seite **Erstellen einer virtuellen Maschine** wählen Sie **Weiter: Management >** aus:
-1. Geben Sie auf der Registerkarte **Management** der Seite **Erstellen einer virtuellen Maschine** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten) und wählen Sie dann **Weiter: Überwachung >** aus:
+1. Zurück auf der Registerkarte **Networking** auf der Seite **Erstellen eines virtuellen Computers** wählen Sie **Weiter: Management >** aus:
+1. Geben Sie auf der Registerkarte **Management** der Seite **Erstellen eines virtuellen Computers** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten) und wählen Sie dann **Weiter: Überwachung >** aus:
 
     |Einstellung|Wert|
     |---|---|
@@ -355,7 +355,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     > **Hinweis**: Um die der Lab-Umgebung zugeordneten Kosten zu minimieren, beenden Sie die neu bereitgestellte Azure-VM und heben die Zuweisung auf.
 
 1. Wechseln Sie zur Konsolensitzung des Lab-Computers, wählen Sie im Webbrowser, der das Azure-Portal anzeigt, auf der Seite **az140-111e-vm0** die Option **Übersicht** aus und wählen Sie dann in der Symbolleiste die Option **Beenden** aus.
-1. Wählen Sie im Popupfenster **Diese virtuelle Maschine beenden** die Option **Ja** aus.
+1. Wählen Sie im Popupfenster **Diesen virtuellen Computer beenden** die Option **Ja** aus.
 
 #### Aufgabe 7: Zulassen des Zugriffs auf ein öffentliches Netzwerk auf einen Hostpool und einen Arbeitsbereich
 
