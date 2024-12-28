@@ -66,10 +66,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-411e-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-411e-RG**|
     |Name|**az140-laworkspace41e**|
-    |Region|der Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
+    |Region|Der Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
 
 1. Wählen Sie auf der Seite **Bewerten + erstellen** die Option **Erstellen**.
 

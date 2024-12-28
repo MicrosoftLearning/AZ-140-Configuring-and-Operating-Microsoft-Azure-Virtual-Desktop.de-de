@@ -24,7 +24,7 @@ Sie planen die Implementierung einer Azure Virtual Desktop-Umgebung. Bei der Ber
   
 In diesem Lab lernen Sie Folgendes:
 
-- Erstellen benutzerdefinierter Sitzungshost-Images für Azure Virtual Desktop mit Hilfe von Bildvorlagen
+- Erstellen benutzerdefinierter Sitzungshost-Images für Azure Virtual Desktop mithilfe von Bildvorlagen
 
 ## Labdateien
 
@@ -88,9 +88,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|Der Name einer neuen Ressourcengruppe: **az140-15a-RG**|
-    |Region|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Region|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Name|**az140**-*random*-**uami**|
 
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
@@ -158,9 +158,9 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-15b-RG**|
-    |Region|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-15b-RG**|
+    |Region|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
 
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
 1. Aktualisieren Sie die Seite **Ressourcengruppen** und wählen Sie in der Liste der Ressourcengruppen **az140-15b-RG** aus.
@@ -181,10 +181,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-15b-RG**|
     |Name|**az14015computegallery**|
-    |Region|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Region|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
 
 1. Lassen Sie auf der Registerkarte **Freigabe** der Seite **Azure Compute Gallery erstellen** die Standardoption **Rollenbasierte Zugriffssteuerung (RBAC)** ausgewählt und wählen Sie dann **Überprüfen + erstellen** aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
@@ -193,11 +193,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **Azure Compute Galleries**, wählen Sie diese aus und wählen Sie auf der Seite **Azure Compute Galleries** **az14015computegallery** aus. 
 1. Wählen Sie auf der Seite **az14015computegallery** die Option **+ Hinzufügen** aus und wählen Sie im Dropdown-Menü die Option **+ VM-Image-Definition** aus. 
-1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite **VM-Image-Definition erstellen** die folgenden Einstellungen an (belassen Sie die anderen Einstellungen bei ihren Standardwerten) und wählen Sie dann „**Weiter: Version**:
+1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite **VM-Image-Definition erstellen** die folgenden Einstellungen an (belassen Sie die anderen Einstellungen bei ihren Standardwerten) und wählen Sie dann **Weiter: Version**:
 
     |Einstellung|Wert|
     |---|---|
-    |Region|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Region|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Name der VM-Imagedefinition|**az14015imagedefinition**|
     |Betriebssystemtyp|**Windows**|
     |Sicherheitstyp|**Vertrauenswürdiger Start unterstützt**|
@@ -215,7 +215,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Lassen Sie auf der Registerkarte **Veröffentlichungsoptionen** der Seite **VM-Image-Definition erstellen** die Einstellungen unverändert und wählen Sie **Überprüfen + erstellen** aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** auf der Seite **VM-Image-Definition erstellen** **Erstellen** auswählen.
 
-    > **Hinweis**: Warten Sie, bis der Prozess der erneuten Registrierung abgeschlossen ist. Dieser Schritt dauert normalerweise weniger als eine Minute.
+    > **Hinweis:** Warten Sie auf den Abschluss des Bereitstellungsvorgangs. Dieser Schritt dauert normalerweise weniger als eine Minute.
 
 #### Aufgabe 6: Erstellen einer benutzerdefinierten Imagevorlage
 
@@ -226,11 +226,11 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Name|**az140-15b-imagetemplate**|
+    |Vorlagenname|**az140-15b-imagetemplate**|
     |Importieren aus einer vorhandenen Vorlage|**Nein**|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-15b-RG**|
-    |Location|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Location|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Verwaltete Identität|**az140**-*random*-**uami**|
 
 1. Geben Sie auf der Registerkarte **Quellbild** der Seite **Benutzerdefiniertes Bild erstellen** die folgenden Einstellungen an und wählen Sie **Weiter** aus:
@@ -238,7 +238,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Einstellung|Wert|
     |---|---|
     |Quelltyp|**Plattformimage (Marketplace)**|
-    |Image auswählen|**Windows 11 Enterprise mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps - Gen 2**|
+    |Image auswählen|**Windows 11 Enterprise für mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps**|
 
 1. Geben Sie auf der Registerkarte **Verteilungsziele** auf der Seite **Benutzerdefinierte Bildvorlage erstellen** die folgenden Einstellungen an (lassen Sie die anderen Einstellungen auf ihren Standardwerten) und wählen Sie **Weiter** aus:
 
@@ -249,7 +249,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Definition des Katalogimages|**az14015imagedefinition**|
     |Katalogimageversion|**1.0.0**|
     |Name der Ausführungsausgabe|**az140-15-image-1.0.0**|
-    |Replikationsregionen|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Replikationsregionen|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Aus Neueste ausschließen|**Nein**|
     |Speicherkontotyp|**Standard_LRS**|
 
@@ -263,7 +263,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Größe des Builds des VM|**Standard_DC2s_v3**|
     |Größe des Betriebssystemdatenträgers (GB)|**127**|
     |Staginggruppe|**az140-15c-RG**|
-    |VNET|nicht festgelegt lassen|
+    |VNET|Nicht festgelegt lassen|
 
     > **Hinweis:**** Staging group** ist die Ressourcengruppe, die zum Staging von Ressourcen für die Erstellung des Bildes und zum Speichern von Protokollen verwendet wird. Wenn Sie den Namen nicht angeben, wird er automatisch generiert. Wenn der Name **VNet** nicht festgelegt ist, wird ein temporärer Name erstellt, zusammen mit einer öffentlichen IP-Adresse für die VM, die zum Erstellen des Builds verwendet wird.
 
@@ -282,7 +282,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Zurück auf der Registerkarte **Anpassung** der Seite **Benutzerdefinierte Bildvorlage erstellen** **Weiter** auswählen.
 1. Auf der Registerkarte **Tags** der Seite **Benutzerdefinierte Bildvorlage erstellen** **Weiter** auswählen.
-1. Auf der Registerkarte **Überprüfen + erstellen** auf der Seite **Benutzerdefinierte Bildvorlage erstellen** **Erstellen** auswählen.
+1. Auf der Registerkarte **Überprüfen + erstellen** auf der Seite **Benutzerdefinierte Bildvorlage erstellen****Erstellen** auswählen.
 
     > **Note**: Warten Sie, bis die Vorlage erstellt wurde. Dieser Vorgang kann einige Minuten in Anspruch nehmen. Aktualisieren Sie die Seite **Azure Virtual Desktop \| Benutzerdefinierte Bildvorlagen** um den Status der Vorlage zu überprüfen.
 
@@ -318,10 +318,10 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-15d-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-15d-RG**|
     |Name des virtuellen Netzwerks|**az140-vnet15d**|
-    |Region|den Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Region|Den Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitstellen möchten|
 
 1. Übernehmen Sie auf der Registerkarte **Sicherheit** die Standardeinstellungen, und wählen Sie **Weiter** aus.
 1. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Einstellungen an:
@@ -336,29 +336,30 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |---|---|
     |Name|**hp1-Subnet**|
     |Startadresse|**10.30.1.0**|
-    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|deaktiviert|
+    |Privates Subnetz aktivieren (kein standardmäßiger ausgehender Zugriff)|Disabled|
 
 1. Wählen Sie zurück auf der Registerkarte **IP-Adressen** **Überprüfen + erstellen** und dann **Erstellen** aus.
 
     > **Hinweis:** Warten Sie auf den Abschluss des Bereitstellungsvorgangs. Dieser Schritt dauert normalerweise weniger als eine Minute.
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **Azure Virtual Desktop**, wählen Sie es aus, wählen Sie auf der Seite **Azure Virtual Desktop** im Abschnitt **Verwalten** des vertikalen Navigationsmenüs **Hostpools** auswählen und auf der Seite **Azure Virtual Desktop \| Hostpools** **+ Erstellen** auswählen. 
-1. Geben Sie auf der Registerkarte **Allgemeine Informationen** auf der Seite „**Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Virtuelle Maschinen >**‘ aus (belassen Sie die anderen Einstellungen auf ihren Standardwerten):
+1. Geben Sie auf der Registerkarte **Allgemeine Informationen** der Seite **Hostpool erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Sitzungshosts >** (belassen Sie die anderen Einstellungen auf ihren Standardwerten):
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-15d-RG**|
     |Hostpoolname|**az140-15-hp1**|
-    |Location|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Location|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Überprüfungsumgebung|**Nein**|
     |Bevorzugter App-Gruppentyp|**Desktop**|
     |Hostpooltyp|**In einem Pool zusammengefasst**|
+    |Sitzungshostkonfiguration erstellen|**Nein**|
     |Lastenausgleichsalgorithmus|**Breitensuche**|
 
     > **Hinweis**: Bei Verwendung des breitenorientierten Algorithmus für den Lastenausgleich ist der Parameter für die maximale Anzahl von Sitzungen optional.
 
-1. Geben Sie auf der Registerkarte **Virtuelle Maschinen** auf der Seite **Hostpool erstellen**“ die folgenden Einstellungen an (belassen Sie die anderen Einstellungen auf ihren Standardwerten):
+1. Geben Sie auf der Registerkarte **Sitzungshosts** der Seite **Hostpool erstellen** die folgenden Einstellungen an (belassen Sie die anderen Einstellungen bei ihren Standardwerten):
 
     > **Hinweis**: Wenn Sie den Wert für **Präfixname** einstellen, wechseln Sie zur Registerkarte Ressourcen auf der rechten Seite des Lab-Sitzungsfensters. Suchen Sie dort die Zeichenfolge zwischen *User1-* und dem Zeichen *@*. Verwenden Sie diese Zeichenfolge, um den *zufälligen* Platzhalter zu ersetzen.
 
@@ -368,13 +369,13 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Resource group|**Standardmäßig mit der Ressourcengruppe des Hostpools identisch.**|
     |Namenspräfix|**sh0**_random_|
     |Typ des virtuellen Computers|**Virtueller Azure-Computer**|
-    |Virtueller Computer Standort|den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
+    |Virtueller Computer Standort|Den Namen der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitstellen möchten|
     |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
     |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
 
 1. Wählen Sie auf der Registerkarte **Virtuelle Maschinen** der Seite**Einen Hostpool erstellen** unter der Dropdownliste **Image** **Alle Bilder anzeigen**.
 1. Wählen Sie auf der Seite **Bild auswählen** die Option **Freigegebene Bilder** aus und wählen Sie in der Liste der Bilder die Option **az14015imagedefinition** aus. 
-1. Zurück auf der Registerkarte **Virtuelle Maschinen** auf der Seite **Hostpool erstellen** die folgenden Einstellungen angeben und **Weiter: Arbeitsbereich >** auswählen (andere Einstellungen mit ihren Standardwerten belassen):
+1. Zurück auf der Registerkarte **Virtuelle Computer** auf der Seite **Hostpool erstellen** die folgenden Einstellungen angeben und **Weiter: Arbeitsbereich >** auswählen (andere Einstellungen mit ihren Standardwerten belassen):
 
     |Einstellung|Wert|
     |---|---|
@@ -390,8 +391,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Wählen Sie das gewünschte Verzeichnis für die Einbindung aus.|**Microsoft Entra ID**|
     |VM bei Intune registrieren|**Nein**|
     |Benutzername|**Kursteilnehmer**|
-    |Kennwort|eine hinreichend komplexe Zeichenfolge, die als Kennwort für das integrierte Administratorkonto verwendet werden soll|
-    |Kennwort bestätigen|die gleiche Zeichenfolge von Zeichen, die Sie zuvor angegeben haben|
+    |Kennwort|Eine hinreichend komplexe Zeichenfolge, die als Kennwort für das integrierte Administratorkonto verwendet werden soll|
+    |Kennwort bestätigen|Die gleiche Zeichenfolge, die Sie zuvor eingegeben haben|
 
     > **Hinweis**: Das Kennwort sollte mindestens 12 Zeichen lang sein und aus einer Kombination von Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen bestehen. Ausführliche Informationen finden Sie unter den Informationen zu [den Kennwortanforderungen beim Erstellen einer Azure-VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 

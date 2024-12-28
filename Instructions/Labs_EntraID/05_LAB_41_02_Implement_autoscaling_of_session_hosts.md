@@ -114,13 +114,14 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
-    |Resource group|der Name einer neuen Ressourcengruppe **az140-412e-RG**|
+    |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
+    |Resource group|Der Name einer neuen Ressourcengruppe **az140-412e-RG**|
     |Name des Skalierungsplans|**az140-scalingplan412e**|
-    |Region|der Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
+    |Region|Der Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
     |Anzeigename|**az140-scalingplan412e**|
-    |Zeitzone|die lokale Zeitzone der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
+    |Zeitzone|Die lokale Zeitzone der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitgestellt haben|
     |Hostpooltyp|**In einem Pool zusammengefasst**|
+    |Skalierungsmethode|**Automatische Skalierung bei der Energieverwaltung**|
 
     > **Hinweis: Lassen Sie die Eigenschaft** **Ausschlusstag** nicht festgelegt. Im Allgemeinen können Sie dieses Feature verwenden, um Azure-VMs mit willkürlich festgelegten Tags von der automatischen Skalierung auszuschließen.
 
@@ -132,7 +133,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Zeitzone|die lokale Zeitzone Ihrer Azure Virtual Desktop-Umgebung (basierend auf der Region, die Sie zuvor in dieser Aufgabe ausgewählt haben)|
+    |Zeitzone|Die lokale Zeitzone Ihrer Azure Virtual Desktop-Umgebung (basierend auf der Region, die Sie zuvor in dieser Aufgabe ausgewählt haben)|
     |Zeitplanname|**week_schedule**|
     |Wiederholen am|**7 ausgewählt** (alle Wochentage auswählen)|
 
@@ -159,7 +160,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus eine Stunde|
+    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus 1 Stunde|
     |Lastenausgleichsalgorithmus|**Tiefensuche**|
     |Kapazitätsschwellenwert (%)|**60**|
 
@@ -169,7 +170,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus zwei Stunden|
+    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus 2 Stunden|
     |Lastenausgleichsalgorithmus|**Tiefensuche**|
     |Mindestprozentsatz aktiver Hosts (%)|**10**|
     |Kapazitätsschwellenwert (%)|**80**|
@@ -191,13 +192,13 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     |Einstellung|Wert|
     |---|---|
-    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus drei Stunden|
+    |Startzeit (12-Stunden System)|Ihre aktuelle Zeit plus 3 Stunden|
     |Lastenausgleichsalgorithmus|**Tiefensuche**|
     |Kapazitätsschwellenwert (%)|**80**|
 
     > **Hinweis**: Die Einstellung für den **Kapazitätsschwellenwert** wird von den Einstellungen für **Auslaufzeiten** und **Nebenzeiten** gemeinsam genutzt.
 
-1. Zurück auf der Registerkarte **Zeitplan** auf der Seite **Erstellen eines Skalierungsplans** **Weiter: Hostpool-Zuweisungen** auswählen.
+1. Auf der Registerkarte **Zeitplan** der Seite **Skalierungsplan erstellen** wählen Sie **Weiter: Hostpool-Zuweisungen**.
 1. Wählen Sie auf der Registerkarte **Hostpool-Zuweisungen** in der Dropdownliste „**Hostpool auswählen** die Option **az140-21-hp1** aus, stellen Sie sicher, dass das Kontrollkästchen„**Autoskalierung aktivieren** aktiviert ist, und wählen Sie dann **Überprüfen + erstellen** aus.
 1. Wählen Sie auf der Seite **Bewerten + erstellen** die Option **Erstellen**.
 
@@ -225,7 +226,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Geben Sie bei der Eingabeaufforderung zur Anmeldung im Dialogfeld **Windows-Sicherheit** das Kennwort des Microsoft Entra-Benutzerkontos ein, das Sie für die Verbindung mit der Zielumgebung von Azure Virtual Desktop verwendet haben.
 1. Überprüfen Sie, ob kurz darauf ein **Eingabeaufforderungsfenster** angezeigt wird. 
 
-    > **Hinweis**: Zu diesem Zeitpunkt beträgt die Auslastung des Hostpools 100 %, was über dem Kapazitätsschwellenwert (%60) liegt. Dies sollte dazu führen, dass Autoskalierung einen weiteren Host einschaltet, was die genutzte Hostpool-Kapazität auf 50 % bringt. Da dies unter dem Kapazitätsschwellenwert liegt, bleibt der dritte Host gestoppt/freigegeben. Überprüfen Sie dies als Nächstes.
+    > **Hinweis**: Zu diesem Zeitpunkt beträgt die Auslastung des Hostpools 100 %, was über dem Kapazitätsschwellenwert (% 60) liegt. Dies sollte dazu führen, dass Autoskalierung einen weiteren Host einschaltet, was die genutzte Hostpool-Kapazität auf 50 % bringt. Da dies unter dem Kapazitätsschwellenwert liegt, bleibt der dritte Host gestoppt/freigegeben. Überprüfen Sie dies als Nächstes.
 
 1. Wechseln Sie vom Lab-Computer zu einem Webbrowser, der das Azure-Portal anzeigt. 
 1. Auf der Seite Sitzungshosts der **az140-21-hp1 \|-Sitzung** **Aktualisieren** auswählen, die Werte der Einstellung **Betriebszustand** der Sitzungshosts überprüfen und sicherstellen, dass jetzt zwei von ihnen als **wird ausgeführt** aufgeführt sind.
@@ -249,6 +250,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf der Seite **Azure Virtual Desktop \| Hostpools** in der Liste der Hostpools **az140-21-hp1** aus.
 1. Wählen Sie auf der Seite **az140-21-hp1** in der vertikalen Menüleiste im Abschnitt **Verwalten** **Sitzungshosts** aus.
 1. Überprüfen Sie auf der Seite **az140-21-hp1 \| Sitzungshosts** die Werte der Einstellung **Betriebszustand** der Sitzungshosts und vergewissern Sie sich, dass jetzt nur einer von ihnen als **Wird ausgeführt** aufgeführt ist.
+
+    > **Hinweis**: Es kann 1 bis 2 Minuten dauern, bis der Sitzungshost heruntergefahren wird.
 
 #### Aufgabe 6: Deaktivieren der automatischen Skalierung des Hostpools
 

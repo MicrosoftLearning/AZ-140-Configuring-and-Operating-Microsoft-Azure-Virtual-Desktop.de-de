@@ -22,7 +22,7 @@ lab:
 Sie verfügen über eine vorhandene Azure Virtual Desktop-Umgebung. Sie müssen Hostpools mit in Microsoft Entra eingebundenen Sitzungshosts konfigurieren, um eine Reihe von funktionalen und geschäftlichen Anforderungen zu unterstützen. Folgende Anforderungen müssen erfüllt sein:
 
 - Bereitstellen zusätzlicher Sitzungshosts zur Aufnahme einer erhöhten Anzahl von Remotebenutzenden
-- Minimieren der Kosten für die Azure Virtual Desktop-Umgebung durch Optimierung der Hostpool-Lastausgleichskonfiguration und Nutzung der Funktionalität *VM bei Verbindung starten*
+- Minimieren der Kosten für die Azure Virtual Desktop-Umgebung durch Optimierung der Hostpool-Lastenausgleichskonfiguration und Nutzung der Funktionalität *VM bei Verbindung starten*
 - Maximieren der Verfügbarkeit von Sitzungshosts während der Geschäftszeiten durch Implementieren von Wartungsfenstern
 - Aktivieren des einmaligen Anmeldens bei in Microsoft Entra eingebundenen Sitzungshosts
 - Maximieren der Benutzerfreundlichkeit und des Benutzererlebnisses (wie etwa automatische Wiederverbindung getrennter Sitzungen)
@@ -31,7 +31,7 @@ Sie verfügen über eine vorhandene Azure Virtual Desktop-Umgebung. Sie müssen 
   
 In diesem Lab lernen Sie Folgendes:
 
-- Konfigurieren von Microsoft Entra in Verbindung mit Azure Virtual Desktop Session Hosts zum Support einer Reihe von funktionalen und geschäftlichen Anforderungen
+- Konfigurieren von Microsoft Entra in Verbindung mit Azure Virtual Desktop-Sitzungshosts, um eine Reihe von funktionalen und geschäftlichen Anforderungen zu unterstützen
 
 ## Labdateien
 
@@ -59,7 +59,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie auf der Seite **Azure Virtual Desktop \| Hostpools** in der Liste der Hostpools **az140-21-hp1** aus.
 1. Wählen Sie auf der Seite **az140-21-hp1** in der vertikalen Menüleiste im Abschnitt **Verwalten** die Option **Sitzungshosts** aus und überprüfen Sie, ob der Pool aus zwei Hosts besteht. 
 1. Wälen Sie auf der Seite „**az140-21-hp1 \| Sitzungshosts** **+ Hinzufügen**.
-1. Überprüfen Sie auf der Registerkarte **Allgemeine Informationen** der Seite **Virtuelle Maschinen zu einem Hostpool hinzufügen** die vorkonfigurierten Einstellungen und wählen Sie **Weiter: Virtuelle Maschinen** aus.
+1. Überprüfen Sie auf der Registerkarte **Allgemeine Informationen** der Seite **Virtuelle Computer zu einem Hostpool hinzufügen** die vorkonfigurierten Einstellungen und wählen Sie **Weiter: Virtuelle Computer** aus.
 1. Geben Sie auf der Registerkarte **Virtuelle Maschinen** auf der Seite **Virtuelle Maschinen zu einem Hostpool hinzufügen** die folgenden Einstellungen an und wählen Sie **Überprüfen + erstellen** aus (belassen Sie die anderen Einstellungen bei den Standardeinstellungen):
 
     > **Hinweis**: Wenn Sie den Wert für **Präfixname** einstellen, wechseln Sie zur Registerkarte Ressourcen auf der rechten Seite des Lab-Sitzungsfensters. Suchen Sie dort die Zeichenfolge zwischen *User1-* und dem Zeichen *@*. Verwenden Sie diese Zeichenfolge, um den *zufälligen* Platzhalter zu ersetzen.
@@ -71,7 +71,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Virtueller Computer Standort|Der Name der Azure-Region, in der Sie die ersten zwei Sitzungshost-VMs bereitgestellt haben|
     |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
     |Sicherheitstyp|**Virtuelle Computer mit vertrauenswürdigem Start**|
-    |Abbildung|**Windows 11 Enterprise für mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps - Gen2**|
+    |Abbildung|**Windows 11 Enterprise für mehrere Sitzungen, Version 23H2 + Microsoft 365 Apps**|
     |Größe des virtuellen Computers|**Standard DC2s_v3**|
     |Number of VMs (Anzahl von VMs)|**1**|
     |Typ des Betriebssystemdatenträgers|**SSD Standard**|
@@ -84,8 +84,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Wählen Sie das gewünschte Verzeichnis für die Einbindung aus.|**Microsoft Entra ID**|
     |VM bei Intune registrieren|**Nein**|
     |Benutzername|**Kursteilnehmer**|
-    |Kennwort|dasselbe Kennwort, das Sie beim Bereitstellen der Sitzungshosts im Lab *Bereitstellen von Hostpools und Sitzungshosts mithilfe der Azure-Portal (Entra-ID)* verwendet haben 
-    |Kennwort bestätigen|dasselbe Kennwort, das Sie zuvor angegeben haben|
+    |Kennwort|Dasselbe Kennwort, das Sie beim Bereitstellen der Sitzungshosts im Lab *Bereitstellen von Hostpools und Sitzungshosts mithilfe der Azure-Portal (Entra-ID)* verwendet haben 
+    |Kennwort bestätigen|Dasselbe Kennwort, das Sie zuvor angegeben haben|
 
     > **Hinweis**: Das Kennwort sollte mindestens 12 Zeichen lang sein und aus einer Kombination von Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen bestehen. Ausführliche Informationen finden Sie unter den Informationen zu [den Kennwortanforderungen beim Erstellen einer Azure-VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 

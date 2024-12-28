@@ -87,7 +87,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis**: Wenn ein Benutzer oder eine Benutzerin sowohl RemoteApp- als auch Desktop-Apps veröffentlicht hat, bestimmt der bevorzugte App-Gruppentyp, welcher dieser Apps in ihrem Feed angezeigt wird.
 
-1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen an, übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie anschließend **Weiter: Arbeitsbereich >** aus. Ersetzen Sie den Platzhalter *<Azure_AD_domain_name>* durch den Namen des Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, in dem Sie die Microsoft Entra DS-Instanz bereitgestellt haben, und ersetzen Sie den Platzhalter `<password>` durch das Kennwort, das Sie bei der Erstellung des Kontos „aadadmin1“ festgelegt haben:
+1. Geben Sie auf dem Blatt **Hostpool erstellen** auf der Registerkarte **Virtuelle Computer** die folgenden Einstellungen an, übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie anschließend **Weiter: Arbeitsbereich >** aus. Ersetzen Sie den Platzhalter *<Azure_AD_domain_name>* durch den Namen des Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, in dem Sie die Microsoft Entra DS-Instanz bereitgestellt haben, und ersetzen Sie den Platzhalter `<password>` durch das Kennwort, das Sie bei der Erstellung des Kontos „aadadmin1“ festgelegt haben:
 
    > **Hinweis:** Merken Sie sich das verwendete Kennwort. Es wird später in diesem Lab sowie in nachfolgenden Labs benötigt.
 
