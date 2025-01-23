@@ -354,12 +354,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     > **Hinweis**: Um die der Lab-Umgebung zugeordneten Kosten zu minimieren, beenden Sie die neu bereitgestellte Azure-VM und heben die Zuweisung auf.
 
-1. Wechseln Sie zur Konsolensitzung des Lab-Computers, wählen Sie im Webbrowser, der das Azure-Portal anzeigt, auf der Seite **az140-111e-vm0** die Option **Übersicht** aus und wählen Sie dann in der Symbolleiste die Option **Beenden** aus.
-1. Wählen Sie im Popupfenster **Diesen virtuellen Computer beenden** die Option **Ja** aus.
-
 #### Aufgabe 7: Zulassen des Zugriffs auf ein öffentliches Netzwerk auf einen Hostpool und einen Arbeitsbereich
-
-> **Hinweis**: Um Auswirkungen auf andere Labs zu vermeiden, die dieselbe Azure Virtual Desktop-Umgebung verwenden, setzen Sie die in der vorherigen Aufgabe vorgenommenen Änderungen zurück und erlauben den Zugriff auf den Hostpool und den Arbeitsbereich, die Teil der Azure Virtual Desktop-Umgebung sind, über ein öffentliches Netzwerk.
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **Azure Virtual Desktop**, wählen Sie es aus und wählen Sie auf der Seite **Azure Virtual Desktop** **Arbeitsbereiche** aus.
 1. Wählen Sie auf der Seite **Azure Virtual Desktop \| Arbeitsbereiche** **az140-21-ws1** aus.

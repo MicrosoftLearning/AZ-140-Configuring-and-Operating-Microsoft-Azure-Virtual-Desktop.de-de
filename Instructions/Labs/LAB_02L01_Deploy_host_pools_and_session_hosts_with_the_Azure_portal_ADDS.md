@@ -60,7 +60,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Führen Sie innerhalb der Bastionsitzung für **az140-dc-vm11** über die Konsole **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um eine Organisationseinheit zu erstellen, in der die Computerobjekte der Azure Virtual Desktop-Hosts gehostet werden:
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDInfra' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDInfra' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. Führen Sie über den Skriptbereich **Administrator: Windows PowerShell ISE** den folgenden Befehl aus, um den Benutzerprinzipalnamen des Kontos **aduser1** zu ermitteln:

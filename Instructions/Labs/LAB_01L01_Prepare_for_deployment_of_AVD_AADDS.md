@@ -85,7 +85,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Suchen Sie im Azure-Portal nach **Abonnements**, und wählen Sie auf dem Blatt **Abonnements** den Eintrag für das Azure-Abonnement aus, das Sie für dieses Lab verwenden möchten.
 1. Wählen Sie im Azure-Portal auf dem Abonnementblatt im vertikalen Menü auf der linken Seite im Abschnitt **Einstellungen** die Option **Nutzung + Kontingente** aus. 
-1. Wählen Sie auf dem Blatt  **Azure Pass-Förderung | Nutzung + Kontingente** auf der oberen Suchleiste die folgenden Dropdownpfeile aus:
+1. Wählen Sie auf dem Blatt  **Azure Pass – Förderung | Nutzung + Kontingente** in der oberen Suchleiste die folgenden Dropdownpfeile aus:
 
    |**Einstellung**|**Wert**|
    |---|---|
