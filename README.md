@@ -32,7 +32,7 @@
 
 > **Wichtig**: Die Labs wurden aktualisiert, um Microsoft Entra ID-basierte Szenarien für die Implementierung von Azure Virtual Desktop zu berücksichtigen (Anweisungen für dieses Lab finden Sie im Verzeichnis **Anweisungen** -&gt;**Labs_EntraID**). 
 
-> **Wichtig**: Die folgenden beiden Tracks werden nicht mehr gewartet oder unterstützt (Anweisungen für dieses Lab finden Sie im Verzeichnis **Anweisungen** -&gt;**Labs**)
+> **Wichtig**: Die folgenden beiden Tracks werden nicht mehr gepflegt oder unterstützt und werden am 1. Juni 2025 entfernt (Anweisungen für dieses Lab finden Sie im Verzeichnis **Anweisungen** -&gt;**Labs**).
 
 - Active Directory Domain Services (AD DS) Dieser Titel besteht aus den folgenden Labs:
 
