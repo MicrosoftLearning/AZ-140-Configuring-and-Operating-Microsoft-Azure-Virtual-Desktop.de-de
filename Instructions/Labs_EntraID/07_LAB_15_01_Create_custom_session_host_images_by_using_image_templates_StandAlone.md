@@ -382,7 +382,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Größe des virtuellen Computers|**Standard DC2s_v3**|
     |Number of VMs (Anzahl von VMs)|**1**|
     |Typ des Betriebssystemdatenträgers|**SSD Standard**|
-    |Größe des Betriebssystemdatenträgers|**Standardgröße (128 GiB)**|
+    |Größe des Betriebssystemdatenträgers|**Standardgröße**|
     |Startdiagnose|**Mit verwaltetem Speicherkonto aktivieren (empfohlen)**|
     |Virtuelles Netzwerk|az140-vnet15d|
     |Subnet|**hp1-Subnet**|

@@ -14,7 +14,7 @@ lab:
 
 ## Geschätzte Dauer
 
-30 Minuten
+60 Minuten
 
 ## Labszenario
 
@@ -72,7 +72,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Region|Den Namen der Azure-Region, in der Sie die Azure Virtual Desktop-Umgebung bereitstellen möchten|
 
 1. Übernehmen Sie auf der Registerkarte **Sicherheit** die Standardeinstellungen, und wählen Sie **Weiter** aus.
-1. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Einstellungen an:
+1. Wenden Sie auf der Registerkarte **IP-Adressen** die folgenden Einstellungen an (bei Bedarf die Standardeinstellung ändern):
 
     |Einstellung|Wert|
     |---|---|

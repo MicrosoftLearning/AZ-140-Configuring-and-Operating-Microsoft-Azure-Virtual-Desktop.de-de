@@ -174,7 +174,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Lastenausgleichsalgorithmus|**Tiefensuche**|
     |Mindestprozentsatz aktiver Hosts (%)|**10**|
     |Kapazitätsschwellenwert (%)|**80**|
-    |Abmeldung der Benutzer erzwingen|**Nein**|
+    |Abmeldung von Benutzern erzwingen.|**Nein**|
     |Beenden Sie die VMs, wenn|**VMs keine aktiven oder getrennten Sitzungen haben**|
 
     > **Hinweis**: Die Einstellung „**Mindestprozentsatz aktiver Hosts (%)**“ gibt den Mindestprozentsatz der virtuellen Maschinen mit Sitzungshost an, den Sie für die Auslauf- und Nebenzeiten erreichen möchten. Wenn beispielsweise der **Mindestprozentsatz aktiver Hosts (%)** auf 10 % festgelegt ist und die Gesamtzahl der Sitzungshosts in Ihrem Hostpool 3 beträgt, stellt die automatische Skalierung sicher, dass mindestens 1 Sitzungshost verfügbar ist, um Verbindungen von Benutzenden anzunehmen.
@@ -233,7 +233,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     > **Hinweis**: Als Nächstes bewerten Sie die Einstellung des **Auslauf**-Kapazitätsschwellenwerts, indem Sie das Zeitfenster anpassen. 
 
-1. Wählen Sie auf der Seite **az140-21-hp1 \| Sitzungshosts** im vertikalen Navigationsmenü im Abschnitt **Einstellungen** **Skalierungspläne** und dann auf der Seite **Skalierungspläne** **az140-scalingplan412e** auswählen.
+1. Wählen Sie auf der Seite **az140-21-hp1 \| Sitzungshosts** im vertikalen Navigationsmenü im Abschnitt **Verwalten** die Option **Skalierungspläne** und anschließend auf der Seite **Skalierungspläne** die Option **az140-scalingplan412e** aus.
 1. Wählen Sie auf der Seite **az140-scalingplan412e** im vertikalen Navigationsmenü im Abschnitt **Einstellungen** **Zeitpläne** und dann **week_schedule** aus.
 1. Navigieren Sie im Bereich **week_schedule** zur Registerkarte **Auslaufzeiten** und stellen den Wert der Einstellung **Startzeit (12-Stunden-System)** auf eine Zeit zwischen der **Startzeit (12-Stunden-System)** der Phase **Spitzenzeiten** und Ihrer aktuellen Zeit.
 
