@@ -58,7 +58,7 @@ Da keines dieser Kriterien auf den Lab-Computer zutrifft, muss `targetisaadjoine
 
     > **Hinweis**: Verwenden Sie die Anmeldeinformationen des `User1-` Kontos, das auf der Registerkarte Ressourcen auf der rechten Seite des Fensters Lab-Sitzung aufgeführt ist.
 
-1. Wählen Sie im Webbrowser, der das Azure-Portal anzeigt, auf der Seite **az140-21-hp1** in der vertikalen Menüleiste im Abschnitt **Einstellungen** den Eintrag **RDP-Eigenschaften** aus.
+1. Wählen Sie im Webbrowser, in dem das Azure-Portal angezeigt wird, auf der Seite **az140-21-hp1** Azure Virtual Desktop-Hostpool in der vertikalen Menüleiste im Abschnitt **Einstellungen** den Eintrag **RDP-Eigenschaften** aus.
 1. Auf der Seite **az140-21-hp1 \| RDP Eigenschaften** die Registerkarte **Erweitert** auswählen. 
 1. Fügen Sie auf der Registerkarte **Erweitert** der Seite „**az140-21-hp1 \| RDP-Eigenschaften** im Textfeld „**RDP-Eigenschaften** die folgende Zeichenfolge an den vorhandenen Inhalt an (fügen Sie bei Bedarf ein führendes Semikolon (`;`) hinzu, um diese Zeichenfolge von der vorherigen zu trennen:
 

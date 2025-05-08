@@ -15,7 +15,7 @@ lab:
 
 ## Geschätzte Dauer
 
-40 Minuten
+60 Minuten
 
 ## Labszenario
 
@@ -222,14 +222,14 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|**az140-11e-RG**|
 
-    > **Hinweis**: In diesem Schritt wird die private DNS-Zone mit dem Namen **privatelink.wvd.microsoft.com** genutzt, die Sie in einer der vorherigen Aufgaben erstellt haben.
+    > **Hinweis**: Dieser Schritt führt zur Erstellung einer privaten DNS-Zone mit dem Namen **privatelink.wvd.microsoft.com**.
 
 1. Wählen Sie auf der Registerkarte **Tags** der Seite **Erstellen eines privaten Endpunkts****Weiter: Überprüfen + erstellen** aus.
 1. Wälen Sie auf der Registerkarte **Überprüfen + erstellen** auf der Seite **Erstellen eines privaten Endpunkts ** **Erstellen** aus.
 
     > **Hinweis**: Warten Sie nicht, bis die Bereitstellung abgeschlossen ist, sondern fahren Sie stattdessen mit der nächsten Aufgabe fort. Die Bereitstellung kann ungefährt eine Minute dauern.
 
-    > **Hinweis**: Sie müssen für jeden Arbeitsbereich, den Sie mit Private Link verwenden möchten, einen privaten Endpunkt für die Feed-Unterressource erstellen.
+    > **Hinweis**: Sie müssen für jeden Arbeitsbereich, den Sie mit Private Link verwenden möchten, einen privaten Endpunkt für die globale Unterressource erstellen.
 
     > **Hinweis**: Damit die Netzwerkänderungen wirksam werden, müssen Sie die Sitzungshosts im Zielhostpool neu starten.
 
@@ -275,7 +275,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
     |Region|Name der Azure-Region, in der Sie Ihre Azure Virtual Desktop-Umgebung bereitgestellt haben|
     |Verfügbarkeitsoptionen|**Keine Infrastrukturredundanz erforderlich**|
     |Sicherheitstyp|**Standard**|
-    |Abbildung|**Windows 11 Pro, Version 23H2 – x64 Gen2**|
+    |Abbildung|**Windows 11 Pro, Version 24H2 – x64 Gen2**|
     |Größe|**Standard DC2s_v3**|
     |Benutzername|Beliebiger gültiger Benutzername Ihrer Wahl|
     |Kennwort|Ein beliebiges gültiges Kennwort Ihrer Wahl|

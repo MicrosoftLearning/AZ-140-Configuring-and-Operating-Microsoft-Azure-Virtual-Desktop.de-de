@@ -85,7 +85,7 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 1. Wählen Sie in der Liste der **Windows Virtual Desktop**-Arbeitsmappen im Abschnitt **Windows Virtual Desktop** die Arbeitsmappe **Insights** aus.
 1. Überprüfen Sie auf der Seite Insights von **Azure Virtual Desktop \|-Arbeitsmappe \|** die Warnmeldungen, die darauf hinweisen, dass der Arbeitsbereich und die Sitzungshosts keine Daten an den Arbeitsbereich senden, und wählen Sie dann den Link **Konfigurationsarbeitsmappe** aus, um das Problem zu beheben.
 1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Ressourcendiagnose-Einstellungen** in der Dropdown-Liste **Log Analytics-Arbeitsbereich** den Eintrag **az140-laworkspace41e** aus.
-1. Auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Ressourcendiagnose-Einstellungen** im Abschnitt **Hostpool az140-21-hp1** wird eine Warnmeldung angezeigt, die darauf hinweist, dass keine vorhandene Diagnosekonfiguration für den ausgewählten Hostpool gefunden wurde. Wählen Sie dann **Hostpool konfigurieren** aus.
+1. Überprüfen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Einstellungen zur Ressourcendiagnose** im Abschnitt **Hostpool az140-21-hp1** die Warnmeldung, die darauf hinweist, dass keine vorhandene Diagnosekonfiguration für den ausgewählten Hostpool gefunden wurde, und wählen Sie dann **Hostpool konfigurieren** aus.
 1. Wählen Sie im Bereich **Vorlage bereitstellen** die Option **Bereitstellen** aus.
 
     > **Hinweis**: Dadurch werden die folgenden Diagnosetabellen im Ziel-Log Analytics-Arbeitsbereich effektiv aktiviert:
@@ -116,27 +116,26 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
     > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Schritt dauert normalerweise weniger als eine Minute.
 
-1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Einstellungen für Hostdaten auswählen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste aus.
+1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Sitzungshostdateneinstellungen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste.
 
     > **Hinweis**: Bevor Sie fortfahren, stellen Sie sicher, dass der neu erstellte DCR im Unterabschnitt **Verfügbare DCRs** des Abschnitts **DCR erstellen** aufgeführt ist. Wenn dies nicht der Fall ist, warten Sie eine weitere Minute, und aktualisieren Sie die Seite erneut.
 
-1. Wählen Sie auf der Registerkarte **Einstellungen für Hostdaten auswählen** in der Dropdown-Liste **Ausgewählte DCR** den Eintrag aus, der mit dem Präfix **microsoft-avdi-** beginnt.
-1. Wählen Sie auf der Registerkarte **Einstellungen für Hostdaten auswählen** im Abschnitt **DCR-Zuordnungen** die Option **Zuordnung bereitstellen** aus.
-1. Wählen Sie im Bereich **Vorlage bereitstellen** die Option **Bereitstellen** aus.
+1. Wählen Sie auf der Registerkarte **Sitzungshostdateneinstellungen** in der Dropdown-Liste **Ausgewählter DCR** den Eintrag aus, der mit dem Präfix **microsoft-avdi-** beginnt.
+1. Wählen Sie bei Bedarf auf der Registerkarte **Sitzungshost-Dateneinstellungen** im Abschnitt **DCR-Zuordnungen** die Option **Zuordnung bereitstellen** und im Bereich **Vorlage bereitstellen** die Option **Bereitstellen** aus.
 
     > **Hinweis**: Dadurch wird der neu erstellte DCR den Sitzungshosts im Host-Pool **az140-21-hp1** zugeordnet.
 
     > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Schritt dauert normalerweise weniger als eine Minute.
 
-1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Einstellungen für Hostdaten auswählen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste aus.
-1. Wählen Sie auf der Registerkarte **Einstellungen für Hostdaten auswählen** im Abschnitt **Sitzungshosts ohne Azure Monitor-Erweiterung** die Option **Erweiterung hinzufügen** aus.
+1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Sitzungshostdateneinstellungen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste.
+1. On the **Session host data settings** tab, in the **Session hosts missing Azure Monitor extension** section, select **Add extension**.
 1. Wählen Sie im Bereich **Vorlage bereitstellen** die Option **Bereitstellen** aus.
 
     > **Hinweis**: Dadurch wird die Azure Monitor-Erweiterung effektiv auf den Sitzungshosts im **az140-21-hp1-Hostpool** installiert.
 
     > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dies kann etwa eine Minute dauern.
 
-1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Einstellungen für Hostdaten auswählen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste aus.
+1. Wählen Sie auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Sitzungshostdateneinstellungen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste.
 1. Stellen Sie sicher, dass keine Fehlermeldungen oder Warnmeldungen angezeigt werden. 
 1. Navigieren Sie zum Anfang der Seite **CheckAMAConfiguration**, wählen Sie die Registerkarte **Generierte Daten** aus und klicken Sie dann in der Symbolleiste auf das Symbol **Aktualisieren** (ein kreisförmiger Pfeil).
 1. Sehen Sie sich die Abschnitte mit den Diagrammen an, die die gesammelten Daten darstellen, einschließlich **Abgerechnete Daten der letzten 24 Stunden**, **Leistungsindikatoren** und **Ereignisse**.
