@@ -352,8 +352,6 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
    > **Hinweis**: Optional können Sie versuchen, den Feed zu abonnieren und eine Verbindung mit dem Azure Virtual Desktop-Arbeitsbereich vom Lab-Computer herzustellen, um zu überprüfen, ob diese Verbindung fehlschlägt. 
 
-    > **Hinweis**: Um die der Lab-Umgebung zugeordneten Kosten zu minimieren, beenden Sie die neu bereitgestellte Azure-VM und heben die Zuweisung auf.
-
 #### Aufgabe 7: Zulassen des Zugriffs auf ein öffentliches Netzwerk auf einen Hostpool und einen Arbeitsbereich
 
 1. Suchen Sie auf dem Lab-Computer im Webbrowser, der das Azure-Portal anzeigt, nach **Azure Virtual Desktop**, wählen Sie es aus und wählen Sie auf der Seite **Azure Virtual Desktop** **Arbeitsbereiche** aus.

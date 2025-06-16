@@ -110,8 +110,8 @@ Die Hauptaufgaben für diese Übung sind Folgende:
 
 1. Auf der Seite **CheckAMAConfiguration** auf der Registerkarte **Ressourcendiagnose-Einstellungen** das Symbol **Aktualisieren** (ein kreisförmiger Pfeil) in der Symbolleiste auswählen.
 1. Überprüfen Sie den Abschnitt **Arbeitsbereich az140-21-ws1** und stellen Sie sicher, dass die Diagnoseeinstellungen für **allLogs** aktiviert sind und dass keine Warnmeldungen mehr angezeigt werden.
-1. Navigieren Sie zum Anfang der Seite **CheckAMAConfiguration** und wechseln Sie zur Registerkarte **Host-Dateneinstellungen auswählen**.
-1. Wählen Sie auf der Registerkarte **Einstellungen für Hostdaten auswählen** im Abschnitt **DCR erstellen** in der Dropdown-Liste **Arbeitsbereichsziel** **az140-laworkspace41e** aus und wählen Sie dann **Regel für die Datenerfassung erstellen** aus.
+1. Navigieren Sie zum Anfang der Seite **CheckAMAConfiguration** und wechseln Sie zur Registerkarte **Sitzungshost-Dateneinstellungen auswählen**.
+1. Wählen Sie auf der Registerkarte **Einstellungen für Sitzungshostdaten auswählen** im Abschnitt **DCR erstellen** in der Dropdown-Liste **Arbeitsbereichsziel****az140-laworkspace41e** aus und wählen Sie dann **Regel für die Datenerfassung erstellen** aus.
 1. Wählen Sie im Bereich **Vorlage bereitstellen** die Option **Bereitstellen** aus.
 
     > **Hinweis**: Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Schritt dauert normalerweise weniger als eine Minute.
